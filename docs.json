@@ -66,6 +66,7 @@
                           "group": "Build",
                           "pages": [
                             "en/documentation/pages/build/shortcut-key",
+                            "en/documentation/pages/build/keyboard-shortcuts-advanced",
                             "en/documentation/pages/build/goto-anything",
                             "en/documentation/pages/build/orchestrate-node",
                             "en/documentation/pages/build/predefined-error-handling-logic",

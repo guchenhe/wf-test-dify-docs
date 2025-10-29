@@ -87,17 +87,6 @@
                           "group": "Publish",
                           "pages": [
                             "en/documentation/pages/publish/README",
-                            {
-                              "group": "Web App",
-                              "icon": "globe",
-                              "pages": [
-                                "en/documentation/pages/publish/webapp/workflow-webapp",
-                                "en/documentation/pages/publish/webapp/chatflow-webapp",
-                                "en/documentation/pages/publish/webapp/web-app-settings",
-                                "en/documentation/pages/publish/webapp/web-app-access",
-                                "en/documentation/pages/publish/webapp/embedding-in-websites"
-                              ]
-                            },
                             "en/documentation/pages/publish/publish-mcp",
                             "en/documentation/pages/publish/developing-with-apis"
                           ]

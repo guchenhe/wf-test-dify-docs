@@ -67,6 +67,7 @@
                           "pages": [
                             "en/documentation/pages/build/shortcut-key",
                             "en/documentation/pages/build/goto-anything",
+                            "en/documentation/pages/build/workflow-best-practices",
                             "en/documentation/pages/build/orchestrate-node",
                             "en/documentation/pages/build/predefined-error-handling-logic",
                             "en/documentation/pages/build/mcp",

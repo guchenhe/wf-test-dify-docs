@@ -1,0 +1,40 @@
+---
+title: "Workflow Best Practices"
+description: "Learn best practices for designing maintainable and efficient workflows"
+icon: "lightbulb"
+---
+
+Follow these best practices to build robust, maintainable workflows in Dify.
+
+## Design Principles
+
+### Keep It Simple
+Start with the simplest workflow that solves your problem. Add complexity only when necessary.
+
+### Modular Design
+Break complex workflows into smaller, reusable sub-workflows or use iteration nodes for repeated logic.
+
+### Error Handling
+Always implement error handling for external API calls and user inputs.
+
+## Performance Tips
+
+<Tip>
+  - Minimize API calls by caching results
+  - Use conditional nodes to skip unnecessary processing
+  - Parallelize independent operations
+</Tip>
+
+## Testing Strategy
+
+Test workflows thoroughly:
+1. Test with edge cases
+2. Validate error scenarios
+3. Check performance with realistic data volumes
+
+## Documentation
+
+Document your workflow:
+- Add node descriptions
+- Use clear variable names
+- Include inline comments for complex logic

@@ -1,0 +1,188 @@
+---
+title: "Content Moderation Workflow"
+description: "Learn how to build an automated content moderation workflow using Dify's moderation tools and conditional logic to filter inappropriate content."
+---
+
+## Introduction
+
+Content moderation is essential for maintaining safe and compliant applications. This tutorial shows you how to create an automated content moderation workflow using Dify's built-in moderation capabilities.
+
+## What You'll Build
+
+A workflow that:
+- Accepts user-generated content
+- Runs moderation checks
+- Routes content based on moderation results
+- Provides appropriate responses
+
+## Prerequisites
+
+- A Dify account
+- Basic understanding of workflow nodes
+- Familiarity with conditional logic
+
+## Step 1: Create a New Workflow
+
+1. Navigate to **Studio** in your Dify workspace
+2. Click **Create Application**
+3. Select **Workflow** as the application type
+4. Name it "Content Moderation System"
+
+## Step 2: Add the Start Node
+
+The Start node captures the user's input content:
+
+1. Click on the **Start** node
+2. Add an input variable:
+   - Variable name: `user_content`
+   - Type: `Text`
+   - Required: `Yes`
+
+## Step 3: Add Moderation Node
+
+Add moderation to check the content:
+
+1. Add a **Tools** node
+2. Select the **Content Moderation** tool
+3. Configure inputs:
+   - Content: `{{#start.user_content#}}`
+   - Moderation level: `Strict`
+
+The moderation tool will check for:
+- Hate speech
+- Sexual content
+- Violence
+- Self-harm content
+
+## Step 4: Add Conditional Logic
+
+Use an **IF/ELSE** node to route based on moderation results:
+
+1. Add an **IF/ELSE** node
+2. Set the condition:
+   - Variable: `{{#moderation.is_safe#}}`
+   - Operator: `equals`
+   - Value: `true`
+
+## Step 5: Handle Safe Content
+
+For content that passes moderation:
+
+1. In the **IF** branch, add an **LLM** node
+2. Configure:
+   - System prompt: "You are a helpful assistant. Process the following user content and provide a thoughtful response."
+   - User input: `{{#start.user_content#}}`
+
+3. Add an **Answer** node
+4. Set output: `{{#llm.output#}}`
+
+## Step 6: Handle Unsafe Content
+
+For content that fails moderation:
+
+1. In the **ELSE** branch, add an **Answer** node
+2. Set output: "Sorry, your content does not meet our community guidelines. Please revise and try again."
+
+## Step 7: Add End Node
+
+Connect both branches to the **End** node to complete the workflow.
+
+## Complete Workflow Structure
+
+```
+Start
+  ↓
+Moderation Check
+  ↓
+IF/ELSE (is_safe?)
+  ↓           ↓
+[Yes]        [No]
+  ↓           ↓
+LLM        Rejection
+Process     Message
+  ↓           ↓
+Answer ← End → Answer
+```
+
+## Testing the Workflow
+
+1. Click **Preview**
+2. Test with safe content:
+   - Input: "Tell me about renewable energy"
+   - Expected: Normal LLM response
+
+3. Test with unsafe content:
+   - Input: [inappropriate content]
+   - Expected: Rejection message
+
+## Advanced Enhancements
+
+### Log Moderation Results
+
+Add a **Variable Assigner** node to log:
+- Timestamp
+- Content hash
+- Moderation decision
+- Reason for rejection
+
+### Custom Moderation Rules
+
+Use the **Code** node for custom checks:
+
+```python
+def custom_moderation(content: str) -> dict:
+    # Add custom business logic
+    blocked_terms = ["spam", "scam", "phishing"]
+
+    for term in blocked_terms:
+        if term.lower() in content.lower():
+            return {"safe": False, "reason": f"Blocked term: {term}"}
+
+    return {"safe": True, "reason": "Passed custom checks"}
+```
+
+### Multi-Language Support
+
+Add language detection and moderation:
+1. Use a language detection tool
+2. Apply language-specific moderation rules
+3. Return messages in the detected language
+
+## Best Practices
+
+1. **Transparency**: Inform users why content was rejected
+2. **Appeal Process**: Provide a way to appeal decisions
+3. **Regular Updates**: Keep moderation rules current
+4. **Privacy**: Don't store sensitive rejected content
+5. **Human Review**: Log edge cases for manual review
+
+## Troubleshooting
+
+**Moderation too strict?**
+- Adjust moderation level to "Medium" or "Lenient"
+- Add whitelist for acceptable edge cases
+
+**False positives?**
+- Add a human review queue
+- Implement confidence thresholds
+
+**Performance issues?**
+- Cache moderation results for duplicate content
+- Use asynchronous processing for batch moderation
+
+## Related Tutorials
+
+- [Simple Chatbot](/en/documentation/pages/tutorials/simple-chatbot)
+- [Customer Service Bot](/en/documentation/pages/tutorials/customer-service-bot)
+- [IF/ELSE Node Documentation](/en/documentation/pages/nodes/ifelse)
+
+## Next Steps
+
+- Add sentiment analysis
+- Implement content categorization
+- Build a moderation dashboard
+- Create automated reporting
+
+---
+
+*This workflow helps maintain safe user interactions while providing clear feedback to users.*

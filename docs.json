@@ -66,7 +66,6 @@
                           "group": "Build",
                           "pages": [
                             "en/documentation/pages/build/shortcut-key",
-                            "en/documentation/pages/build/goto-anything",
                             "en/documentation/pages/build/orchestrate-node",
                             "en/documentation/pages/build/predefined-error-handling-logic",
                             "en/documentation/pages/build/mcp",
@@ -107,7 +106,6 @@
                           "pages": [
                             "en/documentation/pages/monitor/analysis",
                             "en/documentation/pages/monitor/logs",
-                            "en/documentation/pages/monitor/annotation-reply",
                             {
                               "group": "Integrations",
                               "icon": "grid-2-plus",

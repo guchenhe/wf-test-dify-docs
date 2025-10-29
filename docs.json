@@ -181,6 +181,7 @@
                             "en/documentation/pages/workspace/plugins",
                             "en/documentation/pages/workspace/app-management",
                             "en/documentation/pages/workspace/team-members-management",
+                            "en/documentation/pages/workspace/team-collaboration",
                             "en/documentation/pages/workspace/personal-account-management",
                             "en/documentation/pages/workspace/subscription-management"
                           ]
@@ -373,7 +374,7 @@
                           ]
                         },
                         {
-                          "group": "节点",
+                          "group": "Nodes",
                           "pages": [
                             "cn/documentation/pages/nodes/start",
                             "cn/documentation/pages/nodes/llm",
@@ -443,7 +444,7 @@
                             "cn/documentation/pages/monitor/logs",
                             "cn/documentation/pages/monitor/annotation-reply",
                             {
-                              "group": "集成",
+                              "group": "Integrations",
                               "icon": "grid-2-plus",
                               "pages": [
                                 "cn/documentation/pages/monitor/integrations/integrate-langsmith",
@@ -461,12 +462,12 @@
                           "pages": [
                             "cn/documentation/pages/knowledge/readme",
                             {
-                              "group": "创建知识库",
+                              "group": "Create Knowledge",
                               "icon": "square-plus",
                               "pages": [
                                 "cn/documentation/pages/knowledge/create-knowledge/introduction",
                                 {
-                                  "group": "导入文本数据",
+                                  "group": "1. Import Text Data",
                                   "pages": [
                                     "cn/documentation/pages/knowledge/create-knowledge/import-text-data/readme",
                                     "cn/documentation/pages/knowledge/create-knowledge/import-text-data/sync-from-notion",
@@ -478,7 +479,7 @@
                               ]
                             },
                             {
-                              "group": "从 Knowledge Pipeline 创建",
+                              "group": "Create from Knowledge Pipeline",
                               "icon": "pipe-section",
                               "pages": [
                                 "cn/documentation/pages/knowledge/knowledge-pipeline/readme",
@@ -491,7 +492,7 @@
                               ]
                             },
                             {
-                              "group": "管理知识库",
+                              "group": "Manage Knowledge",
                               "icon": "gear",
                               "pages": [
                                 "cn/documentation/pages/knowledge/manage-knowledge/introduction",
@@ -515,6 +516,7 @@
                             "cn/documentation/pages/workspace/plugins",
                             "cn/documentation/pages/workspace/app-management",
                             "cn/documentation/pages/workspace/team-members-management",
+                            "cn/documentation/pages/workspace/team-collaboration",
                             "cn/documentation/pages/workspace/personal-account-management",
                             "cn/documentation/pages/workspace/subscription-management"
                           ]
@@ -733,6 +735,58 @@
                       ]
                     }
                   ]
+                },
+                {
+                  "dropdown": "自部署",
+                  "icon": "server",
+                  "pages": [
+                    {
+                      "group": "快速开始",
+                      "pages": [
+                        "cn/self-hosting/quick-start/docker-compose",
+                        "cn/self-hosting/quick-start/faqs"
+                      ]
+                    },
+                    {
+                      "group": "Advanced Deployments",
+                      "pages": [
+                        "cn/self-hosting/advanced-deployments/local-source-code",
+                        "cn/self-hosting/advanced-deployments/start-the-frontend-docker-container"
+                      ]
+                    },
+                    {
+                      "group": "Configuration",
+                      "pages": [
+                        "cn/self-hosting/configuration/environments"
+                      ]
+                    },
+                    {
+                      "group": "Platform Guides",
+                      "pages": [
+                        "cn/self-hosting/platform-guides/bt-panel",
+                        "cn/self-hosting/platform-guides/dify-premium"
+                      ]
+                    },
+                    {
+                      "group": "Troubleshooting",
+                      "pages": [
+                        "cn/self-hosting/troubleshooting/common-issues",
+                        "cn/self-hosting/troubleshooting/docker-issues",
+                        "cn/self-hosting/troubleshooting/integrations",
+                        "cn/self-hosting/troubleshooting/storage-and-migration"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "dropdown": "API 参考",
+                  "icon": "code",
+                  "pages": []
+                },
+                {
+                  "dropdown": "开发",
+                  "icon": "code-pull-request",
+                  "pages": []
                 }
               ]
             },
@@ -756,7 +810,7 @@
                           ]
                         },
                         {
-                          "group": "ノード",
+                          "group": "Nodes",
                           "pages": [
                             "jp/documentation/pages/nodes/start",
                             "jp/documentation/pages/nodes/llm",
@@ -805,7 +859,7 @@
                           "pages": [
                             "jp/documentation/pages/publish/README",
                             {
-                              "group": "Webアプリ",
+                              "group": "Web App",
                               "icon": "globe",
                               "pages": [
                                 "jp/documentation/pages/publish/webapp/workflow-webapp",
@@ -826,7 +880,7 @@
                             "jp/documentation/pages/monitor/logs",
                             "jp/documentation/pages/monitor/annotation-reply",
                             {
-                              "group": "インテグレーション",
+                              "group": "Integrations",
                               "icon": "grid-2-plus",
                               "pages": [
                                 "jp/documentation/pages/monitor/integrations/integrate-langsmith",
@@ -844,12 +898,12 @@
                           "pages": [
                             "jp/documentation/pages/knowledge/readme",
                             {
-                              "group": "作成手順",
+                              "group": "Create Knowledge",
                               "icon": "square-plus",
                               "pages": [
                                 "jp/documentation/pages/knowledge/create-knowledge/introduction",
                                 {
-                                  "group": "1. テキストデータのインポート",
+                                  "group": "1. Import Text Data",
                                   "pages": [
                                     "jp/documentation/pages/knowledge/create-knowledge/import-text-data/readme",
                                     "jp/documentation/pages/knowledge/create-knowledge/import-text-data/sync-from-notion",
@@ -861,7 +915,7 @@
                               ]
                             },
                             {
-                              "group": "ナレッジパイプライン",
+                              "group": "Create from Knowledge Pipeline",
                               "icon": "pipe-section",
                               "pages": [
                                 "jp/documentation/pages/knowledge/knowledge-pipeline/readme",
@@ -874,7 +928,7 @@
                               ]
                             },
                             {
-                              "group": "ナレッジベースの管理",
+                              "group": "Manage Knowledge",
                               "icon": "gear",
                               "pages": [
                                 "jp/documentation/pages/knowledge/manage-knowledge/introduction",
@@ -898,6 +952,7 @@
                             "jp/documentation/pages/workspace/plugins",
                             "jp/documentation/pages/workspace/app-management",
                             "jp/documentation/pages/workspace/team-members-management",
+                            "jp/documentation/pages/workspace/team-collaboration",
                             "jp/documentation/pages/workspace/personal-account-management",
                             "jp/documentation/pages/workspace/subscription-management"
                           ]
@@ -905,6 +960,7 @@
                         {
                           "group": "チュートリアル",
                           "pages": [
+                            "jp/documentation/pages/tutorials/simple-chatbot",
                             "jp/documentation/pages/tutorials/twitter-chatflow",
                             "jp/documentation/pages/tutorials/customer-service-bot",
                             "jp/documentation/pages/tutorials/build-ai-image-generation-app",
@@ -1115,6 +1171,16 @@
                       "openapi": "jp/api-reference/openapi_completion.json"
                     }
                   ]
+                },
+                {
+                  "dropdown": "API リファレンス",
+                  "icon": "code",
+                  "pages": []
+                },
+                {
+                  "dropdown": "開発",
+                  "icon": "code-pull-request",
+                  "pages": []
                 }
               ]
             }
@@ -5587,4 +5653,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

@@ -1,0 +1,193 @@
+---
+title: "Build a Sentiment Analysis Workflow"
+description: "Create a workflow that analyzes text sentiment using LLM and classification nodes"
+icon: "face-smile"
+---
+
+Learn how to build a sentiment analysis workflow that classifies text as positive, negative, or neutral.
+
+## Overview
+
+This tutorial guides you through creating a workflow that:
+- Accepts text input from users
+- Analyzes sentiment using an LLM
+- Classifies results into categories
+- Returns structured sentiment data
+
+## Prerequisites
+
+- Basic understanding of Dify workflows
+- Access to an LLM model (GPT-4, Claude, etc.)
+- Familiarity with prompt engineering
+
+## Step 1: Set Up the Workflow
+
+### Create a New Workflow
+1. Navigate to **Workflows** in the sidebar
+2. Click **Create Workflow**
+3. Name it "Sentiment Analysis"
+4. Choose **Chatflow** type
+
+### Add Start Node
+The start node should accept text input:
+
+```yaml
+Input Variables:
+  - text_to_analyze (string, required)
+  - language (string, optional, default: "en")
+```
+
+## Step 2: Add LLM Node for Analysis
+
+### Configure LLM Node
+Add an LLM node to analyze sentiment:
+
+**System Prompt:**
+```
+You are a sentiment analysis expert. Analyze the given text and determine:
+1. Overall sentiment (positive, negative, neutral)
+2. Confidence score (0-100)
+3. Key emotional indicators
+
+Return your analysis in JSON format:
+{
+  "sentiment": "positive|negative|neutral",
+  "confidence": 85,
+  "emotions": ["joy", "excitement"],
+  "reasoning": "Brief explanation"
+}
+```
+
+**User Prompt:**
+```
+Analyze the sentiment of this text in {{language}}:
+
+{{text_to_analyze}}
+```
+
+## Step 3: Add Question Classifier
+
+### Set Up Classification
+Add a Question Classifier node to route based on sentiment:
+
+**Classes:**
+- **Positive**: Confidence > 70 and sentiment = "positive"
+- **Negative**: Confidence > 70 and sentiment = "negative"
+- **Neutral**: All other cases
+
+### Classification Logic
+```
+IF sentiment == "positive" AND confidence > 70:
+  → Route to positive_response
+ELIF sentiment == "negative" AND confidence > 70:
+  → Route to negative_response
+ELSE:
+  → Route to neutral_response
+```
+
+## Step 4: Create Response Templates
+
+### Positive Response Template
+```markdown
+✅ **Positive Sentiment Detected** ({{confidence}}% confident)
+
+Your text expresses positive emotions, particularly: {{emotions}}
+
+**Analysis:** {{reasoning}}
+```
+
+### Negative Response Template
+```markdown
+⚠️ **Negative Sentiment Detected** ({{confidence}}% confident)
+
+Your text expresses negative emotions, particularly: {{emotions}}
+
+**Analysis:** {{reasoning}}
+```
+
+### Neutral Response Template
+```markdown
+ℹ️ **Neutral Sentiment** ({{confidence}}% confident)
+
+Your text appears balanced or neutral.
+
+**Analysis:** {{reasoning}}
+```
+
+## Step 5: Add Variable Aggregator
+
+Combine all data for the final output:
+
+```json
+{
+  "input_text": "{{text_to_analyze}}",
+  "sentiment": "{{sentiment}}",
+  "confidence": {{confidence}},
+  "emotions": {{emotions}},
+  "reasoning": "{{reasoning}}",
+  "timestamp": "{{current_time}}"
+}
+```
+
+## Step 6: Test the Workflow
+
+### Test Cases
+
+**Test 1: Positive Text**
+```
+Input: "I absolutely love this product! It exceeded all my expectations."
+Expected: Positive sentiment, high confidence
+```
+
+**Test 2: Negative Text**
+```
+Input: "This service was terrible and I'm very disappointed."
+Expected: Negative sentiment, high confidence
+```
+
+**Test 3: Neutral Text**
+```
+Input: "The product arrived on time and matches the description."
+Expected: Neutral sentiment
+```
+
+## Advanced Enhancements
+
+### Multi-Language Support
+Add language detection before sentiment analysis:
+- Use a language detection node
+- Route to language-specific LLM prompts
+
+### Batch Processing
+Process multiple texts at once:
+- Add an iteration node
+- Loop through an array of texts
+- Aggregate results
+
+### Historical Tracking
+Store sentiment data for trend analysis:
+- Add HTTP node to send data to database
+- Create visualization dashboard
+- Track sentiment over time
+
+## Troubleshooting
+
+### Low Confidence Scores
+- Refine your system prompt
+- Provide more examples in prompt
+- Use a more capable LLM model
+
+### Inconsistent Classifications
+- Adjust confidence thresholds
+- Add more classification categories
+- Implement consensus voting (multiple LLM calls)
+
+## Next Steps
+
+- [Question Classifier Node](/en/documentation/pages/nodes/question-classifier)
+- [LLM Node](/en/documentation/pages/nodes/llm)
+- [Variable Aggregator](/en/documentation/pages/nodes/variable-aggregator)
+
+<Tip>
+  Save sentiment analysis results to a knowledge base for future reference and model fine-tuning.
+</Tip>

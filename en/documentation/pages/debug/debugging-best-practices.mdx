@@ -1,0 +1,70 @@
+---
+title: "Debugging Best Practices"
+description: "Learn best practices for debugging workflows efficiently in Dify"
+icon: "bug"
+---
+
+Effective debugging strategies help you identify and resolve issues quickly in your Dify workflows.
+
+## General Debugging Strategies
+
+### Start Simple
+Begin debugging with the simplest possible workflow configuration. Add complexity gradually to isolate issues.
+
+### Use Step-by-Step Execution
+Leverage the step-run feature to execute nodes one at a time and observe intermediate results.
+
+<Tip>
+  Enable step-run mode from the debug toolbar to pause execution between nodes.
+</Tip>
+
+## Common Debugging Patterns
+
+### 1. Variable Inspection
+Always inspect variable values at each step to ensure data flows correctly.
+
+```
+Input → Process → Output
+  ↓       ↓         ↓
+Check   Check     Check
+```
+
+### 2. Error Handling
+Implement proper error handling at critical nodes:
+
+- Add fallback values
+- Use conditional logic
+- Set up error notifications
+
+### 3. Logging Strategy
+Add strategic log nodes throughout your workflow to track execution paths.
+
+## Performance Debugging
+
+### Identify Bottlenecks
+- Check node execution times in the logs
+- Look for timeout warnings
+- Monitor API call latencies
+
+### Optimize Slow Nodes
+- Reduce data payload sizes
+- Use caching where appropriate
+- Parallelize independent operations
+
+## Testing in Production
+
+<Warning>
+  Always test changes in a staging environment before deploying to production.
+</Warning>
+
+### Safe Testing Practices
+1. Create a duplicate workflow for testing
+2. Use test data that mirrors production
+3. Monitor error rates after deployment
+4. Keep rollback plans ready
+
+## Related
+
+- [Step Run](/en/documentation/pages/debug/step-run)
+- [Variable Inspect](/en/documentation/pages/debug/variable-inspect)
+- [Error Types](/en/documentation/pages/debug/error-type)

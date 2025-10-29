@@ -1,0 +1,101 @@
+---
+title: "Debugging Tools"
+description: "Explore the debugging tools available in Dify for workflow development"
+icon: "wrench"
+---
+
+Dify provides a comprehensive suite of debugging tools to help you build reliable workflows.
+
+## Built-in Debug Tools
+
+### Debug Console
+The debug console displays real-time execution information:
+- Node execution status
+- Variable values
+- Error messages
+- Performance metrics
+
+### Breakpoints
+Set breakpoints on specific nodes to pause execution:
+
+1. Click on a node
+2. Enable the breakpoint toggle
+3. Run the workflow
+4. Execution pauses at the breakpoint
+
+<Info>
+  Breakpoints are only active during debug sessions and don't affect production runs.
+</Info>
+
+## Variable Inspector
+
+### Inspecting Complex Data
+The variable inspector supports:
+- **Nested objects**: Expand and collapse object properties
+- **Arrays**: View array contents with indices
+- **Large strings**: Truncated display with full-text viewer
+- **JSON formatting**: Syntax-highlighted JSON view
+
+### Variable Watch
+Add variables to your watch list to track their values across multiple runs:
+
+```
+Watch List:
+├─ user_input (string)
+├─ api_response (object)
+└─ processing_result (array)
+```
+
+## Network Inspector
+
+### API Call Monitoring
+Monitor all API calls made by your workflow:
+- Request URLs and headers
+- Request/response payloads
+- Response times
+- Status codes
+
+### Debugging API Issues
+Common API debugging scenarios:
+- **Timeout errors**: Check network latency
+- **401/403 errors**: Verify authentication credentials
+- **Rate limiting**: Monitor request frequency
+
+## Performance Profiler
+
+### Execution Timeline
+Visualize your workflow execution timeline to identify:
+- Long-running nodes
+- Sequential vs. parallel execution
+- Waiting time between nodes
+
+### Memory Usage
+Track memory consumption:
+- Per-node memory usage
+- Total workflow memory footprint
+- Memory leak detection
+
+## Log Aggregation
+
+### Centralized Logging
+All workflow logs are aggregated in a single view:
+- Filterable by severity (Info, Warning, Error)
+- Searchable by keyword
+- Exportable for external analysis
+
+<Tip>
+  Use structured logging with consistent formats to make log analysis easier.
+</Tip>
+
+## Integration with External Tools
+
+### Export Debug Data
+Export debug sessions for analysis in external tools:
+- JSON format for programmatic access
+- CSV format for spreadsheet analysis
+- Log files for log aggregation platforms
+
+## Related
+
+- [History and Logs](/en/documentation/pages/debug/history-and-logs)
+- [Error Types](/en/documentation/pages/debug/error-type)

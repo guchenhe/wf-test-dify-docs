@@ -177,6 +177,7 @@
                           "group": "Workspace",
                           "pages": [
                             "en/documentation/pages/workspace/readme",
+                            "en/documentation/pages/workspace/quick-reference",
                             "en/documentation/pages/workspace/model-providers",
                             "en/documentation/pages/workspace/plugins",
                             "en/documentation/pages/workspace/app-management",

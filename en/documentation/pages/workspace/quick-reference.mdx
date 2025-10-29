@@ -1,0 +1,87 @@
+---
+title: "Workspace Quick Reference"
+description: "Quick reference guide for common workspace operations and keyboard shortcuts"
+icon: "bolt"
+---
+
+This page provides a quick reference for frequently used workspace operations, keyboard shortcuts, and common tasks.
+
+## Keyboard Shortcuts
+
+| Action | Shortcut (Mac) | Shortcut (Windows/Linux) |
+|--------|----------------|-------------------------|
+| Open Goto Anywhere | `Cmd+K` | `Ctrl+K` |
+| Switch Workspace | `Cmd+Shift+W` | `Ctrl+Shift+W` |
+| Quick Search | `Cmd+/` | `Ctrl+/` |
+| Create New App | `Cmd+N` | `Ctrl+N` |
+
+## Common Tasks
+
+### Switch Between Workspaces
+
+1. Click the workspace selector in the top-left corner
+2. Select the workspace you want to switch to
+3. Or use `Cmd+Shift+W` (Mac) / `Ctrl+Shift+W` (Windows/Linux)
+
+### Invite Team Members
+
+1. Go to **Settings** → **Members**
+2. Click **Invite Member**
+3. Enter email address and select role
+4. Click **Send Invitation**
+
+### Configure Model Provider
+
+1. Go to **Settings** → **Model Providers**
+2. Click **Add Provider**
+3. Select provider from list
+4. Enter API credentials
+5. Click **Save**
+
+## Role Permissions Matrix
+
+| Permission | Owner | Admin | Editor | Member | Dataset Operator |
+|------------|-------|-------|--------|--------|------------------|
+| Manage Billing | ✓ | - | - | - | - |
+| Invite Members | ✓ | ✓ | - | - | - |
+| Configure Models | ✓ | ✓ | - | - | - |
+| Create Apps | ✓ | ✓ | ✓ | - | - |
+| Manage Knowledge | ✓ | ✓ | ✓ | - | ✓ |
+| Use Apps | ✓ | ✓ | ✓ | ✓ | - |
+
+## Workspace Limits
+
+Limits vary by plan (Cloud only):
+
+| Resource | Free | Pro | Team | Enterprise |
+|----------|------|-----|------|------------|
+| Team Members | 1 | 3 | 10 | Unlimited |
+| Apps | 10 | 50 | 200 | Unlimited |
+| Knowledge Bases | 5 | 20 | 100 | Unlimited |
+| API Calls/Month | 200 | 5,000 | 50,000 | Custom |
+
+Community Edition has no limits.
+
+## Troubleshooting
+
+### Cannot See Expected Apps
+
+- Check your workspace permissions
+- Verify you're in the correct workspace
+- Contact workspace admin if access is needed
+
+### Model Provider Not Working
+
+- Verify API credentials are correct
+- Check provider status page for outages
+- Ensure sufficient API quota/credits
+
+### Invitation Email Not Received
+
+- Check spam/junk folder
+- Verify email address is correct
+- Admin can resend invitation from Members page
+
+---
+
+[Edit this page](https://github.com/langgenius/dify-docs/edit/main/en/guides/workspace/quick-reference.mdx) | [Report an issue](https://github.com/langgenius/dify-docs/issues/new?template=docs.yml)

@@ -1,0 +1,50 @@
+---
+title: 测试增量同步
+description: 这是一个用于验证增量文档.json同步功能的测试文档
+---
+
+<Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](../../../../en/documentation/pages/getting-started/test-incremental-sync.mdx)。</Note>
+
+# 测试增量同步
+
+本文档用于测试自动翻译工作流的增量同步实现。
+
+## 目的
+
+本测试验证以下内容：
+
+1. **下拉菜单标题得到保留** - 现有翻译如"文档"和"ドキュメント"不应被覆盖
+2. **生成最小差异** - 只有新文件条目应出现在docs.json中，而不是整个下拉结构
+3. **自动翻译正常工作** - 此文件应自动翻译为中文和日文
+
+## 预期行为
+
+当创建此PR时：
+
+- 工作流应检测到这个新的英文文件
+- 应发现它属于"Documentation"下拉菜单
+- 应在中文和日文部分添加相应条目
+- docs.json差异应仅显示此文件的添加（总计约4行）
+
+## 测试验证
+
+翻译PR创建后，验证：
+
+- ✅ 中文部分包含：`cn/documentation/pages/getting-started/test-incremental-sync.mdx`
+- ✅ 日文部分包含：`jp/documentation/pages/getting-started/test-incremental-sync.mdx`
+- ✅ 中文下拉标题仍为"文档"（而非"Documentation"）
+- ✅ 日文下拉标题仍为"ドキュメント"（而非"Documentation"）
+- ✅ docs.json中未修改其他下拉菜单或文件
+
+## 实现详情
+
+此测试验证为修复以下问题而实现的完整解决方案：
+
+- **问题 #1**：强制更新下拉标题
+- **问题 #2**：完全同步 vs 增量同步
+
+新的`sync_docs_json_incremental()`方法应以精确的方式处理此文件添加。
+
+---
+
+🤖 **测试文档** - 用于验证增量同步实现

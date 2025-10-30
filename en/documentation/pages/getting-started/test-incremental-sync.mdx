@@ -1,0 +1,48 @@
+---
+title: Test Incremental Sync
+description: This is a test document to verify the incremental docs.json sync functionality
+---
+
+# Test Incremental Sync
+
+This document is created to test the incremental sync implementation for the auto-translate workflow.
+
+## Purpose
+
+This test verifies that:
+
+1. **Dropdown titles are preserved** - Existing translations like "文档" and "ドキュメント" should not be overwritten
+2. **Minimal diffs are generated** - Only the new file entries should appear in docs.json, not entire dropdown structures
+3. **Automatic translation works** - This file should be automatically translated to Chinese and Japanese
+
+## Expected Behavior
+
+When this PR is created:
+
+- The workflow should detect this new English file
+- It should find that it belongs to the "Documentation" dropdown
+- It should add corresponding entries to the Chinese and Japanese sections
+- The docs.json diff should only show the addition of this file (approximately 4 lines total)
+
+## Test Verification
+
+After the translation PR is created, verify:
+
+- ✅ Chinese section has: `cn/documentation/pages/getting-started/test-incremental-sync.mdx`
+- ✅ Japanese section has: `jp/documentation/pages/getting-started/test-incremental-sync.mdx`
+- ✅ Chinese dropdown title is still "文档" (not "Documentation")
+- ✅ Japanese dropdown title is still "ドキュメント" (not "Documentation")
+- ✅ No other dropdowns or files were modified in docs.json
+
+## Implementation Details
+
+This test validates the complete solution implemented to fix:
+
+- **Issue #1**: Force-updating dropdown titles
+- **Issue #2**: Full sync vs incremental sync
+
+The new `sync_docs_json_incremental()` method should handle this file addition with surgical precision.
+
+---
+
+🤖 **Test Document** - Created to validate incremental sync implementation

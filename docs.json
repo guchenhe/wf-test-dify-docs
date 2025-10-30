@@ -182,13 +182,13 @@
                             "en/documentation/pages/workspace/app-management",
                             "en/documentation/pages/workspace/team-members-management",
                             "en/documentation/pages/workspace/personal-account-management",
-                            "en/documentation/pages/workspace/subscription-management"
+                            "en/documentation/pages/workspace/subscription-management",
+                            "en/documentation/pages/workspace/billing-and-usage"
                           ]
                         },
                         {
                           "group": "Tutorials",
                           "pages": [
-                            "en/documentation/pages/tutorials/simple-chatbot",
                             "en/documentation/pages/tutorials/twitter-chatflow",
                             "en/documentation/pages/tutorials/customer-service-bot",
                             "en/documentation/pages/tutorials/build-ai-image-generation-app",
@@ -516,13 +516,13 @@
                             "cn/documentation/pages/workspace/app-management",
                             "cn/documentation/pages/workspace/team-members-management",
                             "cn/documentation/pages/workspace/personal-account-management",
-                            "cn/documentation/pages/workspace/subscription-management"
+                            "cn/documentation/pages/workspace/subscription-management",
+                            "cn/documentation/pages/workspace/billing-and-usage"
                           ]
                         },
                         {
                           "group": "教程",
                           "pages": [
-                            "cn/documentation/pages/tutorials/simple-chatbot",
                             "cn/documentation/pages/tutorials/twitter-chatflow",
                             "cn/documentation/pages/tutorials/customer-service-bot",
                             "cn/documentation/pages/tutorials/build-ai-image-generation-app",
@@ -899,7 +899,8 @@
                             "jp/documentation/pages/workspace/app-management",
                             "jp/documentation/pages/workspace/team-members-management",
                             "jp/documentation/pages/workspace/personal-account-management",
-                            "jp/documentation/pages/workspace/subscription-management"
+                            "jp/documentation/pages/workspace/subscription-management",
+                            "jp/documentation/pages/workspace/billing-and-usage"
                           ]
                         },
                         {
@@ -5587,4 +5588,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

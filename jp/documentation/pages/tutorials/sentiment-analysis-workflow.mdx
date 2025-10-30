@@ -1,0 +1,194 @@
+---
+title: "感情分析ワークフローの構築"
+description: "LLMと分類ノードを使用してテキストの感情を分析するワークフローを作成する"
+icon: "face-smile"
+---
+
+<Note> ⚠️ このドキュメントはAIによって自動翻訳されています。不正確な部分がある場合は、[英語版](../../../../en/documentation/pages/tutorials/sentiment-analysis-workflow.mdx)を参照してください。</Note>
+
+テキストを肯定的、否定的、または中立として分類する感情分析ワークフローの構築方法を学びます。
+
+## 概要
+
+このチュートリアルでは、以下を行うワークフローの作成について説明します：
+- ユーザーからのテキスト入力を受け取る
+- LLMを使用して感情を分析する
+- 結果をカテゴリに分類する
+- 構造化された感情データを返す
+
+## 前提条件
+
+- Difyワークフローの基本的な理解
+- LLMモデル（GPT-4、Claudeなど）へのアクセス
+- プロンプトエンジニアリングの知識
+
+## ステップ1：ワークフローの設定
+
+### 新しいワークフローの作成
+1. サイドバーの**ワークフロー**に移動
+2. **ワークフローを作成**をクリック
+3. "感情分析"と名前を付ける
+4. **Chatflow**タイプを選択
+
+### 開始ノードの追加
+開始ノードはテキスト入力を受け取る必要があります：
+
+```yaml
+Input Variables:
+  - text_to_analyze (string, required)
+  - language (string, optional, default: "en")
+```
+
+## ステップ2：分析用LLMノードの追加
+
+### LLMノードの設定
+感情を分析するためのLLMノードを追加：
+
+**システムプロンプト:**
+```
+You are a sentiment analysis expert. Analyze the given text and determine:
+1. Overall sentiment (positive, negative, neutral)
+2. Confidence score (0-100)
+3. Key emotional indicators
+
+Return your analysis in JSON format:
+{
+  "sentiment": "positive|negative|neutral",
+  "confidence": 85,
+  "emotions": ["joy", "excitement"],
+  "reasoning": "Brief explanation"
+}
+```
+
+**ユーザープロンプト:**
+```
+Analyze the sentiment of this text in {{language}}:
+
+{{text_to_analyze}}
+```
+
+## ステップ3：質問分類器の追加
+
+### 分類の設定
+感情に基づいてルーティングするための質問分類器ノードを追加：
+
+**クラス:**
+- **肯定的**: 信頼度 > 70 かつ 感情 = "positive"
+- **否定的**: 信頼度 > 70 かつ 感情 = "negative"
+- **中立**: その他のすべてのケース
+
+### 分類ロジック
+```
+IF sentiment == "positive" AND confidence > 70:
+  → Route to positive_response
+ELIF sentiment == "negative" AND confidence > 70:
+  → Route to negative_response
+ELSE:
+  → Route to neutral_response
+```
+
+## ステップ4：レスポンステンプレートの作成
+
+### 肯定的レスポンステンプレート
+```markdown
+✅ **肯定的感情を検出** ({{confidence}}%の信頼度)
+
+あなたのテキストは肯定的な感情を表現しています。特に: {{emotions}}
+
+**分析:** {{reasoning}}
+```
+
+### 否定的レスポンステンプレート
+```markdown
+⚠️ **否定的感情を検出** ({{confidence}}%の信頼度)
+
+あなたのテキストは否定的な感情を表現しています。特に: {{emotions}}
+
+**分析:** {{reasoning}}
+```
+
+### 中立レスポンステンプレート
+```markdown
+ℹ️ **中立的感情** ({{confidence}}%の信頼度)
+
+あなたのテキストはバランスが取れているか中立的のようです。
+
+**分析:** {{reasoning}}
+```
+
+## ステップ5：変数アグリゲーターの追加
+
+最終出力のためにすべてのデータを結合：
+
+```json
+{
+  "input_text": "{{text_to_analyze}}",
+  "sentiment": "{{sentiment}}",
+  "confidence": {{confidence}},
+  "emotions": {{emotions}},
+  "reasoning": "{{reasoning}}",
+  "timestamp": "{{current_time}}"
+}
+```
+
+## ステップ6：ワークフローのテスト
+
+### テストケース
+
+**テスト1: 肯定的テキスト**
+```
+入力: "I absolutely love this product! It exceeded all my expectations."高い信頼度
+```
+
+**テスト2: 否定的テキスト**
+```
+入力: "This service was terrible and I'm very disappointed."
+期待値: 否定的感情、高い信頼度
+```
+
+**テスト3: 中立テキスト**
+```
+入力: "The product arrived on time and matches the description."
+期待値: 中立感情
+```
+
+## 高度な機能強化
+
+### 多言語サポート
+感情分析の前に言語検出を追加：
+- 言語検出ノードを使用
+- 言語固有のLLMプロンプトにルーティング
+
+### バッチ処理
+複数のテキストを一度に処理：
+- イテレーションノードを追加
+- テキストの配列をループ処理
+- 結果を集約
+
+### 履歴追跡
+トレンド分析のための感情データを保存：
+- データベースにデータを送信するHTTPノードを追加
+- 可視化ダッシュボードを作成
+- 時系列での感情を追跡
+
+## トラブルシューティング
+
+### 低い信頼度スコア
+- システムプロンプトを改良する
+- プロンプトにより多くの例を提供する
+- より高性能なLLMモデルを使用する
+
+### 一貫性のない分類
+- 信頼度の閾値を調整する
+- より多くの分類カテゴリを追加する
+- コンセンサス投票を実装（複数のLLM呼び出し）
+
+## 次のステップ
+
+- [質問分類器ノード](/en/documentation/pages/nodes/question-classifier)
+- [LLMノード](/en/documentation/pages/nodes/llm)
+- [変数アグリゲーター](/en/documentation/pages/nodes/variable-aggregator)
+
+<Tip>
+  感情分析の結果を将来の参照とモデルの微調整のために知識库に保存してください。
+</Tip>

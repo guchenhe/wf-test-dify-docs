@@ -1,15 +1,23 @@
 ---
-title: "快捷键"
+title: "键盘快捷键指南"
+description: "掌握基本键盘快捷键，加速在 Dify 中的工作流开发"
 icon: "keyboard"
 ---
 
-<Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](/en/documentation/pages/build/shortcut-key)。</Note>
+<Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](../../../../en/documentation/pages/build/shortcut-key.mdx)。</Note>
+
+使用键盘快捷键加速您的工作流构建。本综合指南涵盖了高效工作流开发的所有基本热键。
+
+<Callout type="tip">
+**[Go to Anything](en/documentation/pages/build/goto-anything)**：在 Dify 的任何地方按 `Cmd+K`（macOS）或 `Ctrl+K`（Windows）来搜索并跳转到任何内容——应用、插件、知识库，甚至工作流节点。使用斜杠命令如 `/theme` 更改外观，`/language` 切换语言，或 `/help` 访问文档。
+
+![Command+K search interface](/images/command-k.gif)
+</Callout>
 
 
-使用键盘快捷键加速你的工作流构建。
 
 ## 节点操作
-在画布上选中任意节点时：
+在画布上选择任何节点后：
 
 <table>
   <thead>
@@ -48,7 +56,7 @@ icon: "keyboard"
     <tr>
       <td><code>Shift</code></td>
       <td><code>Shift</code></td>
-      <td>可视化变量依赖关系（仅限单个节点）</td>
+      <td>可视化变量依赖关系（仅单个节点）</td>
     </tr>
   </tbody>
 </table>
@@ -92,7 +100,7 @@ icon: "keyboard"
     <tr>
       <td><code>H</code></td>
       <td><code>H</code></td>
-      <td>抓手工具（平移）</td>
+      <td>手型工具（平移）</td>
     </tr>
     <tr>
       <td><code>V</code></td>
@@ -131,12 +139,13 @@ icon: "keyboard"
   </tbody>
 </table>
 
-## 测试
+## 工作流执行
 
 <table>
   <thead>
     <tr>
-      
+      <th>Windows</th>
+      <th>macOS</th>
       <th>操作</th>
     </tr>
   </thead>
@@ -145,6 +154,23 @@ icon: "keyboard"
       <td><code>Alt</code> + <code>R</code></td>
       <td><code>Option</code> + <code>R</code></td>
       <td>运行工作流</td>
+    
+      <td><code>Alt</code> + <code>S</code></td>
+      <td><code>Option</code> + <code>S</code></td>
+      <td>停止执行</td>
+    </tr>
+    <tr>
+      <td><code>Alt</code> + <code>D</code></td>
+      <td><code>Option</code> + <code>D</code></td>
+      <td>切换调试模式</td>
     </tr>
   </tbody>
 </table>
+
+## 专业技巧
+
+<Tip>
+- 组合快捷键以实现更快的工作流（例如，`Ctrl+D` 然后按 `Shift` 来复制和检查依赖关系）
+- 频繁使用 `Ctrl/Cmd + 1` 来保持整个工作流可见
+- 手型工具（`H`）非常适合导航具有许多节点的复杂工作流
+</Tip>

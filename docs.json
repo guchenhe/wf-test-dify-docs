@@ -87,17 +87,6 @@
                           "group": "Publish",
                           "pages": [
                             "en/documentation/pages/publish/README",
-                            {
-                              "group": "Web App",
-                              "icon": "globe",
-                              "pages": [
-                                "en/documentation/pages/publish/webapp/workflow-webapp",
-                                "en/documentation/pages/publish/webapp/chatflow-webapp",
-                                "en/documentation/pages/publish/webapp/web-app-settings",
-                                "en/documentation/pages/publish/webapp/web-app-access",
-                                "en/documentation/pages/publish/webapp/embedding-in-websites"
-                              ]
-                            },
                             "en/documentation/pages/publish/publish-mcp",
                             "en/documentation/pages/publish/developing-with-apis"
                           ]
@@ -421,17 +410,6 @@
                           "group": "发布",
                           "pages": [
                             "cn/documentation/pages/publish/README",
-                            {
-                              "group": "Web App",
-                              "icon": "globe",
-                              "pages": [
-                                "cn/documentation/pages/publish/webapp/workflow-webapp",
-                                "cn/documentation/pages/publish/webapp/chatflow-webapp",
-                                "cn/documentation/pages/publish/webapp/web-app-settings",
-                                "cn/documentation/pages/publish/webapp/web-app-access",
-                                "cn/documentation/pages/publish/webapp/embedding-in-websites"
-                              ]
-                            },
                             "cn/documentation/pages/publish/publish-mcp",
                             "cn/documentation/pages/publish/developing-with-apis"
                           ]
@@ -804,17 +782,6 @@
                           "group": "公開",
                           "pages": [
                             "jp/documentation/pages/publish/README",
-                            {
-                              "group": "Webアプリ",
-                              "icon": "globe",
-                              "pages": [
-                                "jp/documentation/pages/publish/webapp/workflow-webapp",
-                                "jp/documentation/pages/publish/webapp/chatflow-webapp",
-                                "jp/documentation/pages/publish/webapp/web-app-settings",
-                                "jp/documentation/pages/publish/webapp/web-app-access",
-                                "jp/documentation/pages/publish/webapp/embedding-in-websites"
-                              ]
-                            },
                             "jp/documentation/pages/publish/publish-mcp",
                             "jp/documentation/pages/publish/developing-with-apis"
                           ]
@@ -5587,4 +5554,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

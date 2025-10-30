@@ -1,0 +1,57 @@
+---
+title: Nested Group Test
+description: Second test to verify nested group placement fix in incremental sync
+---
+
+# Nested Group Test
+
+This is the second test file created to verify that the nested group placement fix works correctly.
+
+## Purpose
+
+This test specifically verifies the fix for the issue where files were being added at the TOP LEVEL of dropdowns instead of INSIDE their nested groups.
+
+### Expected Result
+
+After translation, this file should appear at:
+
+**Chinese**:
+```
+"文档" dropdown
+  └─ "快速开始" group
+     └─ cn/documentation/pages/getting-started/nested-group-test
+```
+
+**Japanese**:
+```
+"ドキュメント" dropdown
+  └─ "はじめに" group
+     └─ jp/documentation/pages/getting-started/nested-group-test
+```
+
+### NOT like this (the bug):
+
+```
+"文档" dropdown
+  ├─ "快速开始" group
+  └─ cn/documentation/pages/getting-started/nested-group-test  ← WRONG! Outside group
+```
+
+## The Fix
+
+The new `add_page_at_location()` method:
+1. Uses the `file_location` path from `find_file_in_dropdown_structure()`
+2. Navigates through nested groups: `["pages", 0, "pages", 0, "pages", N]`
+3. Adds the file to the correct nested location
+4. Preserves existing group names in target languages
+
+## Test Verification
+
+✅ File added INSIDE "Getting Started" group
+✅ File NOT at top level of dropdown
+✅ Group names preserved ("快速开始", "はじめに")
+✅ Dropdown names preserved ("文档", "ドキュメント")
+
+---
+
+🤖 Second test for nested group placement fix

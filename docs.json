@@ -67,6 +67,7 @@
                           "pages": [
                             "en/documentation/pages/build/shortcut-key",
                             "en/documentation/pages/build/goto-anything",
+                            "en/documentation/pages/build/workflow-templates",
                             "en/documentation/pages/build/orchestrate-node",
                             "en/documentation/pages/build/predefined-error-handling-logic",
                             "en/documentation/pages/build/mcp",
@@ -401,6 +402,7 @@
                           "pages": [
                             "cn/documentation/pages/build/shortcut-key",
                             "cn/documentation/pages/build/goto-anything",
+                            "cn/documentation/pages/build/workflow-templates",
                             "cn/documentation/pages/build/orchestrate-node",
                             "cn/documentation/pages/build/predefined-error-handling-logic",
                             "cn/documentation/pages/build/mcp",
@@ -784,6 +786,7 @@
                           "pages": [
                             "jp/documentation/pages/build/shortcut-key",
                             "jp/documentation/pages/build/goto-anything",
+                            "jp/documentation/pages/build/workflow-templates",
                             "jp/documentation/pages/build/orchestrate-node",
                             "jp/documentation/pages/build/predefined-error-handling-logic",
                             "jp/documentation/pages/build/mcp",
@@ -5587,4 +5590,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

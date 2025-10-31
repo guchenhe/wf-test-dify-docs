@@ -1,0 +1,54 @@
+---
+title: 配置重构测试
+description: 用于验证统一语言配置重构的测试文件
+---
+
+<Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](../../en/testing/config-refactor-test.mdx)。</Note>
+
+# 配置重构测试
+
+这是一个测试文档，用于验证语言配置重构是否正常工作。
+
+## 目的
+
+本次重构将所有语言配置统一到 `tools/translate/config.json` 这一单一数据源中。此测试验证：
+
+1. **自动翻译正确触发** - 工作流应该检测到这个新的英文文件
+2. **基于配置的语言加载** - 语言从配置加载，而非硬编码
+3. **翻译到所有目标语言** - 应该创建 `cn/testing/config-refactor-test.mdx` 和 `jp/testing/config-refactor-test.mdx`
+4. **翻译声明** - 每个翻译文件都应该包含配置中正确的 AI 声明
+5. **docs.json 同步** - 导航应该为所有语言更新
+
+## 预期结果
+
+在此 PR 合并后：
+- 中文翻译应该出现在 `cn/testing/config-refactor-test.mdx`
+- 日文翻译应该出现在 `jp/testing/config-refactor-test.mdx`
+- 两个翻译都应该包含带有正确相对链接的 AI 声明
+- `docs.json` 应该在所有三个语言部分中包含此文件
+
+## 配置详情
+
+新的统一配置允许通过简单编辑 `config.json` 来添加新语言：
+
+```json
+{
+  "source_language": "en",
+  "target_languages": ["cn", "jp"],
+  "languages": {
+    "en": {
+      "code": "en",
+      "name": "English",
+      "directory": "en"
+    },
+    "cn": {
+      "code": "cn",
+      "name": "Chinese",
+      "directory": "cn",
+      "translation_notice": "..."
+    }
+  }
+}
+```
+
+添加新语言无需修改代码！

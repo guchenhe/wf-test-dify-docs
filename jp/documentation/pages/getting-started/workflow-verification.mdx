@@ -1,0 +1,77 @@
+---
+title: ワークフロー検証テスト
+description: 統合された設定ベースの翻訳ワークフローが正しく動作することを検証する
+---
+
+<Note> ⚠️ このドキュメントはAIによって自動翻訳されています。不正確な部分がある場合は、[英語版](../../../../en/documentation/pages/getting-started/workflow-verification.mdx)を参照してください。</Note>
+
+# ワークフロー検証テスト
+
+このドキュメントは、言語設定のリファクタリング後に自動翻訳ワークフローが正しく機能することを検証します。
+
+## このテストの内容
+
+統合設定リファクタリングのマージ後、このPRは以下をテストします：
+
+### ✅ 設定の読み込み
+- ワークフローが設定から `source_language` と `target_languages` を読み込む
+- ハードコードされた言語値が使用されていない
+- 翻訳通知が設定から取得される
+
+### ✅ 翻訳プロセス
+- 英語 → 中国語の翻訳が実行される
+- 英語 → 日本語の翻訳が実行される
+- 両方とも設定からの言語名を使用する（`"English"`, `"Chinese"`, `"Japanese"`）
+
+### ✅ ファイル構造
+- 設定ベースのパスに翻訳が作成される：
+  - `cn/documentation/pages/getting-started/workflow-verification.mdx`
+  - `jp/documentation/pages/getting-started/workflow-verification.mdx`
+
+### ✅ 翻訳通知
+- AI通知が `config.json` の `translation_notice` フィールドから挿入される
+- 英語版への相対パスが正しい
+- 通知形式が設定テンプレートと一致する
+
+### ✅ ナビゲーション同期
+- すべての言語セクションで `docs.json` が更新される
+- ファイルがすべての言語で同じ位置に表示される
+- ナビゲーション構造が保持される
+
+## 設定の検証
+
+ワークフローは `tools/translate/config.json` から以下の値を使用する必要があります：
+
+```json
+{
+  "source_language": "en",
+  "target_languages": ["cn", "jp"],
+  "languages": {
+    "en": {
+      "name": "English",
+      "directory": "en"
+    },
+    "cn": {
+      "name": "Chinese",
+      "directory": "cn",
+      "translation_notice": "<Note>...</Note>"
+    },
+    "jp": {
+      "name": "Japanese",
+      "directory": "jp",
+      "translation_notice": "<Note>...</Note>"
+    }
+  }
+}
+```
+
+## 成功基準
+
+✅ 翻訳PRが自動的に作成される
+✅ 中国語ファイルが正しい通知とともに存在する
+✅ 日本語ファイルが正しい通知とともに存在する
+✅ すべての言語で docs.json が同期される
+✅ ログにハードコードされた言語エラーがない
+✅ ワークフローが設定エラーなしで完了する
+
+すべての基準が合格すれば、リファクタリングは成功です！🎉

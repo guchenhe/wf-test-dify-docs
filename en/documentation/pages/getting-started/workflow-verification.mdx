@@ -1,0 +1,75 @@
+---
+title: Workflow Verification Test
+description: Verify unified config-based translation workflow works correctly
+---
+
+# Workflow Verification Test
+
+This document verifies that the auto-translation workflow functions correctly after the language configuration refactoring.
+
+## What This Tests
+
+After merging the unified configuration refactoring, this PR tests:
+
+### ✅ Config Loading
+- Workflow loads `source_language` and `target_languages` from config
+- No hardcoded language values are used
+- Translation notices come from config
+
+### ✅ Translation Process
+- English → Chinese translation executes
+- English → Japanese translation executes
+- Both use language names from config (`"English"`, `"Chinese"`, `"Japanese"`)
+
+### ✅ File Structure
+- Translations created at config-based paths:
+  - `cn/documentation/pages/getting-started/workflow-verification.mdx`
+  - `jp/documentation/pages/getting-started/workflow-verification.mdx`
+
+### ✅ Translation Notices
+- AI notice inserted from `config.json` `translation_notice` field
+- Relative path to English version is correct
+- Notice format matches config template
+
+### ✅ Navigation Sync
+- `docs.json` updated for all language sections
+- File appears at same position in all languages
+- Navigation structure preserved
+
+## Configuration Verification
+
+The workflow should use these values from `tools/translate/config.json`:
+
+```json
+{
+  "source_language": "en",
+  "target_languages": ["cn", "jp"],
+  "languages": {
+    "en": {
+      "name": "English",
+      "directory": "en"
+    },
+    "cn": {
+      "name": "Chinese",
+      "directory": "cn",
+      "translation_notice": "<Note>...</Note>"
+    },
+    "jp": {
+      "name": "Japanese",
+      "directory": "jp",
+      "translation_notice": "<Note>...</Note>"
+    }
+  }
+}
+```
+
+## Success Criteria
+
+✅ Translation PR created automatically
+✅ Chinese file exists with correct notice
+✅ Japanese file exists with correct notice
+✅ docs.json synced for all languages
+✅ No hardcoded language errors in logs
+✅ Workflow completes without config errors
+
+If all criteria pass, the refactoring is successful! 🎉

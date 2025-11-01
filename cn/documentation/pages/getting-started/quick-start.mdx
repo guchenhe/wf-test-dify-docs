@@ -4,6 +4,8 @@ description: "通过示例应用深入了解 Dify"
 icon: "forward"
 ---
 
+<Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](../../../../en/documentation/pages/getting-started/quick-start.mdx)。</Note>
+
 这个分步教程将带你从零开始创建一个多平台内容生成器。
 
 除了基本的 LLM 集成，你还将发现如何使用强大的 Dify 节点来更快、更轻松地编排复杂的 AI 应用程序。
@@ -233,7 +235,7 @@ icon: "forward"
    4. 在系统提示字段中，粘贴以下内容：
 
       <Warning>
-        在提示中，要在 _提供的材料_ 中引用 `Doc Extractor/text` 和 `Start/draft` 变量，请键入 `{` 或 `/` 并从列表中选择。
+        在提示词中，要在 _提供的材料_ 中引用 `Doc Extractor/text` 和 `Start/draft` 变量，请键入 `{` 或 `/` 并从列表中选择。
 
         <img
           src="/images/deeper_dive_reference_variable.png"
@@ -315,10 +317,10 @@ icon: "forward"
 2. 在迭代节点内部，添加一个 LLM 节点并配置它：
    1. 将其重命名为 `识别风格`。
    2. 选择一个模型。
-   3. 在系统提示字段中，粘贴以下内容：
+   3. 在系统提示词字段中，粘贴以下内容：
 
       <Warning>
-        在提示中，要在 _角色与任务_ 和 _输出格式示例_ 中引用 `Current Iteration/item` 变量，请键入 `{` 或 `/` 并从列表中选择。
+        在提示词中，要在 _角色与任务_ 和 _输出格式示例_ 中引用 `Current Iteration/item` 变量，请键入 `{` 或 `/` 并从列表中选择。
       </Warning>
       ````markdown 系统 {2,40}
       # 角色与任务
@@ -378,10 +380,10 @@ icon: "forward"
 3. 在识别风格节点之后，添加另一个 LLM 节点并配置它：
    1. 将其重命名为 `创建内容`。
    2. 选择一个模型。
-   3. 在系统提示字段中，粘贴以下内容：
+   3. 在系统提示词字段中，粘贴以下内容：
 
       <Warning>
-        在提示中，要引用以下变量，请键入 `{` 或 `/` 并从列表中选择。
+        在提示词中，要引用以下变量，请键入 `{` 或 `/` 并从列表中选择。
         - _平台指南_ 中的 `Identify Style/text`
         - _来源信息_ 中的 `Integrate Info/text`
         - _语音与语调（可选）_ 中的 `Start/voice_and_tone`
@@ -527,3 +529,11 @@ icon: "forward"
 <Tip>
   发布后，你可以在实时环境中运行快速的端到端测试，以确认一切工作与 **Studio** 中相同。
 </Tip>
+
+## 下一步
+
+现在你已经构建了你的第一个工作流，探索这些资源以提升你的技能：
+
+- 了解[版本控制](/documentation/pages/build/version-control)以跟踪和管理工作流迭代
+- 发现更多[强大的节点](/documentation/pages/nodes/llm)以扩展你的工作流功能
+- 探索[调试工具](/documentation/pages/debug/step-run)以故障排除和优化你的工作流

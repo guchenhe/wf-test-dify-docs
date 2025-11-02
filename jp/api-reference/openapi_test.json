@@ -1,0 +1,530 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "高度なテストAPI",
+    "description": "複雑なネスト構造、複数のエンドポイント、詳細なドキュメントを備えたOpenAPI翻訳システムを検証するための包括的なテストAPI。",
+    "version": "2.0.0"
+  },
+  "servers": [
+    {
+      "url": "{api_base_url}",
+      "description": "APIサーバーのプライマリベースURL。"
+    },
+    {
+      "url": "https://staging-api.example.com/v1",
+      "description": "本番環境へのデプロイ前に新機能をテストするためのステージング環境。"
+    }
+  ],
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "summary": "全ユーザーを一覧表示",
+        "description": "システム内の全ユーザーのページネーション付きリストをオプションのフィルタリング機能とともに取得します。",
+        "operationId": "listUsers",
+        "tags": [
+          "User Management"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "ページネーション用のページ番号（1から開始）。",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "1ページあたりに返すユーザー数（最大100）。",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ユーザーリストの取得に成功しました。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "無効なクエリパラメータによる不正なリクエスト。"
+          },
+          "401": {
+            "description": "認証が必要です。有効なAPIキーを提供してください。"
+          },
+          "500": {
+            "description": "リクエストの処理中に内部サーバーエラーが発生しました。"
+          }
+        }
+      },
+      "post": {
+        "summary": "新規ユーザーを作成",
+        "description": "提供された情報で新しいユーザーアカウントを作成し、作成されたユーザーの詳細を返します。",
+        "operationId": "createUser",
+        "tags": [
+          "User Management"
+        ],
+        "requestBody": {
+          "description": "新しいアカウントを作成するためのユーザーデータ。",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "ユーザーが正常に作成され、システムに登録されました。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "リクエストボディに無効なユーザーデータが提供されました。"
+          },
+          "409": {
+            "description": "このメールアドレスを持つユーザーがすでにシステムに存在します。"
+          }
+        }
+      }
+    },
+    "/users/{userId}": {
+      "get": {
+        "summary": "ユーザー詳細を取得",
+        "description": "一意の識別子によって特定のユーザーの詳細情報を取得します。",
+        "operationId": "getUserById",
+        "tags": [
+          "User Management"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "取得するユーザーの一意の識別子。",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ユーザーが見つかり、詳細が正常に返されました。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "指定された識別子のユーザーが見つかりません。"
+          }
+        }
+      },
+      "put": {
+        "summary": "ユーザー情報を更新",
+        "description": "提供されたデータで既存のユーザーの情報を更新します。指定されたフィールドのみが更新されます。",
+        "operationId": "updateUser",
+        "tags": [
+          "User Management"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "更新するユーザーの一意の識別子。",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "更新されたユーザーデータ。変更が必要なフィールドのみを提供してください。",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ユーザー情報が正常に更新されました。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "指定された識別子のユーザーが見つかりません。"
+          }
+        }
+      },
+      "delete": {
+        "summary": "ユーザーアカウントを削除",
+        "description": "ユーザーアカウントと関連するすべてのデータをシステムから完全に削除します。",
+        "operationId": "deleteUser",
+        "tags": [
+          "User Management"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "削除するユーザーの一意の識別子。",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "ユーザーが正常に削除されました。コンテンツは返されません。"
+          },
+          "404": {
+            "description": "指定された識別子のユーザーが見つかりません。"
+          }
+        }
+      }
+    },
+    "/orders": {
+      "post": {
+        "summary": "新規注文を作成",
+        "description": "詳細な配送情報と支払い情報を含む製品の新しい注文を作成します。",
+        "operationId": "createOrder",
+        "tags": [
+          "Order Management"
+        ],
+        "requestBody": {
+          "description": "商品、配送先住所、支払い方法を含む注文詳細。",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "注文が正常に作成され、処理中です。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "JWTベースの認証。/auth/loginエンドポイントを介してトークンを取得し、Authorizationヘッダーに含めてください。"
+      }
+    },
+    "schemas": {
+      "User": {
+        "type": "object",
+        "description": "完全なプロファイル情報を持つシステム内のユーザーアカウントを表します。",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "ユーザーアカウントの一意の識別子。"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "ログインとコミュニケーションに使用されるユーザーのメールアドレス。"
+          },
+          "name": {
+            "type": "string",
+            "description": "ユーザーのフルネーム。"
+          },
+          "profile": {
+            "type": "object",
+            "description": "拡張されたユーザープロファイル情報と設定。",
+            "properties": {
+              "avatar": {
+                "type": "string",
+                "format": "uri",
+                "description": "ユーザーのプロファイル画像またはアバター画像へのURL。"
+              },
+              "bio": {
+                "type": "string",
+                "description": "ユーザーが提供した短い経歴または説明。"
+              },
+              "preferences": {
+                "type": "object",
+                "description": "ユーザーのアプリケーション設定と環境設定。",
+                "properties": {
+                  "language": {
+                    "type": "string",
+                    "description": "ユーザーインターフェースの優先言語（ISO 639-1コード）。"
+                  },
+                  "timezone": {
+                    "type": "string",
+                    "description": "日付と時刻を表示するためのユーザーのタイムゾーン（IANAタイムゾーン識別子）。"
+                  },
+                  "notifications": {
+                    "type": "object",
+                    "description": "異なるコミュニケーションチャネルの通知設定。",
+                    "properties": {
+                      "email": {
+                        "type": "boolean",
+                        "description": "メール通知を受信するかどうか。"
+                      },
+                      "push": {
+                        "type": "boolean",
+                        "description": "モバイルデバイスでプッシュ通知を受信するかどうか。"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ユーザーアカウントが作成されたときのタイムスタンプ。"
+          }
+        }
+      },
+      "CreateUserRequest": {
+        "type": "object",
+        "description": "新しいユーザーアカウントを作成するためのリクエストボディ。",
+        "required": [
+          "email",
+          "name"
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "新しいユーザーアカウントのメールアドレス（一意である必要があります）。"
+          },
+          "name": {
+            "type": "string",
+            "description": "新しいユーザーのフルネーム。"
+          }
+        }
+      },
+      "UpdateUserRequest": {
+        "type": "object",
+        "description": "ユーザー情報を更新するためのリクエストボディ。すべてのフィールドはオプションです。",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "ユーザーの更新されたフルネーム。"
+          },
+          "profile": {
+            "type": "object",
+            "description": "更新されたプロファイル情報。",
+            "properties": {
+              "bio": {
+                "type": "string",
+                "description": "更新されたユーザーの経歴または説明。"
+              }
+            }
+          }
+        }
+      },
+      "UserListResponse": {
+        "type": "object",
+        "description": "ユーザーのリストとページネーションメタデータを含むページネーション付きレスポンス。",
+        "properties": {
+          "users": {
+            "type": "array",
+            "description": "現在のページ内のユーザーオブジェクトの配列。",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          "pagination": {
+            "type": "object",
+            "description": "結果をナビゲートするためのページネーション情報。",
+            "properties": {
+              "page": {
+                "type": "integer",
+                "description": "現在のページ番号。"
+              },
+              "limit": {
+                "type": "integer",
+                "description": "1ページあたりのアイテム数。"
+              },
+              "total": {
+                "type": "integer",
+                "description": "利用可能なユーザーの総数。"
+              }
+            }
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "description": "商品、配送、支払い詳細を含む顧客の注文を表します。",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "注文の一意の識別子。"
+          },
+          "items": {
+            "type": "array",
+            "description": "注文に含まれる商品のリスト。",
+            "items": {
+              "type": "object",
+              "description": "注文内の個別商品。",
+              "properties": {
+                "product_id": {
+                  "type": "string",
+                  "description": "注文された製品の一意の識別子。"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "description": "この製品に対して注文された数量。"
+                },
+                "price": {
+                  "type": "number",
+                  "description": "注文時の単価。"
+                }
+              }
+            }
+          },
+          "shipping": {
+            "type": "object",
+            "description": "注文配送の配送情報。",
+            "properties": {
+              "address": {
+                "type": "object",
+                "description": "配送先住所の詳細。",
+                "properties": {
+                  "street": {
+                    "type": "string",
+                    "description": "配送先の番地。"
+                  },
+                  "city": {
+                    "type": "string",
+                    "description": "配送先の都市名。"
+                  },
+                  "country": {
+                    "type": "string",
+                    "description": "配送先の国コード（ISO 3166-1 alpha-2）。"
+                  }
+                }
+              },
+              "method": {
+                "type": "string",
+                "description": "顧客が選択した配送方法（例：standard、express）。"
+              }
+            }
+          },
+          "status": {
+            "type": "string",
+            "description": "注文の現在のステータス（pending、processing、shipped、delivered、cancelled）。"
+          }
+        }
+      },
+      "CreateOrderRequest": {
+        "type": "object",
+        "description": "必要なすべての詳細を含む新しい注文を作成するためのリクエストボディ。",
+        "required": [
+          "items",
+          "shipping"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "description": "注文に含める商品のリスト。",
+            "items": {
+              "type": "object",
+              "description": "注文する商品。",
+              "properties": {
+                "product_id": {
+                  "type": "string",
+                  "description": "注文する製品の一意の識別子。"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "description": "注文する数量。"
+                }
+              }
+            }
+          },
+          "shipping": {
+            "type": "object",
+            "description": "注文配送の配送情報。",
+            "properties": {
+              "address": {
+                "type": "object",
+                "description": "配送先住所。",
+                "properties": {
+                  "street": {
+                    "type": "string",
+                    "description": "番地。"
+                  },
+                  "city": {
+                    "type": "string",
+                    "description": "都市名。"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "User Management",
+      "description": "ユーザーアカウント、プロファイル、認証を管理するための操作。"
+    },
+    {
+      "name": "Order Management",
+      "description": "顧客の注文を作成、追跡、管理するための操作。"
+    }
+  ]
+}

@@ -264,6 +264,10 @@
                     {
                       "group": "Text Completion",
                       "openapi": "en/api-reference/openapi_completion.json"
+                    },
+                    {
+                      "group": "Test",
+                      "openapi": "en/api-reference/openapi_test.json"
                     }
                   ]
                 },
@@ -5587,4 +5591,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

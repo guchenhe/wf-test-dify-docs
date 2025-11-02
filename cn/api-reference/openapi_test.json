@@ -1,0 +1,530 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "高级测试 API",
+    "description": "一个综合性测试 API，用于验证具有复杂嵌套结构、多个端点和详细文档的 OpenAPI 翻译系统。",
+    "version": "2.0.0"
+  },
+  "servers": [
+    {
+      "url": "{api_base_url}",
+      "description": "API 服务器的主要基础 URL。"
+    },
+    {
+      "url": "https://staging-api.example.com/v1",
+      "description": "用于在生产部署前测试新功能的预发布环境。"
+    }
+  ],
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "summary": "列出所有用户",
+        "description": "检索系统中所有用户的分页列表，并提供可选的筛选功能。",
+        "operationId": "listUsers",
+        "tags": [
+          "User Management"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "用于分页的页码（从 1 开始）。",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "每页返回的用户数量（最多 100 个）。",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功检索用户列表。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "由于无效的查询参数导致的错误请求。"
+          },
+          "401": {
+            "description": "需要身份验证。请提供有效的 API 密钥。"
+          },
+          "500": {
+            "description": "处理请求时发生内部服务器错误。"
+          }
+        }
+      },
+      "post": {
+        "summary": "创建新用户",
+        "description": "使用提供的信息创建新用户账户，并返回创建的用户详细信息。",
+        "operationId": "createUser",
+        "tags": [
+          "User Management"
+        ],
+        "requestBody": {
+          "description": "用于创建新账户的用户数据。",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "用户已成功创建并在系统中注册。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求正文中提供的用户数据无效。"
+          },
+          "409": {
+            "description": "系统中已存在使用此电子邮件地址的用户。"
+          }
+        }
+      }
+    },
+    "/users/{userId}": {
+      "get": {
+        "summary": "获取用户详情",
+        "description": "通过唯一标识符检索特定用户的详细信息。",
+        "operationId": "getUserById",
+        "tags": [
+          "User Management"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "要检索的用户的唯一标识符。",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "已找到用户并成功返回详细信息。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "未找到具有指定标识符的用户。"
+          }
+        }
+      },
+      "put": {
+        "summary": "更新用户信息",
+        "description": "使用提供的数据更新现有用户的信息。仅更新指定的字段。",
+        "operationId": "updateUser",
+        "tags": [
+          "User Management"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "要更新的用户的唯一标识符。",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "更新的用户数据。仅提供需要更改的字段。",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "用户信息已成功更新。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "未找到具有指定标识符的用户。"
+          }
+        }
+      },
+      "delete": {
+        "summary": "删除用户账户",
+        "description": "永久删除用户账户及系统中所有关联数据。",
+        "operationId": "deleteUser",
+        "tags": [
+          "User Management"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "要删除的用户的唯一标识符。",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "用户已成功删除。不返回内容。"
+          },
+          "404": {
+            "description": "未找到具有指定标识符的用户。"
+          }
+        }
+      }
+    },
+    "/orders": {
+      "post": {
+        "summary": "创建新订单",
+        "description": "创建包含详细配送和支付信息的产品新订单。",
+        "operationId": "createOrder",
+        "tags": [
+          "Order Management"
+        ],
+        "requestBody": {
+          "description": "订单详情，包括商品、配送地址和支付方式。",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "订单已成功创建并正在处理中。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "基于 JWT 的身份验证。通过 /auth/login 端点获取令牌，并将其包含在 Authorization 标头中。"
+      }
+    },
+    "schemas": {
+      "User": {
+        "type": "object",
+        "description": "表示系统中具有完整个人资料信息的用户账户。",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "用户账户的唯一标识符。"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "用于登录和通信的用户电子邮件地址。"
+          },
+          "name": {
+            "type": "string",
+            "description": "用户的全名。"
+          },
+          "profile": {
+            "type": "object",
+            "description": "扩展的用户个人资料信息和偏好设置。",
+            "properties": {
+              "avatar": {
+                "type": "string",
+                "format": "uri",
+                "description": "用户个人资料图片或头像图片的 URL。"
+              },
+              "bio": {
+                "type": "string",
+                "description": "用户提供的简短传记或描述。"
+              },
+              "preferences": {
+                "type": "object",
+                "description": "用户的应用程序偏好设置和配置。",
+                "properties": {
+                  "language": {
+                    "type": "string",
+                    "description": "用户界面的首选语言（ISO 639-1 代码）。"
+                  },
+                  "timezone": {
+                    "type": "string",
+                    "description": "用于显示日期和时间的用户时区（IANA 时区标识符）。"
+                  },
+                  "notifications": {
+                    "type": "object",
+                    "description": "不同通信渠道的通知偏好设置。",
+                    "properties": {
+                      "email": {
+                        "type": "boolean",
+                        "description": "是否接收电子邮件通知。"
+                      },
+                      "push": {
+                        "type": "boolean",
+                        "description": "是否在移动设备上接收推送通知。"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建用户账户时的时间戳。"
+          }
+        }
+      },
+      "CreateUserRequest": {
+        "type": "object",
+        "description": "用于创建新用户账户的请求正文。",
+        "required": [
+          "email",
+          "name"
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "新用户账户的电子邮件地址（必须唯一）。"
+          },
+          "name": {
+            "type": "string",
+            "description": "新用户的全名。"
+          }
+        }
+      },
+      "UpdateUserRequest": {
+        "type": "object",
+        "description": "用于更新用户信息的请求正文。所有字段都是可选的。",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "用户更新后的全名。"
+          },
+          "profile": {
+            "type": "object",
+            "description": "更新的个人资料信息。",
+            "properties": {
+              "bio": {
+                "type": "string",
+                "description": "更新的用户传记或描述。"
+              }
+            }
+          }
+        }
+      },
+      "UserListResponse": {
+        "type": "object",
+        "description": "包含用户列表和分页元数据的分页响应。",
+        "properties": {
+          "users": {
+            "type": "array",
+            "description": "当前页面中的用户对象数组。",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          "pagination": {
+            "type": "object",
+            "description": "用于浏览结果的分页信息。",
+            "properties": {
+              "page": {
+                "type": "integer",
+                "description": "当前页码。"
+              },
+              "limit": {
+                "type": "integer",
+                "description": "每页的项目数量。"
+              },
+              "total": {
+                "type": "integer",
+                "description": "可用用户总数。"
+              }
+            }
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "description": "表示包含商品、配送和支付详细信息的客户订单。",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "订单的唯一标识符。"
+          },
+          "items": {
+            "type": "array",
+            "description": "订单中包含的商品列表。",
+            "items": {
+              "type": "object",
+              "description": "订单中的单个商品。",
+              "properties": {
+                "product_id": {
+                  "type": "string",
+                  "description": "订购产品的唯一标识符。"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "description": "此产品订购的单位数量。"
+                },
+                "price": {
+                  "type": "number",
+                  "description": "订单时的单价。"
+                }
+              }
+            }
+          },
+          "shipping": {
+            "type": "object",
+            "description": "订单配送的配送信息。",
+            "properties": {
+              "address": {
+                "type": "object",
+                "description": "配送地址详情。",
+                "properties": {
+                  "street": {
+                    "type": "string",
+                    "description": "配送的街道地址。"
+                  },
+                  "city": {
+                    "type": "string",
+                    "description": "配送的城市名称。"
+                  },
+                  "country": {
+                    "type": "string",
+                    "description": "配送的国家代码（ISO 3166-1 alpha-2）。"
+                  }
+                }
+              },
+              "method": {
+                "type": "string",
+                "description": "客户选择的配送方式（例如，标准、快递）。"
+              }
+            }
+          },
+          "status": {
+            "type": "string",
+            "description": "订单的当前状态（待处理、处理中、已发货、已送达、已取消）。"
+          }
+        }
+      },
+      "CreateOrderRequest": {
+        "type": "object",
+        "description": "用于创建包含所有必要详细信息的新订单的请求正文。",
+        "required": [
+          "items",
+          "shipping"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "description": "要包含在订单中的商品列表。",
+            "items": {
+              "type": "object",
+              "description": "要订购的商品。",
+              "properties": {
+                "product_id": {
+                  "type": "string",
+                  "description": "要订购的产品的唯一标识符。"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "description": "要订购的单位数量。"
+                }
+              }
+            }
+          },
+          "shipping": {
+            "type": "object",
+            "description": "订单配送的配送信息。",
+            "properties": {
+              "address": {
+                "type": "object",
+                "description": "配送地址。",
+                "properties": {
+                  "street": {
+                    "type": "string",
+                    "description": "街道地址。"
+                  },
+                  "city": {
+                    "type": "string",
+                    "description": "城市名称。"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "User Management",
+      "description": "用于管理用户账户、个人资料和身份验证的操作。"
+    },
+    {
+      "name": "Order Management",
+      "description": "用于创建、跟踪和管理客户订单的操作。"
+    }
+  ]
+}

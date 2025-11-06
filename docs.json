@@ -36,7 +36,8 @@
                             "en/documentation/pages/getting-started/introduction",
                             "en/documentation/pages/getting-started/quick-start",
                             "en/documentation/pages/getting-started/key-concepts",
-                            "en/test-ops-initial"
+                            "en/test-ops-initial",
+                            "en/test-ops-add"
                           ]
                         },
                         {
@@ -371,7 +372,8 @@
                             "cn/documentation/pages/getting-started/introduction",
                             "cn/documentation/pages/getting-started/quick-start",
                             "cn/documentation/pages/getting-started/key-concepts",
-                            "cn/test-ops-initial"
+                            "cn/test-ops-initial",
+                            "cn/test-ops-add"
                           ]
                         },
                         {
@@ -755,7 +757,8 @@
                             "jp/documentation/pages/getting-started/introduction",
                             "jp/documentation/pages/getting-started/quick-start",
                             "jp/documentation/pages/getting-started/key-concepts",
-                            "jp/test-ops-initial"
+                            "jp/test-ops-initial",
+                            "jp/test-ops-add"
                           ]
                         },
                         {

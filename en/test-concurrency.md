@@ -7,12 +7,12 @@ description: "Testing rapid updates with concurrency groups"
 
 This file is used to test the concurrency control in translation workflows.
 
-## Version 4
+## Version 5 - Testing head_branch fix
 
-Updated content - commit 4. Final rapid update test.
+Updated content - commit 5. Testing the fixed concurrency with head_branch.
 
-This is the fourth workflow trigger. The concurrency group should ensure:
-- Only one workflow runs at a time
-- No git conflicts on the translation branch
-- All commits are processed in order
-- Translation state remains consistent
+This should now work correctly because:
+- Concurrency group uses `github.event.workflow_run.head_branch`
+- Same PR branch = same concurrency group
+- Workflows will queue properly
+- No more cancelled workflows

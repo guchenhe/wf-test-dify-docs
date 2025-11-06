@@ -30,6 +30,8 @@
                     {
                       "group": " ",
                       "pages": [
+                        "en/test-incremental-first",
+                        "en/test-incremental-second",
                         {
                           "group": "Getting Started",
                           "pages": [
@@ -372,6 +374,7 @@
                             "cn/documentation/pages/getting-started/key-concepts"
                           ]
                         },
+                        "cn/test-incremental-second",
                         {
                           "group": "节点",
                           "pages": [
@@ -755,6 +758,7 @@
                             "jp/documentation/pages/getting-started/key-concepts"
                           ]
                         },
+                        "jp/test-incremental-second",
                         {
                           "group": "ノード",
                           "pages": [
@@ -5587,4 +5591,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

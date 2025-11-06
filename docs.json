@@ -35,7 +35,8 @@
                           "pages": [
                             "en/documentation/pages/getting-started/introduction",
                             "en/documentation/pages/getting-started/quick-start",
-                            "en/documentation/pages/getting-started/key-concepts"
+                            "en/documentation/pages/getting-started/key-concepts",
+                            "en/test-ops-initial"
                           ]
                         },
                         {
@@ -369,7 +370,8 @@
                           "pages": [
                             "cn/documentation/pages/getting-started/introduction",
                             "cn/documentation/pages/getting-started/quick-start",
-                            "cn/documentation/pages/getting-started/key-concepts"
+                            "cn/documentation/pages/getting-started/key-concepts",
+                            "cn/test-ops-initial"
                           ]
                         },
                         {
@@ -752,7 +754,8 @@
                           "pages": [
                             "jp/documentation/pages/getting-started/introduction",
                             "jp/documentation/pages/getting-started/quick-start",
-                            "jp/documentation/pages/getting-started/key-concepts"
+                            "jp/documentation/pages/getting-started/key-concepts",
+                            "jp/test-ops-initial"
                           ]
                         },
                         {
@@ -5587,4 +5590,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

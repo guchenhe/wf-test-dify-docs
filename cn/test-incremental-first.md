@@ -14,7 +14,7 @@ description: 使用第一个文件测试增量翻译工作流
 当创建此 PR 时：
 1. 应创建翻译 PR
 2. 此文件应被翻译到 `cn/` 和 `jp/`
-3. 提交信息应包含 `Last-Processed-Commit: <SHA>`
+3. 提交消息应包含 `Last-Processed-Commit: <SHA>`
 
 ## 下一步
 

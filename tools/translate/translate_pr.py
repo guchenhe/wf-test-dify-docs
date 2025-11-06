@@ -60,6 +60,14 @@ class TranslationPRManager:
         self.target_languages = self.translation_config.get("target_languages", ["cn", "jp"])
         self.source_dir = self.translation_config["languages"][self.source_language]["directory"]
 
+        # Load processing limits
+        processing_limits = self.translation_config.get("processing_limits", {})
+        self.max_files_per_run = processing_limits.get("max_files_per_run", 10)
+        self.max_openapi_files_per_run = processing_limits.get("max_openapi_files_per_run", 5)
+
+        # Get repository name dynamically
+        self.repo_name = self.get_repository_name()
+
     def run_git(self, *args: str, check: bool = True, capture_output: bool = True) -> subprocess.CompletedProcess:
         """Run a git command."""
         cmd = ["git", *args]
@@ -81,6 +89,35 @@ class TranslationPRManager:
             text=True,
             check=check
         )
+
+    def get_repository_name(self) -> str:
+        """Get the repository name dynamically from environment or git remote."""
+        # Try GitHub Actions environment variable first
+        repo_name = os.environ.get("GITHUB_REPOSITORY")
+        if repo_name:
+            return repo_name
+
+        # Fall back to parsing git remote
+        try:
+            result = self.run_git("remote", "get-url", "origin", check=False)
+            if result.returncode == 0 and result.stdout:
+                remote_url = result.stdout.strip()
+                # Parse formats: git@github.com:owner/repo.git or https://github.com/owner/repo.git
+                if "github.com" in remote_url:
+                    if remote_url.startswith("git@"):
+                        # git@github.com:owner/repo.git
+                        repo_part = remote_url.split(":", 1)[1]
+                    else:
+                        # https://github.com/owner/repo.git
+                        repo_part = "/".join(remote_url.split("/")[-2:])
+                    # Remove .git suffix if present
+                    repo_name = repo_part.rstrip(".git")
+                    return repo_name
+        except Exception as e:
+            print(f"⚠️  Warning: Could not detect repository name from git remote: {e}")
+
+        # Final fallback
+        return "unknown/repository"
 
     def check_branch_exists(self) -> bool:
         """Check if translation branch exists on remote."""
@@ -175,8 +212,12 @@ class TranslationPRManager:
 
         print(f"Detected {len(added_files)} added files, {len(modified_files)} modified files")
 
-        # Translate each file
-        for file_info in files_to_sync[:10]:  # Limit to 10 files for safety
+        # Translate each file with configurable limit
+        if len(files_to_sync) > self.max_files_per_run:
+            print(f"⚠️  Warning: PR has {len(files_to_sync)} files to sync, limiting to {self.max_files_per_run} for safety")
+            print(f"   (Adjust 'processing_limits.max_files_per_run' in config.json to change this limit)")
+
+        for file_info in files_to_sync[:self.max_files_per_run]:
             file_path = file_info.get("path") if isinstance(file_info, dict) else file_info
 
             if file_path == "docs.json":
@@ -276,7 +317,12 @@ class TranslationPRManager:
         """Translate OpenAPI JSON files."""
         from openapi import translate_openapi_file_async
 
-        for file_info in openapi_files[:5]:  # Limit to 5
+        # Apply configurable limit with warning
+        if len(openapi_files) > self.max_openapi_files_per_run:
+            print(f"⚠️  Warning: PR has {len(openapi_files)} OpenAPI files, limiting to {self.max_openapi_files_per_run} for safety")
+            print(f"   (Adjust 'processing_limits.max_openapi_files_per_run' in config.json to change this limit)")
+
+        for file_info in openapi_files[:self.max_openapi_files_per_run]:
             file_path = file_info.get("path") if isinstance(file_info, dict) else file_info
             source_full_path = self.repo_root / file_path
 
@@ -519,12 +565,12 @@ This PR contains automatically generated translations for the documentation chan
 
 Latest source changes from PR #{self.pr_number} have been translated and committed.
 
-**Source commit:** [`{self.head_sha[:8]}`](https://github.com/guchenhe/wf-test-dify-docs/commit/{self.head_sha})
+**Source commit:** [`{self.head_sha[:8]}`](https://github.com/{self.repo_name}/commit/{self.head_sha})
 **Original PR:** #{self.pr_number}"""
 
             self.run_gh("pr", "comment", pr_number, "--body", comment, check=False)
 
-            pr_url = f"https://github.com/guchenhe/wf-test-dify-docs/pull/{pr_number}"
+            pr_url = f"https://github.com/{self.repo_name}/pull/{pr_number}"
 
             print(f"✅ Updated translation PR #{pr_number}")
 

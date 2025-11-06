@@ -7,12 +7,12 @@ description: "Testing rapid updates with concurrency groups"
 
 This file is used to test the concurrency control in translation workflows.
 
-## Version 5 - Testing head_branch fix
+## Version 6 - Second rapid test
 
-Updated content - commit 5. Testing the fixed concurrency with head_branch.
+Updated content - commit 6. Second rapid commit with fixed concurrency.
 
-This should now work correctly because:
-- Concurrency group uses `github.event.workflow_run.head_branch`
-- Same PR branch = same concurrency group
-- Workflows will queue properly
-- No more cancelled workflows
+Testing workflow queuing behavior:
+- This commit pushed immediately after commit 5
+- Should queue behind commit 5's workflow
+- Both should complete successfully
+- No cancellations expected

@@ -1,6 +1,6 @@
 ---
 title: 竞态条件修复测试 - 文件一
-description: 测试在保持安全性的情况下正确修复竞态条件
+description: 测试正确的竞态条件修复并保持安全性
 ---
 
 <Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](../en/test-race-fix-one.md)。</Note>

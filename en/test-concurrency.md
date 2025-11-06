@@ -7,9 +7,12 @@ description: "Testing rapid updates with concurrency groups"
 
 This file is used to test the concurrency control in translation workflows.
 
-## Version 8 - Testing Cancellation Notifications
+## Version 9 - Middle Commit (Should Be Cancelled)
 
-Updated content - commit 8. Testing the new cancellation handler.
+Updated content - commit 9. This is the middle commit that should be cancelled.
 
-This commit should trigger a workflow that includes the cancellation notification feature.
-Expected: If cancelled, a clear message will appear on the PR.
+Expected behavior:
+- Workflow for commit 8 should complete
+- Workflow for commit 9 should be CANCELLED
+- A notification should appear on PR #121
+- Commit 10 (next) should complete

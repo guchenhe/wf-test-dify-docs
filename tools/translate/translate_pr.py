@@ -440,9 +440,21 @@ class TranslationPRManager:
         # Checkout translation branch again (in case we're in detached state)
         if branch_exists:
             self.run_git("fetch", "origin", self.sync_branch)
-            self.run_git("checkout", "-B", self.sync_branch, f"origin/{self.sync_branch}")
+            # Try to checkout and merge remote changes instead of discarding them
+            try:
+                self.run_git("checkout", self.sync_branch)
+                # Attempt fast-forward merge with remote
+                merge_result = self.run_git("merge", f"origin/{self.sync_branch}", "--ff-only", check=False)
+                if merge_result.returncode != 0:
+                    print("⚠️  Cannot fast-forward merge. Translation branch has diverged.")
+                    print("   This may indicate concurrent workflow runs or manual modifications.")
+                    raise RuntimeError("Translation branch has diverged - concurrent modification detected")
+            except subprocess.CalledProcessError as e:
+                print(f"❌ Error checking out translation branch: {e}")
+                raise
         else:
-            self.run_git("checkout", "-B", self.sync_branch)
+            # Create new branch from current HEAD
+            self.run_git("checkout", "-b", self.sync_branch)
 
         # Remove English files before staging
         self.remove_english_files()
@@ -490,7 +502,9 @@ Languages: Chinese (cn), Japanese (jp)
 
     def push_changes(self) -> None:
         """Push changes to remote translation branch."""
-        self.run_git("push", "origin", self.sync_branch)
+        # Use --force-with-lease for safety - allows push only if remote hasn't changed
+        # since we last fetched. This prevents accidental overwrites while being safer than --force.
+        self.run_git("push", "--force-with-lease", "origin", self.sync_branch)
         print(f"✓ Pushed changes to origin/{self.sync_branch}")
 
     def create_or_update_pr(self, branch_exists: bool) -> Dict:
@@ -557,7 +571,11 @@ This PR contains automatically generated translations for the documentation chan
             pr_number = result.stdout.strip()
             if not pr_number:
                 print("⚠️  Could not find existing translation PR")
-                return {"created": False}
+                return {
+                    "created": False,
+                    "translation_pr_number": None,
+                    "translation_pr_url": None
+                }
 
             # Add tracking comment
             comment = f"""<!-- Last-Processed-Commit: {self.head_sha} -->

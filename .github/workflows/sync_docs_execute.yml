@@ -196,6 +196,14 @@ jobs:
           HEAD_SHA=$(python3 -c "import json; print(json.load(open('analysis.json'))['head_sha'])")
           echo "head_sha=$HEAD_SHA" >> $GITHUB_OUTPUT
 
+          # Extract base SHA for comparison
+          BASE_SHA=$(python3 -c "import json; print(json.load(open('analysis.json'))['base_sha'])")
+          echo "base_sha=$BASE_SHA" >> $GITHUB_OUTPUT
+
+          # Extract incremental flag
+          IS_INCREMENTAL=$(python3 -c "import json; print(str(json.load(open('analysis.json'))['is_incremental']).lower())")
+          echo "is_incremental=$IS_INCREMENTAL" >> $GITHUB_OUTPUT
+
           # Check if sync is required
           SYNC_REQUIRED=$(python3 -c "import json; print(str(json.load(open('sync_plan.json'))['sync_required']).lower())")
           echo "sync_required=$SYNC_REQUIRED" >> $GITHUB_OUTPUT
@@ -306,7 +314,7 @@ jobs:
           WORK_DIR="${{ steps.extract-artifacts.outputs.work_dir }}"
           PR_NUMBER="${{ steps.extract-artifacts.outputs.pr_number }}"
           HEAD_SHA="${{ steps.extract-artifacts.outputs.head_sha }}"
-          BASE_SHA="${{ steps.extract-artifacts.outputs.compare_base }}"
+          BASE_SHA="${{ steps.extract-artifacts.outputs.base_sha }}"
           PR_TITLE=$(gh pr view ${PR_NUMBER} --json title --jq '.title' 2>/dev/null || echo "Documentation changes")
           IS_INCREMENTAL="${{ steps.extract-artifacts.outputs.is_incremental }}"
 

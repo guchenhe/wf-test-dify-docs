@@ -36,7 +36,8 @@
                             "en/documentation/pages/getting-started/introduction",
                             "en/documentation/pages/getting-started/quick-start",
                             "en/documentation/pages/getting-started/key-concepts",
-                            "en/test-rename-alpha"
+                            "en/test-rename-alpha",
+                            "en/test-move-final"
                           ]
                         },
                         {
@@ -60,8 +61,7 @@
                             "en/documentation/pages/nodes/variable-assigner",
                             "en/documentation/pages/nodes/parameter-extractor",
                             "en/documentation/pages/nodes/http-request",
-                            "en/documentation/pages/nodes/list-operator",
-                            "en/test-move-final"
+                            "en/documentation/pages/nodes/list-operator"
                           ]
                         },
                         {
@@ -372,7 +372,8 @@
                             "cn/documentation/pages/getting-started/introduction",
                             "cn/documentation/pages/getting-started/quick-start",
                             "cn/documentation/pages/getting-started/key-concepts",
-                            "cn/test-rename-alpha"
+                            "cn/test-rename-alpha",
+                            "cn/test-move-final"
                           ]
                         },
                         {
@@ -533,8 +534,7 @@
                           ]
                         }
                       ]
-                    },
-                    "cn/test-move-final"
+                    }
                   ]
                 },
                 {
@@ -757,7 +757,8 @@
                             "jp/documentation/pages/getting-started/introduction",
                             "jp/documentation/pages/getting-started/quick-start",
                             "jp/documentation/pages/getting-started/key-concepts",
-                            "jp/test-rename-alpha"
+                            "jp/test-rename-alpha",
+                            "jp/test-move-final"
                           ]
                         },
                         {
@@ -917,8 +918,7 @@
                           ]
                         }
                       ]
-                    },
-                    "jp/test-move-final"
+                    }
                   ]
                 },
                 {

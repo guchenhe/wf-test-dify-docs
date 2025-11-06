@@ -7,12 +7,12 @@ description: "Testing rapid updates with concurrency groups"
 
 This file is used to test the concurrency control in translation workflows.
 
-## Version 6 - Second rapid test
+## Version 7 - Third rapid test
 
-Updated content - commit 6. Second rapid commit with fixed concurrency.
+Updated content - commit 7. Third consecutive commit.
 
-Testing workflow queuing behavior:
-- This commit pushed immediately after commit 5
-- Should queue behind commit 5's workflow
-- Both should complete successfully
-- No cancellations expected
+Final validation:
+- Three workflows queued in sequence (commits 5, 6, 7)
+- All using concurrency group: `docs-translation-test/concurrency-rapid-updates`
+- Should all complete without cancellation
+- Translation PR should be created/updated successfully

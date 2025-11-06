@@ -7,8 +7,9 @@ description: "Testing rapid updates with concurrency groups"
 
 This file is used to test the concurrency control in translation workflows.
 
-## Version 2
+## Version 3
 
-Updated content - commit 2. Testing rapid updates with concurrency control.
+Updated content - commit 3. Third rapid update in succession.
 
-This should trigger a second workflow run that will queue behind the first.
+With concurrency groups, this workflow should queue behind commit 2's workflow.
+All three workflows should run sequentially, not concurrently.

@@ -7,12 +7,9 @@ description: "Testing rapid updates with concurrency groups"
 
 This file is used to test the concurrency control in translation workflows.
 
-## Version 7 - Third rapid test
+## Version 8 - Testing Cancellation Notifications
 
-Updated content - commit 7. Third consecutive commit.
+Updated content - commit 8. Testing the new cancellation handler.
 
-Final validation:
-- Three workflows queued in sequence (commits 5, 6, 7)
-- All using concurrency group: `docs-translation-test/concurrency-rapid-updates`
-- Should all complete without cancellation
-- Translation PR should be created/updated successfully
+This commit should trigger a workflow that includes the cancellation notification feature.
+Expected: If cancelled, a clear message will appear on the PR.

@@ -7,12 +7,12 @@ description: "Testing rapid updates with concurrency groups"
 
 This file is used to test the concurrency control in translation workflows.
 
-## Version 9 - Middle Commit (Should Be Cancelled)
+## Version 10 - Final Test Commit
 
-Updated content - commit 9. This is the middle commit that should be cancelled.
+Updated content - commit 10. This is the final commit that should complete successfully.
 
-Expected behavior:
-- Workflow for commit 8 should complete
-- Workflow for commit 9 should be CANCELLED
-- A notification should appear on PR #121
-- Commit 10 (next) should complete
+Expected results after all workflows complete:
+- Commit 8: ✅ Completed
+- Commit 9: ⚠️ Cancelled with notification posted to PR #121
+- Commit 10: ✅ Completed
+- Translation PR #122: Updated with commits 8 and 10 only

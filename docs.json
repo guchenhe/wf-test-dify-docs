@@ -35,7 +35,9 @@
                           "pages": [
                             "en/documentation/pages/getting-started/introduction",
                             "en/documentation/pages/getting-started/quick-start",
-                            "en/documentation/pages/getting-started/key-concepts"
+                            "en/documentation/pages/getting-started/key-concepts",
+                            "en/test-move-fixed",
+                            "en/test-rename-original"
                           ]
                         },
                         {
@@ -369,7 +371,9 @@
                           "pages": [
                             "cn/documentation/pages/getting-started/introduction",
                             "cn/documentation/pages/getting-started/quick-start",
-                            "cn/documentation/pages/getting-started/key-concepts"
+                            "cn/documentation/pages/getting-started/key-concepts",
+                            "cn/test-move-fixed",
+                            "cn/test-rename-original"
                           ]
                         },
                         {
@@ -752,7 +756,9 @@
                           "pages": [
                             "jp/documentation/pages/getting-started/introduction",
                             "jp/documentation/pages/getting-started/quick-start",
-                            "jp/documentation/pages/getting-started/key-concepts"
+                            "jp/documentation/pages/getting-started/key-concepts",
+                            "jp/test-move-fixed",
+                            "jp/test-rename-original"
                           ]
                         },
                         {
@@ -5587,4 +5593,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

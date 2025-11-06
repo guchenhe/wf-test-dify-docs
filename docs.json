@@ -36,7 +36,8 @@
                             "en/documentation/pages/getting-started/introduction",
                             "en/documentation/pages/getting-started/quick-start",
                             "en/documentation/pages/getting-started/key-concepts",
-                            "en/test-clean-one"
+                            "en/test-clean-one",
+                            "en/test-clean-two"
                           ]
                         },
                         {
@@ -371,7 +372,8 @@
                             "cn/documentation/pages/getting-started/introduction",
                             "cn/documentation/pages/getting-started/quick-start",
                             "cn/documentation/pages/getting-started/key-concepts",
-                            "cn/test-clean-one"
+                            "cn/test-clean-one",
+                            "cn/test-clean-two"
                           ]
                         },
                         {
@@ -755,7 +757,8 @@
                             "jp/documentation/pages/getting-started/introduction",
                             "jp/documentation/pages/getting-started/quick-start",
                             "jp/documentation/pages/getting-started/key-concepts",
-                            "jp/test-clean-one"
+                            "jp/test-clean-one",
+                            "jp/test-clean-two"
                           ]
                         },
                         {

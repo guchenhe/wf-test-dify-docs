@@ -30,6 +30,7 @@
                     {
                       "group": " ",
                       "pages": [
+                        "en/test-fresh-incremental-first",
                         {
                           "group": "Getting Started",
                           "pages": [
@@ -364,6 +365,7 @@
                     {
                       "group": " ",
                       "pages": [
+                        "cn/test-fresh-incremental-first",
                         {
                           "group": "快速开始",
                           "pages": [
@@ -747,6 +749,7 @@
                     {
                       "group": " ",
                       "pages": [
+                        "jp/test-fresh-incremental-first",
                         {
                           "group": "はじめに",
                           "pages": [
@@ -5587,4 +5590,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

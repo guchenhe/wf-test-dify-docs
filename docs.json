@@ -36,7 +36,8 @@
                             "en/documentation/pages/getting-started/introduction",
                             "en/documentation/pages/getting-started/quick-start",
                             "en/documentation/pages/getting-started/key-concepts",
-                            "en/test-final-one"
+                            "en/test-final-one",
+                            "en/test-final-two"
                           ]
                         },
                         {
@@ -371,7 +372,7 @@
                             "cn/documentation/pages/getting-started/introduction",
                             "cn/documentation/pages/getting-started/quick-start",
                             "cn/documentation/pages/getting-started/key-concepts",
-                            "cn/test-final-one"
+                            "cn/test-final-two"
                           ]
                         },
                         {
@@ -755,7 +756,7 @@
                             "jp/documentation/pages/getting-started/introduction",
                             "jp/documentation/pages/getting-started/quick-start",
                             "jp/documentation/pages/getting-started/key-concepts",
-                            "jp/test-final-one"
+                            "jp/test-final-two"
                           ]
                         },
                         {

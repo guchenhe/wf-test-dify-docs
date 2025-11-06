@@ -35,7 +35,8 @@
                           "pages": [
                             "en/documentation/pages/getting-started/introduction",
                             "en/documentation/pages/getting-started/quick-start",
-                            "en/documentation/pages/getting-started/key-concepts"
+                            "en/documentation/pages/getting-started/key-concepts",
+                            "en/test-ops-add"
                           ]
                         },
                         {
@@ -59,8 +60,7 @@
                             "en/documentation/pages/nodes/variable-assigner",
                             "en/documentation/pages/nodes/parameter-extractor",
                             "en/documentation/pages/nodes/http-request",
-                            "en/documentation/pages/nodes/list-operator",
-                            "en/test-ops-add"
+                            "en/documentation/pages/nodes/list-operator"
                           ]
                         },
                         {
@@ -370,8 +370,7 @@
                           "pages": [
                             "cn/documentation/pages/getting-started/introduction",
                             "cn/documentation/pages/getting-started/quick-start",
-                            "cn/documentation/pages/getting-started/key-concepts",
-                            "cn/test-ops-add"
+                            "cn/documentation/pages/getting-started/key-concepts"
                           ]
                         },
                         {
@@ -532,7 +531,8 @@
                           ]
                         }
                       ]
-                    }
+                    },
+                    "cn/test-ops-add"
                   ]
                 },
                 {
@@ -754,8 +754,7 @@
                           "pages": [
                             "jp/documentation/pages/getting-started/introduction",
                             "jp/documentation/pages/getting-started/quick-start",
-                            "jp/documentation/pages/getting-started/key-concepts",
-                            "jp/test-ops-add"
+                            "jp/documentation/pages/getting-started/key-concepts"
                           ]
                         },
                         {
@@ -915,7 +914,8 @@
                           ]
                         }
                       ]
-                    }
+                    },
+                    "jp/test-ops-add"
                   ]
                 },
                 {

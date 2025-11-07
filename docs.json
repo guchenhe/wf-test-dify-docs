@@ -193,7 +193,7 @@
                             "en/documentation/pages/tutorials/customer-service-bot",
                             "en/documentation/pages/tutorials/build-ai-image-generation-app",
                             "en/documentation/pages/tutorials/article-reader",
-                            "en/documentation/pages/tutorials/data-pipeline"
+                            "en/documentation/pages/tutorials/etl-workflow"
                           ]
                         }
                       ]
@@ -528,7 +528,7 @@
                             "cn/documentation/pages/tutorials/customer-service-bot",
                             "cn/documentation/pages/tutorials/build-ai-image-generation-app",
                             "cn/documentation/pages/tutorials/article-reader",
-                            "cn/documentation/pages/tutorials/data-pipeline"
+                            "cn/documentation/pages/tutorials/etl-workflow"
                           ]
                         }
                       ]
@@ -911,7 +911,7 @@
                             "jp/documentation/pages/tutorials/customer-service-bot",
                             "jp/documentation/pages/tutorials/build-ai-image-generation-app",
                             "jp/documentation/pages/tutorials/article-reader",
-                            "jp/documentation/pages/tutorials/data-pipeline"
+                            "jp/documentation/pages/tutorials/etl-workflow"
                           ]
                         }
                       ]

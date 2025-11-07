@@ -194,6 +194,12 @@
                             "en/documentation/pages/tutorials/build-ai-image-generation-app",
                             "en/documentation/pages/tutorials/article-reader"
                           ]
+                        },
+                        {
+                          "group": "Test Scenarios",
+                          "pages": [
+                            "en/test-scenarios/test-add"
+                          ]
                         }
                       ]
                     }
@@ -527,6 +533,12 @@
                             "cn/documentation/pages/tutorials/customer-service-bot",
                             "cn/documentation/pages/tutorials/build-ai-image-generation-app",
                             "cn/documentation/pages/tutorials/article-reader"
+                          ]
+                        },
+                        {
+                          "group": "Test Scenarios",
+                          "pages": [
+                            "cn/test-scenarios/test-add"
                           ]
                         }
                       ]
@@ -909,6 +921,12 @@
                             "jp/documentation/pages/tutorials/customer-service-bot",
                             "jp/documentation/pages/tutorials/build-ai-image-generation-app",
                             "jp/documentation/pages/tutorials/article-reader"
+                          ]
+                        },
+                        {
+                          "group": "Test Scenarios",
+                          "pages": [
+                            "jp/test-scenarios/test-add"
                           ]
                         }
                       ]
@@ -5587,4 +5605,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

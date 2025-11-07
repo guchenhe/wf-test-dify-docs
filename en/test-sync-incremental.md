@@ -19,3 +19,9 @@ This is the initial version of the test file.
 ## Content
 
 This is commit 1 content. More commits will follow rapidly.
+
+## Commit 2: Middle Update
+
+This is the second commit. According to the concurrency control, this commit should be SKIPPED because a third commit will arrive before this finishes processing.
+
+**Expected**: Cancellation notification posted to PR.

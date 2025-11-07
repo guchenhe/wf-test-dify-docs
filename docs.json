@@ -194,6 +194,12 @@
                             "en/documentation/pages/tutorials/build-ai-image-generation-app",
                             "en/documentation/pages/tutorials/article-reader"
                           ]
+                        },
+                        {
+                          "group": "Test Scenarios",
+                          "pages": [
+                            "en/test-scenarios/test-add"
+                          ]
                         }
                       ]
                     }

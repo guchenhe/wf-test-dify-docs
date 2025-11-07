@@ -1,7 +1,7 @@
 {
     "$schema": "https://mintlify.com/docs.json",
     "theme": "maple",
-    "name": "Dify Docs",
+    "name": "Dify Docs [Test: Mixed]",
     "colors": {
       "primary": "#0060FF",
       "light": "#688FE8",
@@ -5588,4 +5588,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

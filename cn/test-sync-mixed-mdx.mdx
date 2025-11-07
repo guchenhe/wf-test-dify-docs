@@ -1,0 +1,52 @@
+---
+title: 测试同步混合 MDX
+description: 用于验证混合文件类型同步功能的测试 MDX 文件
+---
+
+<Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](../en/test-sync-mixed-mdx.mdx)。</Note>
+
+import { Callout } from 'nextra/components'
+
+# 测试同步混合 MDX
+
+这是一个 MDX 格式的测试文档，用于验证混合文件类型同步。
+
+## 目的
+
+此测试验证：
+- 带有组件的 MDX 文件能够正确翻译
+- 混合更改（MDX + docs.json）可以一起同步
+- 组件语法在翻译中得以保留
+
+<Callout type="info">
+这是一个标注组件，在翻译过程中应该被保留。
+</Callout>
+
+## MDX 特性
+
+### 代码块
+```javascript
+// JavaScript code example
+const greet = (name) => {
+  return `Hello, ${name}!`;
+};
+
+console.log(greet('World'));
+```
+
+### 带有 MDX 的列表
+- 标准 markdown 列表项
+- 另一个带有**粗体**和*斜体*的项
+- 带有[链接](https://example.com)的项
+
+<Callout type="warning">
+**重要**：像这样的组件应该在所有语言版本中保持其结构。
+</Callout>
+
+## 测试验证
+
+此文件应该：
+1. 同步到 `cn/test-sync-mixed-mdx.mdx`
+2. 同步到 `jp/test-sync-mixed-mdx.mdx`
+3. 添加到所有语言部分的 docs.json 导航中
+4. 在保留 MDX 组件语法的同时进行翻译

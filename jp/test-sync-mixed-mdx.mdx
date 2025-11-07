@@ -1,0 +1,52 @@
+---
+title: テスト同期混合MDX
+description: 混合ファイルタイプの同期機能を検証するためのテストMDXファイル
+---
+
+<Note> ⚠️ このドキュメントはAIによって自動翻訳されています。不正確な部分がある場合は、[英語版](../en/test-sync-mixed-mdx.mdx)を参照してください。</Note>
+
+import { Callout } from 'nextra/components'
+
+# テスト同期混合MDX
+
+これは混合ファイルタイプの同期を検証するためのMDX形式のテストドキュメントです。
+
+## 目的
+
+このテストは以下を検証します：
+- コンポーネントを含むMDXファイルが正しく翻訳されること
+- 混合変更（MDX + docs.json）が一緒に同期されること
+- コンポーネント構文が翻訳時に保持されること
+
+<Callout type="info">
+これは翻訳中に保持されるべきコールアウトコンポーネントです。
+</Callout>
+
+## MDX機能
+
+### コードブロック
+```javascript
+// JavaScript code example
+const greet = (name) => {
+  return `Hello, ${name}!`;
+};
+
+console.log(greet('World'));
+```
+
+### MDXを使用したリスト
+- 標準的なマークダウンリスト項目
+- **太字**と*斜体*を含む別の項目
+- [リンク](https://example.com)を含む項目
+
+<Callout type="warning">
+**重要**: このようなコンポーネントは、すべての言語バージョンで構造を維持する必要があります。
+</Callout>
+
+## テスト検証
+
+このファイルは以下のようになっている必要があります：
+1. `cn/test-sync-mixed-mdx.mdx`に同期される
+2. `jp/test-sync-mixed-mdx.mdx`に同期される
+3. すべての言語セクションのdocs.jsonナビゲーションに追加される
+4. MDXコンポーネント構文を保持しながら翻訳される

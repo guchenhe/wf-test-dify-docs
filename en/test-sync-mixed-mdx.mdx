@@ -1,0 +1,50 @@
+---
+title: Test Sync Mixed MDX
+description: Test MDX file for validating mixed file type sync functionality
+---
+
+import { Callout } from 'nextra/components'
+
+# Test Sync Mixed MDX
+
+This is a test document in MDX format to validate mixed file type synchronization.
+
+## Purpose
+
+This test validates:
+- MDX files with components are translated correctly
+- Mixed changes (MDX + docs.json) are synced together
+- Component syntax is preserved in translations
+
+<Callout type="info">
+This is a callout component that should be preserved during translation.
+</Callout>
+
+## MDX Features
+
+### Code Blocks
+```javascript
+// JavaScript code example
+const greet = (name) => {
+  return `Hello, ${name}!`;
+};
+
+console.log(greet('World'));
+```
+
+### Lists with MDX
+- Standard markdown list item
+- Another item with **bold** and *italic*
+- Item with [link](https://example.com)
+
+<Callout type="warning">
+**Important**: Components like this should maintain their structure across all language versions.
+</Callout>
+
+## Test Verification
+
+This file should be:
+1. Synced to `cn/test-sync-mixed-mdx.mdx`
+2. Synced to `jp/test-sync-mixed-mdx.mdx`
+3. Added to docs.json navigation in all language sections
+4. Translated while preserving MDX component syntax

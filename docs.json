@@ -192,7 +192,8 @@
                             "en/documentation/pages/tutorials/twitter-chatflow",
                             "en/documentation/pages/tutorials/customer-service-bot",
                             "en/documentation/pages/tutorials/build-ai-image-generation-app",
-                            "en/documentation/pages/tutorials/article-reader"
+                            "en/documentation/pages/tutorials/article-reader",
+                            "en/documentation/pages/tutorials/validation-test"
                           ]
                         }
                       ]

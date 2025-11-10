@@ -3,22 +3,9 @@ name: Analyze Documentation Changes
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-    paths:
-      # IMPORTANT: These paths should match the language directories defined in tools/translate/config.json
-      # Currently configured for: en (source), cn, jp (targets)
-      # If you add/remove languages in config.json, update these paths accordingly
-      - 'docs.json'
-      - 'en/**/*.md'
-      - 'en/**/*.mdx'
-      - 'en/**/openapi*.json'
-      - 'cn/**/*.md'
-      - 'cn/**/*.mdx'
-      - 'cn/**/openapi*.json'
-      - 'jp/**/*.md'
-      - 'jp/**/*.mdx'
-      - 'jp/**/openapi*.json'
-      - 'versions/**/*.md'
-      - 'versions/**/*.mdx'
+    # Note: No paths filter - analyze workflow checks file changes internally
+    # This ensures deletions are properly detected (GitHub Actions paths filter
+    # can miss deletion-only commits even when docs.json is modified)
 
 permissions:
   contents: read

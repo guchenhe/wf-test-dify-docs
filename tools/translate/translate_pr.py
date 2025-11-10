@@ -265,8 +265,12 @@ class TranslationPRManager:
         print(f"  - {openapi_count} OpenAPI files to translate")
         print(f"  - Structure changed: {structure_changed}")
 
-        if not sync_plan.get("sync_required", False):
-            print("No sync required - no changes to translate")
+        # IMPORTANT: Always process deletions, even when sync_required=False
+        # This handles deletion-only commits
+        deleted_files = self.process_deleted_files(self.base_sha, self.head_sha)
+
+        if not sync_plan.get("sync_required", False) and not deleted_files:
+            print("No sync required - no changes to translate and no deletions")
             return {"translated": [], "failed": [], "skipped": ["no_changes"]}
 
         return await self.run_translation_from_sync_plan(sync_plan)

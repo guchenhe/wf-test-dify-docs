@@ -36,7 +36,8 @@
                             "en/documentation/pages/getting-started/introduction",
                             "en/documentation/pages/getting-started/quick-start",
                             "en/documentation/pages/getting-started/key-concepts",
-                            "en/test-add-operation"
+                            "en/test-add-operation",
+                            "en/test-add-operation-2"
                           ]
                         },
                         {
@@ -371,7 +372,8 @@
                             "cn/documentation/pages/getting-started/introduction",
                             "cn/documentation/pages/getting-started/quick-start",
                             "cn/documentation/pages/getting-started/key-concepts",
-                            "cn/test-add-operation"
+                            "cn/test-add-operation",
+                            "cn/test-add-operation-2"
                           ]
                         },
                         {
@@ -755,7 +757,8 @@
                             "jp/documentation/pages/getting-started/introduction",
                             "jp/documentation/pages/getting-started/quick-start",
                             "jp/documentation/pages/getting-started/key-concepts",
-                            "jp/test-add-operation"
+                            "jp/test-add-operation",
+                            "jp/test-add-operation-2"
                           ]
                         },
                         {

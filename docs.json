@@ -33,7 +33,6 @@
                         {
                           "group": "Getting Started",
                           "pages": [
-                            "en/test-delete-clean",
                             "en/documentation/pages/getting-started/introduction",
                             "en/documentation/pages/getting-started/quick-start",
                             "en/documentation/pages/getting-started/key-concepts"

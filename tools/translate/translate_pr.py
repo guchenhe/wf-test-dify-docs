@@ -354,9 +354,13 @@ class TranslationPRManager:
         if openapi_files:
             await self.translate_openapi_files(openapi_files, results)
 
-        # Sync docs.json structure
+        # IMPORTANT: Always process deletions, regardless of structure_changed flag
+        # This handles cases where file deletion and docs.json update occur in separate commits
+        deleted_files = self.process_deleted_files(base_sha, head_sha)
+
+        # Sync docs.json structure if changed
         if sync_plan.get("structure_changes", {}).get("structure_changed"):
-            self.sync_docs_json_structure(synchronizer, added_files, base_sha, head_sha)
+            self.sync_docs_json_structure(synchronizer, added_files, deleted_files, base_sha, head_sha)
 
         return results
 
@@ -391,6 +395,61 @@ class TranslationPRManager:
             return result.stdout if result.stdout else None
         except subprocess.CalledProcessError:
             return None
+
+    def process_deleted_files(self, base_sha: str, head_sha: str) -> List[str]:
+        """
+        Detect and delete translation files for deleted source files.
+
+        This runs independently of docs.json structure changes to handle cases
+        where file deletion and docs.json update occur in separate commits.
+
+        Returns list of deleted source files.
+        """
+        deleted_files = []
+
+        # Get deleted files from git diff
+        try:
+            result = self.run_git(
+                "diff", "--name-status", "--diff-filter=D",
+                base_sha, head_sha
+            )
+
+            for line in result.stdout.strip().split('\n'):
+                if line and line.startswith('D\t'):
+                    file_path = line.split('\t')[1]
+                    if file_path.startswith(f"{self.source_dir}/"):
+                        deleted_files.append(file_path)
+        except subprocess.CalledProcessError as e:
+            print(f"⚠️  Warning: Could not get deleted files: {e}")
+            return []
+
+        # Delete corresponding translation files
+        if deleted_files:
+            print(f"Deleting {len(deleted_files)} translation files...")
+            for source_file in deleted_files:
+                for target_lang in self.target_languages:
+                    target_dir = self.translation_config["languages"][target_lang]["directory"]
+                    target_file = source_file.replace(f"{self.source_dir}/", f"{target_dir}/")
+                    target_path = self.repo_root / target_file
+
+                    if target_path.exists():
+                        target_path.unlink()
+                        print(f"✓ Deleted {target_file}")
+
+                        # Remove empty parent directories
+                        parent = target_path.parent
+                        while parent != self.repo_root:
+                            try:
+                                if not any(parent.iterdir()):
+                                    parent.rmdir()
+                                    print(f"✓ Removed empty directory {parent.relative_to(self.repo_root)}")
+                                    parent = parent.parent
+                                else:
+                                    break
+                            except (OSError, ValueError):
+                                break
+
+        return deleted_files
 
     async def translate_openapi_files(self, openapi_files: List, results: Dict) -> None:
         """Translate OpenAPI JSON files."""
@@ -436,53 +495,17 @@ class TranslationPRManager:
         self,
         synchronizer: DocsSynchronizer,
         added_files: List[str],
+        deleted_files: List[str],
         base_sha: str,
         head_sha: str
     ) -> None:
-        """Sync docs.json navigation structure."""
+        """
+        Sync docs.json navigation structure for added and deleted files.
+
+        Note: Deleted files should be detected and processed separately via process_deleted_files()
+        before calling this method. This method only syncs the docs.json structure.
+        """
         print("Syncing docs.json structure...")
-
-        # Get deleted files
-        deleted_files = []
-        try:
-            result = self.run_git(
-                "diff", "--name-status", "--diff-filter=D",
-                base_sha, head_sha
-            )
-
-            for line in result.stdout.strip().split('\n'):
-                if line and line.startswith('D\t'):
-                    file_path = line.split('\t')[1]
-                    if file_path.startswith(f"{self.source_dir}/"):
-                        deleted_files.append(file_path)
-        except subprocess.CalledProcessError as e:
-            print(f"⚠️  Warning: Could not get deleted files: {e}")
-
-        # Delete corresponding translation files
-        if deleted_files:
-            print(f"Deleting {len(deleted_files)} translation files...")
-            for source_file in deleted_files:
-                for target_lang in self.target_languages:
-                    target_dir = self.translation_config["languages"][target_lang]["directory"]
-                    target_file = source_file.replace(f"{self.source_dir}/", f"{target_dir}/")
-                    target_path = self.repo_root / target_file
-
-                    if target_path.exists():
-                        target_path.unlink()
-                        print(f"✓ Deleted {target_file}")
-
-                        # Remove empty parent directories
-                        parent = target_path.parent
-                        while parent != self.repo_root:
-                            try:
-                                if not any(parent.iterdir()):
-                                    parent.rmdir()
-                                    print(f"✓ Removed empty directory {parent.relative_to(self.repo_root)}")
-                                    parent = parent.parent
-                                else:
-                                    break
-                            except (OSError, ValueError):
-                                break
 
         # Sync docs.json incrementally
         sync_log = synchronizer.sync_docs_json_incremental(

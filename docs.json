@@ -41,7 +41,6 @@
                         {
                           "group": "Nodes",
                           "pages": [
-                            "en/documentation/pages/nodes/start",
                             "en/documentation/pages/nodes/llm",
                             "en/documentation/pages/nodes/knowledge-retrieval",
                             "en/documentation/pages/nodes/answer",
@@ -51,7 +50,6 @@
                             "en/documentation/pages/nodes/question-classifier",
                             "en/documentation/pages/nodes/ifelse",
                             "en/documentation/pages/nodes/iteration",
-                            "en/documentation/pages/nodes/loop",
                             "en/documentation/pages/nodes/code",
                             "en/documentation/pages/nodes/template",
                             "en/documentation/pages/nodes/variable-aggregator",
@@ -65,6 +63,7 @@
                         {
                           "group": "Build",
                           "pages": [
+                            "en/documentation/pages/nodes/start",
                             "en/documentation/pages/build/shortcut-key",
                             "en/documentation/pages/build/goto-anything",
                             "en/documentation/pages/build/orchestrate-node",
@@ -375,7 +374,6 @@
                         {
                           "group": "节点",
                           "pages": [
-                            "cn/documentation/pages/nodes/start",
                             "cn/documentation/pages/nodes/llm",
                             "cn/documentation/pages/nodes/knowledge-retrieval",
                             "cn/documentation/pages/nodes/answer",
@@ -405,7 +403,8 @@
                             "cn/documentation/pages/build/predefined-error-handling-logic",
                             "cn/documentation/pages/build/mcp",
                             "cn/documentation/pages/build/version-control",
-                            "cn/documentation/pages/build/additional-features"
+                            "cn/documentation/pages/build/additional-features",
+                            "cn/documentation/pages/nodes/start"
                           ]
                         },
                         {
@@ -758,7 +757,6 @@
                         {
                           "group": "ノード",
                           "pages": [
-                            "jp/documentation/pages/nodes/start",
                             "jp/documentation/pages/nodes/llm",
                             "jp/documentation/pages/nodes/knowledge-retrieval",
                             "jp/documentation/pages/nodes/answer",
@@ -788,7 +786,8 @@
                             "jp/documentation/pages/build/predefined-error-handling-logic",
                             "jp/documentation/pages/build/mcp",
                             "jp/documentation/pages/build/version-control",
-                            "jp/documentation/pages/build/additional-features"
+                            "jp/documentation/pages/build/additional-features",
+                            "jp/documentation/pages/nodes/start"
                           ]
                         },
                         {
@@ -5587,4 +5586,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

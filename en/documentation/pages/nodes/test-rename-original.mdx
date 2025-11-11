@@ -1,0 +1,34 @@
+---
+title: "Test Rename Original"
+description: "Test file to validate rename detection and extension preservation"
+icon: "file-signature"
+---
+
+This file will be renamed to validate the rename detection workflow.
+
+## Purpose
+
+This test validates:
+
+- Rename detection (delete + add in same location)
+- Physical file renaming with extension preservation
+- Docs.json updates across language sections
+- Index-based location tracking
+
+## Expected Behavior
+
+When this file is renamed:
+
+1. Workflow detects deletion + addition at same index position
+2. Recognizes the operation as a rename (not separate delete/add)
+3. Renames physical files in cn/jp with correct extension
+4. Updates docs.json entries in all language sections
+5. Preserves existing translations (no re-translation)
+
+## File Extension Handling
+
+The rename operation must:
+
+- Detect the file extension (.mdx) from physical file
+- Preserve extension when renaming cn/jp files
+- Update docs.json entries (stored without extensions)

@@ -39,3 +39,14 @@ When this file is added to the repository:
 - Translation notices appear at the beginning of each file
 - Navigation structure maintains consistent group indices across all language sections
 - Terminology from termbase_i18n.md is correctly applied
+
+## Incremental Update Test
+
+This section was added in a second commit to test incremental translation on the same branch.
+
+**Testing**: When the workflow processes this update, it should:
+
+- Detect the content change via git diff
+- Use context-aware translation with existing translation + new content
+- Preserve translation notices
+- Maintain consistent terminology

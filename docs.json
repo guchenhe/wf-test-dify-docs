@@ -41,7 +41,6 @@
                         {
                           "group": "Nodes",
                           "pages": [
-                            "en/documentation/pages/nodes/start",
                             "en/documentation/pages/nodes/llm",
                             "en/documentation/pages/nodes/knowledge-retrieval",
                             "en/documentation/pages/nodes/answer",
@@ -51,7 +50,6 @@
                             "en/documentation/pages/nodes/question-classifier",
                             "en/documentation/pages/nodes/ifelse",
                             "en/documentation/pages/nodes/iteration",
-                            "en/documentation/pages/nodes/loop",
                             "en/documentation/pages/nodes/code",
                             "en/documentation/pages/nodes/template",
                             "en/documentation/pages/nodes/variable-aggregator",
@@ -65,6 +63,7 @@
                         {
                           "group": "Build",
                           "pages": [
+                            "en/documentation/pages/nodes/start",
                             "en/documentation/pages/build/shortcut-key",
                             "en/documentation/pages/build/goto-anything",
                             "en/documentation/pages/build/orchestrate-node",

@@ -1,0 +1,26 @@
+---
+title: Test Duplicate Fix
+description: Test file to validate duplicate commit fix in auto-translation workflow
+---
+
+# Test Duplicate Fix
+
+This is a test file created to validate the fix for duplicate auto-sync commits in the translation workflow.
+
+## Purpose
+
+When this PR is created and pushed:
+1. The analyze workflow should run successfully
+2. The execute workflow should create the initial translation PR
+3. When a second commit is pushed, only the update workflow should run
+4. There should be NO duplicate commits on the translation PR
+
+## Expected Behavior
+
+- First push: Execute workflow creates translation PR
+- Second push: Only update workflow runs (execute workflow skips)
+- Result: No duplicate commits
+
+## Test Date
+
+2025-11-12

@@ -32,3 +32,14 @@ The rename operation must:
 - Detect the file extension (.mdx) from physical file
 - Preserve extension when renaming cn/jp files
 - Update docs.json entries (stored without extensions)
+
+## Incremental Update After Rename
+
+This section was added after the second rename to test content updates on renamed files.
+
+**Testing**: The workflow should:
+
+- Detect this content change via git diff
+- Apply incremental translation to the renamed file
+- Maintain the renamed file paths in all languages
+- Preserve translation consistency

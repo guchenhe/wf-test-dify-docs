@@ -58,13 +58,13 @@
                             "en/documentation/pages/nodes/doc-extractor",
                             "en/documentation/pages/nodes/variable-assigner",
                             "en/documentation/pages/nodes/parameter-extractor",
-                            "en/documentation/pages/nodes/http-request",
-                            "en/documentation/pages/nodes/list-operator"
+                            "en/documentation/pages/nodes/http-request"
                           ]
                         },
                         {
                           "group": "Build",
                           "pages": [
+                            "en/documentation/pages/nodes/list-operator",
                             "en/documentation/pages/build/shortcut-key",
                             "en/documentation/pages/build/goto-anything",
                             "en/documentation/pages/build/orchestrate-node",
@@ -392,8 +392,7 @@
                             "cn/documentation/pages/nodes/doc-extractor",
                             "cn/documentation/pages/nodes/variable-assigner",
                             "cn/documentation/pages/nodes/parameter-extractor",
-                            "cn/documentation/pages/nodes/http-request",
-                            "cn/documentation/pages/nodes/list-operator"
+                            "cn/documentation/pages/nodes/http-request"
                           ]
                         },
                         {
@@ -405,7 +404,8 @@
                             "cn/documentation/pages/build/predefined-error-handling-logic",
                             "cn/documentation/pages/build/mcp",
                             "cn/documentation/pages/build/version-control",
-                            "cn/documentation/pages/build/additional-features"
+                            "cn/documentation/pages/build/additional-features",
+                            "cn/documentation/pages/nodes/list-operator"
                           ]
                         },
                         {
@@ -775,8 +775,7 @@
                             "jp/documentation/pages/nodes/doc-extractor",
                             "jp/documentation/pages/nodes/variable-assigner",
                             "jp/documentation/pages/nodes/parameter-extractor",
-                            "jp/documentation/pages/nodes/http-request",
-                            "jp/documentation/pages/nodes/list-operator"
+                            "jp/documentation/pages/nodes/http-request"
                           ]
                         },
                         {
@@ -788,7 +787,8 @@
                             "jp/documentation/pages/build/predefined-error-handling-logic",
                             "jp/documentation/pages/build/mcp",
                             "jp/documentation/pages/build/version-control",
-                            "jp/documentation/pages/build/additional-features"
+                            "jp/documentation/pages/build/additional-features",
+                            "jp/documentation/pages/nodes/list-operator"
                           ]
                         },
                         {
@@ -5587,4 +5587,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

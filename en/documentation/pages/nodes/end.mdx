@@ -53,3 +53,15 @@ If your workflow has multiple possible execution paths (through If-Else nodes, f
 <Frame caption="Complex workflow output example">
   <img src="https://assets-docs.dify.ai/dify-enterprise-mintlify/en/guides/workflow/node/a103792790447c1725c1da1176334cae.png" alt="End Node - Long Story Generation Example" />
 </Frame>
+
+## Best Practices
+
+When working with End nodes, follow these recommendations for optimal workflow design:
+
+**Use Descriptive Output Names** - Give your output variables clear, meaningful names that indicate their purpose and content type.
+
+**Validate Before Ending** - Consider adding validation logic before the End node to ensure output data meets quality requirements.
+
+**Handle All Paths** - Verify every possible execution path in your workflow leads to an End node to prevent incomplete executions.
+
+**Document Output Schema** - Maintain clear documentation of your workflow's output structure for API consumers and integrators.

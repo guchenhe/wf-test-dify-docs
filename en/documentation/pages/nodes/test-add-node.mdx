@@ -1,0 +1,41 @@
+---
+title: "Test Add Node"
+description: "Test node for validating add operation in translation workflow"
+icon: "flask"
+---
+
+This is a test node created to validate the automatic translation workflow's ability to handle newly added files.
+
+## Purpose
+
+The Test Add Node demonstrates:
+
+- Fresh file translation from English to Chinese and Japanese
+- Proper docs.json synchronization across language sections
+- Correct placement in navigation structure using index-based positioning
+
+## Test Validation
+
+When this file is added to the repository:
+
+1. The translation workflow should detect this new file in the English section
+2. Generate fresh translations for Chinese (cn) and Japanese (jp) versions
+3. Insert entries in docs.json for both target languages at the same index position
+4. Add translation notices to the beginning of translated files
+
+## Expected Behavior
+
+**Translation Mode**: Fresh translation (no git diff context needed)
+
+**Processing Time**: ~30-60 seconds per target language
+
+**Output Files**:
+- `cn/documentation/pages/nodes/test-add-node.mdx`
+- `jp/documentation/pages/nodes/test-add-node.mdx`
+
+## Success Criteria
+
+- Both translated files contain proper frontmatter with translated title and description
+- Translation notices appear at the beginning of each file
+- Navigation structure maintains consistent group indices across all language sections
+- Terminology from termbase_i18n.md is correctly applied

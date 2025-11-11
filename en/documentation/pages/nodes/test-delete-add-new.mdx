@@ -1,0 +1,23 @@
+---
+title: "Test Delete Add New"
+description: "New file added after deletion to test mixed operations"
+icon: "arrows-rotate"
+---
+
+This file is added on the test/delete-single branch after a deletion, testing mixed operations.
+
+## Purpose
+
+Validates:
+
+- Delete operation followed by add operation on same branch
+- Mixed operation processing in single workflow run
+- Proper cleanup of deleted files + fresh translation of new files
+
+## Test Flow
+
+1. **First commit**: Created temp file
+2. **Second commit**: Deleted temp file
+3. **Third commit**: Add this new file
+
+This ensures the workflow handles cumulative changes correctly.

@@ -58,8 +58,7 @@
                             "en/documentation/pages/nodes/doc-extractor",
                             "en/documentation/pages/nodes/variable-assigner",
                             "en/documentation/pages/nodes/parameter-extractor",
-                            "en/documentation/pages/nodes/http-request",
-                            "en/documentation/pages/nodes/list-operator"
+                            "en/documentation/pages/nodes/http-request"
                           ]
                         },
                         {
@@ -78,6 +77,7 @@
                           "group": "Debug",
                           "pages": [
                             "en/documentation/pages/debug/step-run",
+                            "en/documentation/pages/nodes/list-operator",
                             "en/documentation/pages/debug/variable-inspect",
                             "en/documentation/pages/debug/history-and-logs",
                             "en/documentation/pages/debug/error-type"
@@ -392,8 +392,7 @@
                             "cn/documentation/pages/nodes/doc-extractor",
                             "cn/documentation/pages/nodes/variable-assigner",
                             "cn/documentation/pages/nodes/parameter-extractor",
-                            "cn/documentation/pages/nodes/http-request",
-                            "cn/documentation/pages/nodes/list-operator"
+                            "cn/documentation/pages/nodes/http-request"
                           ]
                         },
                         {
@@ -412,6 +411,7 @@
                           "group": "调试",
                           "pages": [
                             "cn/documentation/pages/debug/step-run",
+                            "cn/documentation/pages/nodes/list-operator",
                             "cn/documentation/pages/debug/variable-inspect",
                             "cn/documentation/pages/debug/history-and-logs",
                             "cn/documentation/pages/debug/error-type"
@@ -775,8 +775,7 @@
                             "jp/documentation/pages/nodes/doc-extractor",
                             "jp/documentation/pages/nodes/variable-assigner",
                             "jp/documentation/pages/nodes/parameter-extractor",
-                            "jp/documentation/pages/nodes/http-request",
-                            "jp/documentation/pages/nodes/list-operator"
+                            "jp/documentation/pages/nodes/http-request"
                           ]
                         },
                         {
@@ -795,6 +794,7 @@
                           "group": "デバッグ",
                           "pages": [
                             "jp/documentation/pages/debug/step-run",
+                            "jp/documentation/pages/nodes/list-operator",
                             "jp/documentation/pages/debug/variable-inspect",
                             "jp/documentation/pages/debug/history-and-logs",
                             "jp/documentation/pages/debug/error-type"
@@ -5587,4 +5587,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

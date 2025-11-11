@@ -58,13 +58,13 @@
                             "en/documentation/pages/nodes/doc-extractor",
                             "en/documentation/pages/nodes/variable-assigner",
                             "en/documentation/pages/nodes/parameter-extractor",
-                            "en/documentation/pages/nodes/http-request",
-                            "en/documentation/pages/nodes/list-operator"
+                            "en/documentation/pages/nodes/http-request"
                           ]
                         },
                         {
                           "group": "Build",
                           "pages": [
+                            "en/documentation/pages/nodes/list-operator",
                             "en/documentation/pages/build/shortcut-key",
                             "en/documentation/pages/build/goto-anything",
                             "en/documentation/pages/build/orchestrate-node",

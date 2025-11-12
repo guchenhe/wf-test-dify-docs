@@ -1,0 +1,23 @@
+---
+title: Rename Test v2 Original
+description: Test file for rename detection validation (original name)
+---
+
+# Rename Detection Test v2
+
+This file will be renamed to validate the rename detection fix.
+
+## Test Scenario
+
+1. Create this file with original name
+2. Rename to new name (content unchanged)
+3. Verify cn/jp files are renamed correctly
+4. Verify docs.json is updated across all languages
+
+## Expected Behavior
+
+- Physical files renamed: `cn/*/test-rename-v2-original.mdx` → `cn/*/test-rename-v2-updated.mdx`
+- Physical files renamed: `jp/*/test-rename-v2-original.mdx` → `jp/*/test-rename-v2-updated.mdx`
+- Docs.json entries updated in all language sections
+- No re-translation (existing translation preserved)
+- Extension preserved (.mdx stays .mdx)

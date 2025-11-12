@@ -1,0 +1,25 @@
+---
+title: 名前変更テスト v2 オリジナル
+description: 名前変更検出の検証用テストファイル（元の名前）
+---
+
+<Note> ⚠️ このドキュメントはAIによって自動翻訳されています。不正確な部分がある場合は、[英語版](/en/documentation/pages/nodes/test-rename-v2-updated)を参照してください。</Note>
+
+# 名前変更検出テスト v2
+
+このファイルは名前変更検出の修正を検証するために名前が変更されます。
+
+## テストシナリオ
+
+1. 元の名前でこのファイルを作成
+2. 新しい名前に変更（内容は変更なし）
+3. cn/jpファイルが正しく名前変更されることを確認
+4. docs.jsonがすべての言語で更新されることを確認
+
+## 期待される動作
+
+- 物理ファイルの名前変更: `cn/*/test-rename-v2-original.mdx` → `cn/*/test-rename-v2-updated.mdx`
+- 物理ファイルの名前変更: `jp/*/test-rename-v2-original.mdx` → `jp/*/test-rename-v2-updated.mdx`
+- すべての言語セクションでDocs.jsonエントリが更新される
+- 再翻訳なし（既存の翻訳が保持される）
+- 拡張子が保持される（.mdxは.mdxのまま）

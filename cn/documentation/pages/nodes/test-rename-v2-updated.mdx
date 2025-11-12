@@ -1,0 +1,25 @@
+---
+title: 重命名测试 v2 原始版本
+description: 用于验证重命名检测的测试文件（原始名称）
+---
+
+<Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](/en/documentation/pages/nodes/test-rename-v2-updated)。</Note>
+
+# 重命名检测测试 v2
+
+此文件将被重命名以验证重命名检测修复。
+
+## 测试场景
+
+1. 使用原始名称创建此文件
+2. 重命名为新名称（内容不变）
+3. 验证 cn/jp 文件是否正确重命名
+4. 验证 docs.json 在所有语言中是否更新
+
+## 预期行为
+
+- 物理文件重命名：`cn/*/test-rename-v2-original.mdx` → `cn/*/test-rename-v2-updated.mdx`
+- 物理文件重命名：`jp/*/test-rename-v2-original.mdx` → `jp/*/test-rename-v2-updated.mdx`
+- 所有语言部分中的 Docs.json 条目已更新
+- 无需重新翻译（保留现有翻译）
+- 扩展名保持不变（.mdx 仍为 .mdx）

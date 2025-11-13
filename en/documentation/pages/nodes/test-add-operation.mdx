@@ -1,0 +1,26 @@
+---
+title: Test Add Operation
+description: Validates that ADD operation still works after rename fix
+---
+
+# Test Add Operation
+
+This test validates that the ADD operation works correctly after implementing the three rename fixes.
+
+## Purpose
+
+Ensure that adding new files:
+- ✅ Creates cn/jp translations
+- ✅ Adds entries to docs.json for all languages
+- ✅ Entries have no file extensions
+- ✅ Physical files are created correctly
+
+## Expected Results
+
+After auto-sync:
+- `cn/documentation/pages/nodes/test-add-operation.mdx` created
+- `jp/documentation/pages/nodes/test-add-operation.mdx` created
+- docs.json entries: `cn/.../test-add-operation` (no extension)
+- docs.json entries: `jp/.../test-add-operation` (no extension)
+
+🤖 ADD operation test by Claude Code

@@ -35,7 +35,8 @@
                           "pages": [
                             "en/documentation/pages/getting-started/introduction",
                             "en/documentation/pages/getting-started/quick-start",
-                            "en/documentation/pages/getting-started/key-concepts"
+                            "en/documentation/pages/getting-started/key-concepts",
+                            "en/documentation/pages/getting-started/test-incremental-file-2"
                           ]
                         },
                         {
@@ -59,7 +60,8 @@
                             "en/documentation/pages/nodes/variable-assigner",
                             "en/documentation/pages/nodes/parameter-extractor",
                             "en/documentation/pages/nodes/http-request",
-                            "en/documentation/pages/nodes/list-operator"
+                            "en/documentation/pages/nodes/list-operator",
+                            "en/documentation/pages/getting-started/test-incremental-file-1"
                           ]
                         },
                         {
@@ -369,7 +371,8 @@
                           "pages": [
                             "cn/documentation/pages/getting-started/introduction",
                             "cn/documentation/pages/getting-started/quick-start",
-                            "cn/documentation/pages/getting-started/key-concepts"
+                            "cn/documentation/pages/getting-started/key-concepts",
+                            "cn/documentation/pages/getting-started/test-incremental-file-2"
                           ]
                         },
                         {
@@ -393,7 +396,8 @@
                             "cn/documentation/pages/nodes/variable-assigner",
                             "cn/documentation/pages/nodes/parameter-extractor",
                             "cn/documentation/pages/nodes/http-request",
-                            "cn/documentation/pages/nodes/list-operator"
+                            "cn/documentation/pages/nodes/list-operator",
+                            "cn/documentation/pages/getting-started/test-incremental-file-1"
                           ]
                         },
                         {
@@ -752,7 +756,8 @@
                           "pages": [
                             "jp/documentation/pages/getting-started/introduction",
                             "jp/documentation/pages/getting-started/quick-start",
-                            "jp/documentation/pages/getting-started/key-concepts"
+                            "jp/documentation/pages/getting-started/key-concepts",
+                            "jp/documentation/pages/getting-started/test-incremental-file-2"
                           ]
                         },
                         {
@@ -776,7 +781,8 @@
                             "jp/documentation/pages/nodes/variable-assigner",
                             "jp/documentation/pages/nodes/parameter-extractor",
                             "jp/documentation/pages/nodes/http-request",
-                            "jp/documentation/pages/nodes/list-operator"
+                            "jp/documentation/pages/nodes/list-operator",
+                            "jp/documentation/pages/getting-started/test-incremental-file-1"
                           ]
                         },
                         {
@@ -5587,4 +5593,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

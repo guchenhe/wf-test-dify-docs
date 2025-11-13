@@ -52,8 +52,7 @@
                             "en/documentation/pages/nodes/ifelse",
                             "en/documentation/pages/nodes/iteration",
                             "en/documentation/pages/nodes/loop",
-                            "en/documentation/pages/nodes/code",
-                            "en/documentation/pages/nodes/template",
+                            "en/documentation/pages/nodes/template-transform",
                             "en/documentation/pages/nodes/variable-aggregator",
                             "en/documentation/pages/nodes/doc-extractor",
                             "en/documentation/pages/nodes/variable-assigner",
@@ -78,6 +77,7 @@
                           "group": "Debug",
                           "pages": [
                             "en/documentation/pages/debug/step-run",
+                            "en/documentation/pages/nodes/code",
                             "en/documentation/pages/debug/variable-inspect",
                             "en/documentation/pages/debug/history-and-logs",
                             "en/documentation/pages/debug/error-type"

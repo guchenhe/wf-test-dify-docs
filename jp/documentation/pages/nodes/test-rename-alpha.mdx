@@ -1,0 +1,23 @@
+---
+title: Test Rename Alpha
+description: リネーム修正を検証するためのテストファイル - 初期ファイル名
+---
+
+<Note> ⚠️ このドキュメントはAIによって自動翻訳されています。不正確な部分がある場合は、[英語版](/en/documentation/pages/nodes/test-rename-alpha)を参照してください。</Note>
+
+# Test Rename Alpha
+
+これは、リネーム修正が正しく動作することを検証するために作成されたテストファイルです。
+
+**期待される動作:**
+1. このファイルは `test-rename-alpha.mdx` という名前で追加されます
+2. 翻訳ワークフローは `cn/...test-rename-alpha.mdx` と `jp/...test-rename-alpha.mdx` を作成します
+3. docs.json 内の3つの言語セクションすべてにエントリが作成されます
+4. 次のコミットでファイルは `test-rename-beta.mdx` にリネームされます
+5. 自動同期は、cn/jp の物理ファイルと docs.json エントリの両方を更新する必要があります
+
+## テスト詳細
+
+- 初期名: test-rename-alpha.mdx
+- リネーム後: test-rename-beta.mdx (ステップ2)
+- 目的: docs.json リネームバグに対する PR#189 修正の検証

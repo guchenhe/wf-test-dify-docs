@@ -1,0 +1,23 @@
+---
+title: 测试重命名 Alpha
+description: 用于验证重命名修复的测试文件 - 初始文件名
+---
+
+<Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](/en/documentation/pages/nodes/test-rename-alpha)。</Note>
+
+# 测试重命名 Alpha
+
+这是一个用于验证重命名修复功能正常工作的测试文件。
+
+**预期行为：**
+1. 此文件将以 `test-rename-alpha.mdx` 名称添加
+2. 翻译工作流将创建 `cn/...test-rename-alpha.mdx` 和 `jp/...test-rename-alpha.mdx`
+3. docs.json 中的所有三个语言部分都将包含条目
+4. 文件将在下一次提交中重命名为 `test-rename-beta.mdx`
+5. 自动同步应更新 cn/jp 的物理文件和 docs.json 条目
+
+## 测试详情
+
+- 初始名称：test-rename-alpha.mdx
+- 重命名为：test-rename-beta.mdx（步骤 2）
+- 目的：验证 PR#189 对 docs.json 重命名错误的修复

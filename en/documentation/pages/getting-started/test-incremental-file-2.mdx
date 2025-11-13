@@ -1,0 +1,20 @@
+---
+title: Incremental Test - File 2
+description: Second file added in commit 2
+---
+
+# Incremental Test File 2
+
+This is the second file, added in commit 2 alongside editing file-1.
+
+## Incremental Workflow
+
+This tests:
+- Multiple operations in single commit (add + edit)
+- Workflow triggered on top of previous commits
+- Cumulative translation state management
+
+## Expected Behavior
+
+- File 1: Should receive context-aware update using existing cn/jp translations
+- File 2: Should receive fresh translation as new file

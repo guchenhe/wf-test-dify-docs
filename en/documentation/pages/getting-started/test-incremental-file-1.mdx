@@ -1,17 +1,24 @@
 ---
-title: Incremental Test - File 1
-description: First file in incremental changes test
+title: Incremental Test - File 1 (Updated in Commit 2)
+description: First file in incremental changes test, now updated
 ---
 
-# Incremental Test File 1
+# Incremental Test File 1 (Updated)
 
-This is the first file added to test incremental changes across multiple commits.
+This file was added in commit 1, and now **updated in commit 2**.
 
 ## Purpose
 
 Tests how the workflow handles progressive changes:
-- Commit 1: Add this file
-- Commit 2: Edit this file + add another
-- Commit 3: Move a file to different location
+- ✅ Commit 1: Added this file
+- ✅ Commit 2: Editing this file + adding another file
+- ⏳ Commit 3: Will move a file to different location
 
 Each commit should trigger translation workflow independently.
+
+## Update Details
+
+This edit demonstrates:
+- Context-aware translation on previously translated content
+- Cumulative changes across commits
+- Independent workflow triggers per commit

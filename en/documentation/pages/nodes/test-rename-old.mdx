@@ -1,0 +1,29 @@
+---
+title: "Test Rename Old"
+description: "File to test rename fix - will be renamed to test-rename-new"
+icon: "file-pen"
+---
+
+This file tests the rename operation fix.
+
+## Test Objective
+
+Verify that when this file is renamed to `test-rename-new.mdx`:
+
+1. **Physical files** are renamed in cn/jp
+2. **docs.json entries** are updated in cn/jp
+3. **File names match** across all languages
+
+## Previous Bug
+
+Rename operations were detected but NOT applied to translations:
+- cn/jp files kept old names
+- docs.json entries kept old names
+- Caused file reference mismatches
+
+## Expected After Fix
+
+When renamed `old → new`:
+- ✅ cn file renamed: `test-rename-old.mdx` → `test-rename-new.mdx`
+- ✅ jp file renamed: `test-rename-old.mdx` → `test-rename-new.mdx`
+- ✅ docs.json updated in all language sections

@@ -1,0 +1,19 @@
+---
+title: Test Rename Fix Step 1
+description: Initial file to test rename fix for PR#189
+---
+
+# Test Rename Fix - Step 1
+
+This is the initial version of the test file.
+
+Expected workflow behavior:
+1. This file gets added and translated to cn/jp
+2. In next commit, file will be renamed to step2
+3. Workflow should correctly rename both physical files AND docs.json entries
+
+## Test Details
+
+- PR: #189
+- Issue: docs.json entries not updated during rename
+- Fix: Updated `_handle_rename` to update docs.json entries

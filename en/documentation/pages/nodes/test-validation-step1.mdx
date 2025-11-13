@@ -1,0 +1,16 @@
+---
+title: Validation Test Step 1
+description: Tests rename detection and delete handling
+---
+
+# Step 1: Initial File
+
+This file validates the complete rename detection fix.
+
+## Test Sequence
+
+**Step 1:** Create this file → triggers translation to cn/jp
+
+**Step 2:** Rename to step2 → validates R100 detection and file rename
+
+**Step 3:** Delete the file → validates delete handling in reconcile

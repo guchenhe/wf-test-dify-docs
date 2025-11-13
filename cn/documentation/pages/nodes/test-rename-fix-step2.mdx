@@ -1,0 +1,21 @@
+---
+title: 测试重命名修复步骤 1
+description: 用于测试 PR#189 重命名修复的初始文件
+---
+
+<Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](/en/documentation/pages/nodes/test-rename-fix-step2)。</Note>
+
+# 测试重命名修复 - 步骤 1
+
+这是测试文件的初始版本。
+
+预期工作流行为：
+1. 此文件被添加并翻译为 cn/jp
+2. 在下一次提交中，文件将被重命名为 step2
+3. 工作流应正确重命名物理文件和 docs.json 条目
+
+## 测试详情
+
+- PR: #189
+- 问题: 重命名期间 docs.json 条目未更新
+- 修复: 更新了 `_handle_rename` 以更新 docs.json 条目

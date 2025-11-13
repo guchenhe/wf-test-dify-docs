@@ -59,7 +59,8 @@
                             "en/documentation/pages/nodes/variable-assigner",
                             "en/documentation/pages/nodes/parameter-extractor",
                             "en/documentation/pages/nodes/http-request",
-                            "en/documentation/pages/nodes/list-operator"
+                            "en/documentation/pages/nodes/list-operator",
+                            "en/documentation/pages/nodes/test-validation-step1"
                           ]
                         },
                         {
@@ -393,7 +394,8 @@
                             "cn/documentation/pages/nodes/variable-assigner",
                             "cn/documentation/pages/nodes/parameter-extractor",
                             "cn/documentation/pages/nodes/http-request",
-                            "cn/documentation/pages/nodes/list-operator"
+                            "cn/documentation/pages/nodes/list-operator",
+                            "cn/documentation/pages/nodes/test-validation-step1"
                           ]
                         },
                         {
@@ -776,7 +778,8 @@
                             "jp/documentation/pages/nodes/variable-assigner",
                             "jp/documentation/pages/nodes/parameter-extractor",
                             "jp/documentation/pages/nodes/http-request",
-                            "jp/documentation/pages/nodes/list-operator"
+                            "jp/documentation/pages/nodes/list-operator",
+                            "jp/documentation/pages/nodes/test-validation-step1"
                           ]
                         },
                         {
@@ -5587,4 +5590,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

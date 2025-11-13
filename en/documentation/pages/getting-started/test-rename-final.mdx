@@ -1,0 +1,52 @@
+---
+title: Rename Test Final (Renamed + Edited)
+description: This file has been renamed and its content updated simultaneously
+---
+
+# Rename Test Final (Renamed + Edited)
+
+This file has been **renamed from test-rename-original.mdx to test-rename-final.mdx** and its content has been **significantly updated** in the same commit.
+
+## Testing Rename + Edit Combo
+
+This tests the workflow's ability to:
+- Detect file renames (deleted + added in same location)
+- Preserve file extensions (.mdx) when renaming cn/jp versions
+- Handle content changes simultaneously with rename
+- Apply both structural (rename) and content (translation) updates
+
+## Updated Content
+
+### New Sections
+
+This content is entirely new and should be translated to cn/jp along with the rename operation.
+
+### Code Example
+
+```javascript
+function testRenameAndEdit() {
+  return {
+    operation: 'rename',
+    oldName: 'test-rename-original',
+    newName: 'test-rename-final',
+    contentModified: true
+  };
+}
+```
+
+### Important Notes
+
+<Note>
+The surgical reconciliation system should:
+1. Detect the rename via deletion + addition pattern
+2. Rename the corresponding cn/jp files (preserving .mdx extension)
+3. Update docs.json entries for all languages
+4. Translate the updated content contextually
+</Note>
+
+## Validation
+
+- [ ] File renamed in cn/jp directories
+- [ ] Extension preserved (.mdx)
+- [ ] Content translated with updates
+- [ ] docs.json synced correctly

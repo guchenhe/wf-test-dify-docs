@@ -1,14 +1,59 @@
 ---
-title: Move Test File
-description: File that will be moved to different group and edited
+title: Move Test File (Moved + Edited)
+description: File that has been moved to Nodes group with updated content
 ---
 
-# Move Test File
+# Move Test File (Moved + Edited)
 
-This file is initially in the Getting Started group and will be moved to Nodes group with content updates.
+This file has been **moved from Getting Started to Nodes** and its content has been **updated simultaneously**.
 
-## Initial Location
+## Testing Move + Edit Combo
 
-- Group: Getting Started
-- Will be moved to: Nodes (in next commit)
-- Content will be updated during move
+This tests the workflow's ability to:
+- Detect location changes via `group_path` modification in docs.json
+- Use index-based navigation to find corresponding cn/jp files
+- Apply the same move to all language versions
+- Handle content updates simultaneously with structural changes
+
+## Current Location
+
+- **Previous Group**: Getting Started
+- **Current Group**: Nodes ✅
+- **Content Status**: Updated with new sections
+
+## Updated Content
+
+### Surgical Reconciliation
+
+The move detection works by:
+1. Comparing `group_path` between base commit and HEAD
+2. Detecting when a file's location changes (different group path)
+3. Using index-based navigation (not group names) to locate cn/jp files
+4. Moving files to the new location in all languages
+
+### Index-Based Navigation
+
+Groups are matched by position index, not translated names:
+- English: "Nodes" (index 1)
+- Chinese: "节点" (index 1) - same position
+- Japanese: "ノード" (index 1) - same position
+
+This allows moves to work across translations.
+
+### Content Translation
+
+Content updates are applied via context-aware translation:
+```python
+def move_and_translate():
+    # Move file structurally
+    move_file(old_location, new_location)
+    # Translate updated content
+    translate_with_context(file, existing_translation, git_diff)
+```
+
+## Validation
+
+- [ ] File moved in cn/jp docs.json to Nodes group
+- [ ] Physical files remain in same directory (only docs.json changes)
+- [ ] Updated content translated to cn/jp
+- [ ] Index-based navigation worked correctly

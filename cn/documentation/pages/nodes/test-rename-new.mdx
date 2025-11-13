@@ -1,0 +1,31 @@
+---
+title: "测试重命名旧文件"
+description: "用于测试重命名修复的文件 - 将被重命名为 test-rename-new"
+icon: "file-pen"
+---
+
+<Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](/en/documentation/pages/nodes/test-rename-new)。</Note>
+
+此文件用于测试重命名操作修复。
+
+## 测试目标
+
+验证当此文件重命名为 `test-rename-new.mdx` 时：
+
+1. **物理文件**在 cn/jp 中被重命名
+2. **docs.json 条目**在 cn/jp 中被更新
+3. **文件名匹配**在所有语言中保持一致
+
+## 之前的问题
+
+重命名操作被检测到但没有应用到翻译文件：
+- cn/jp 文件保留了旧名称
+- docs.json 条目保留了旧名称
+- 导致文件引用不匹配
+
+## 修复后的预期结果
+
+当重命名 `old → new` 时：
+- ✅ cn 文件已重命名：`test-rename-old.mdx` → `test-rename-new.mdx`
+- ✅ jp 文件已重命名：`test-rename-old.mdx` → `test-rename-new.mdx`
+- ✅ docs.json 在所有语言部分中已更新

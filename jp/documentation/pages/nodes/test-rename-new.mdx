@@ -1,0 +1,31 @@
+---
+title: "Test Rename Old"
+description: "リネーム修正をテストするためのファイル - test-rename-newにリネームされます"
+icon: "file-pen"
+---
+
+<Note> ⚠️ このドキュメントはAIによって自動翻訳されています。不正確な部分がある場合は、[英語版](/en/documentation/pages/nodes/test-rename-new)を参照してください。</Note>
+
+このファイルはリネーム操作の修正をテストします。
+
+## テスト目的
+
+このファイルが`test-rename-new.mdx`にリネームされた際に、以下を検証します：
+
+1. **物理ファイル**がcn/jpでリネームされる
+2. **docs.jsonのエントリ**がcn/jpで更新される
+3. **ファイル名が一致**する（すべての言語で）
+
+## 以前のバグ
+
+リネーム操作は検出されていましたが、翻訳には適用されていませんでした：
+- cn/jpファイルは古い名前のまま
+- docs.jsonのエントリは古い名前のまま
+- ファイル参照の不一致を引き起こしていた
+
+## 修正後の期待される動作
+
+`old → new`にリネームされた場合：
+- ✅ cnファイルがリネームされる：`test-rename-old.mdx` → `test-rename-new.mdx`
+- ✅ jpファイルがリネームされる：`test-rename-old.mdx` → `test-rename-new.mdx`
+- ✅ すべての言語セクションでdocs.jsonが更新される

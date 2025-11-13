@@ -1,0 +1,33 @@
+---
+title: 测试最终步骤1
+description: 最终验证测试文件 - 验证扩展名剥离和条件重命名检测修复
+---
+
+<Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](/en/documentation/pages/nodes/test-final-step1)。</Note>
+
+# 测试最终步骤1
+
+此测试验证了完整的重命名修复，包含两个关键更改：
+
+**修复 #1（扩展名剥离）**：
+- `_handle_rename` 现在在查找位置之前会剥离文件扩展名
+- 防止 `location = None` 导致跳过 docs.json 更新
+
+**修复 #2（条件重命名检测）**：
+- `reconcile` 仅在 git 检测到重命名时跳过重命名检测
+- 当 `files_to_sync=[]`（R100 重命名）时，reconcile 将检测并处理重命名
+
+## 预期行为
+
+1. **步骤 1**：添加此文件 → 自动同步创建 cn/jp 翻译 + docs.json 条目
+2. **步骤 2**：重命名 step1 → step2 → 自动同步重命名物理文件并更新 docs.json 条目（不是删除）
+3. **步骤 3**：重命名 step2 → step3 → 验证修复持续有效
+
+## 成功标准
+
+在每次重命名后：
+- ✓ 物理文件已重命名（cn/jp）
+- ✓ docs.json 条目已更新（cn/jp）
+- ✗ 没有删除 cn/jp 条目
+
+🤖 测试由 Claude Code 创建

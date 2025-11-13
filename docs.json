@@ -50,7 +50,6 @@
                             "en/documentation/pages/nodes/tools",
                             "en/documentation/pages/nodes/question-classifier",
                             "en/documentation/pages/nodes/ifelse",
-                            "en/documentation/pages/nodes/iteration",
                             "en/documentation/pages/nodes/loop",
                             "en/documentation/pages/nodes/code",
                             "en/documentation/pages/nodes/template",
@@ -65,6 +64,7 @@
                         {
                           "group": "Build",
                           "pages": [
+                            "en/documentation/pages/nodes/iteration",
                             "en/documentation/pages/build/shortcut-key",
                             "en/documentation/pages/build/goto-anything",
                             "en/documentation/pages/build/orchestrate-node",

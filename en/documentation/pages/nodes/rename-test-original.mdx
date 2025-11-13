@@ -1,0 +1,25 @@
+---
+title: Rename Test Original
+description: Test file for rename detection - original version
+---
+
+# Rename Detection Test
+
+This file tests the rename detection fix in the auto-translation workflow.
+
+## Test Plan
+
+**Step 1 (this PR):** Add this file as `rename-test-original.mdx`
+- Gets translated to cn/jp
+- Merged to main
+
+**Step 2 (next PR):** Rename to `rename-test-final.mdx` with identical content
+- Git detects R100 (100% match)
+- Workflow renames cn/jp files
+- No re-translation
+
+## Expected Results After Step 2
+
+- Physical files renamed in cn/jp with `.mdx` extension preserved
+- Docs.json updated in all language sections
+- Existing translations preserved (not re-translated)

@@ -62,7 +62,7 @@
                             "en/documentation/pages/nodes/list-operator",
                             "en/documentation/pages/nodes/test-rename-delta",
                             "en/documentation/pages/nodes/test-final-step3",
-                            "en/documentation/pages/nodes/rename-test-alpha"
+                            "en/documentation/pages/nodes/rename-test-beta"
                           ]
                         },
                         {
@@ -397,7 +397,7 @@
                             "cn/documentation/pages/nodes/parameter-extractor",
                             "cn/documentation/pages/nodes/http-request",
                             "cn/documentation/pages/nodes/list-operator",
-                            "cn/documentation/pages/nodes/rename-test-alpha"
+                            "cn/documentation/pages/nodes/rename-test-beta"
                           ]
                         },
                         {
@@ -781,7 +781,7 @@
                             "jp/documentation/pages/nodes/parameter-extractor",
                             "jp/documentation/pages/nodes/http-request",
                             "jp/documentation/pages/nodes/list-operator",
-                            "jp/documentation/pages/nodes/rename-test-alpha"
+                            "jp/documentation/pages/nodes/rename-test-beta"
                           ]
                         },
                         {

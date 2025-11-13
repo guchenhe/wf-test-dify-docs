@@ -1,0 +1,35 @@
+---
+title: 複雑なテスト - 編集されたファイル2（拡張版）
+description: 複雑な操作における豊富なコンテンツで編集された2番目のファイル
+---
+
+<Note> ⚠️ このドキュメントはAIによって自動翻訳されています。不正確な部分がある場合は、[英語版](/en/documentation/pages/getting-started/complex-to-edit-2)を参照してください。</Note>
+
+# 編集されたファイル2（拡張版）
+
+このファイルは、さまざまなコンテンツタイプで**包括的に拡張**されています。
+
+## 豊富なコンテンツのテスト
+
+```javascript
+// Complex operations in single commit
+const operations = {
+  adds: ['complex-new-add-1', 'complex-new-add-2'],
+  deletes: ['complex-to-delete'],
+  edits: ['complex-to-edit-1', 'complex-to-edit-2'],
+  renames: {'complex-to-rename': 'complex-renamed'},
+  moves: {'complex-to-move': 'Nodes'}
+};
+```
+
+### 操作の概要
+
+| タイプ | 数 | ステータス |
+|------|-------|--------|
+| ADD | 2 | ✅ |
+| DELETE | 1 | ✅ |
+| EDIT | 2 | ✅ |
+| RENAME | 1 | ✅ |
+| MOVE | 1 | ✅ |
+
+合計: 1つのコミットで**7つのファイル操作**！

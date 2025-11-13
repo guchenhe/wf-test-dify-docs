@@ -35,7 +35,12 @@
                           "pages": [
                             "en/documentation/pages/getting-started/introduction",
                             "en/documentation/pages/getting-started/quick-start",
-                            "en/documentation/pages/getting-started/key-concepts"
+                            "en/documentation/pages/getting-started/key-concepts",
+                            "en/documentation/pages/getting-started/complex-new-add-1",
+                            "en/documentation/pages/getting-started/complex-new-add-2",
+                            "en/documentation/pages/getting-started/complex-to-edit-1",
+                            "en/documentation/pages/getting-started/complex-to-edit-2",
+                            "en/documentation/pages/getting-started/complex-renamed"
                           ]
                         },
                         {
@@ -59,7 +64,8 @@
                             "en/documentation/pages/nodes/variable-assigner",
                             "en/documentation/pages/nodes/parameter-extractor",
                             "en/documentation/pages/nodes/http-request",
-                            "en/documentation/pages/nodes/list-operator"
+                            "en/documentation/pages/nodes/list-operator",
+                            "en/documentation/pages/getting-started/complex-to-move"
                           ]
                         },
                         {
@@ -369,7 +375,12 @@
                           "pages": [
                             "cn/documentation/pages/getting-started/introduction",
                             "cn/documentation/pages/getting-started/quick-start",
-                            "cn/documentation/pages/getting-started/key-concepts"
+                            "cn/documentation/pages/getting-started/key-concepts",
+                            "cn/documentation/pages/getting-started/complex-new-add-1",
+                            "cn/documentation/pages/getting-started/complex-new-add-2",
+                            "cn/documentation/pages/getting-started/complex-to-edit-1",
+                            "cn/documentation/pages/getting-started/complex-to-edit-2",
+                            "cn/documentation/pages/getting-started/complex-renamed"
                           ]
                         },
                         {
@@ -393,7 +404,8 @@
                             "cn/documentation/pages/nodes/variable-assigner",
                             "cn/documentation/pages/nodes/parameter-extractor",
                             "cn/documentation/pages/nodes/http-request",
-                            "cn/documentation/pages/nodes/list-operator"
+                            "cn/documentation/pages/nodes/list-operator",
+                            "cn/documentation/pages/getting-started/complex-to-move"
                           ]
                         },
                         {
@@ -752,7 +764,12 @@
                           "pages": [
                             "jp/documentation/pages/getting-started/introduction",
                             "jp/documentation/pages/getting-started/quick-start",
-                            "jp/documentation/pages/getting-started/key-concepts"
+                            "jp/documentation/pages/getting-started/key-concepts",
+                            "jp/documentation/pages/getting-started/complex-new-add-1",
+                            "jp/documentation/pages/getting-started/complex-new-add-2",
+                            "jp/documentation/pages/getting-started/complex-to-edit-1",
+                            "jp/documentation/pages/getting-started/complex-to-edit-2",
+                            "jp/documentation/pages/getting-started/complex-renamed"
                           ]
                         },
                         {
@@ -776,7 +793,8 @@
                             "jp/documentation/pages/nodes/variable-assigner",
                             "jp/documentation/pages/nodes/parameter-extractor",
                             "jp/documentation/pages/nodes/http-request",
-                            "jp/documentation/pages/nodes/list-operator"
+                            "jp/documentation/pages/nodes/list-operator",
+                            "jp/documentation/pages/getting-started/complex-to-move"
                           ]
                         },
                         {
@@ -5587,4 +5605,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

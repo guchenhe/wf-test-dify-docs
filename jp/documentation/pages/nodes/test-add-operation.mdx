@@ -1,0 +1,28 @@
+---
+title: 追加操作のテスト
+description: リネーム修正後もADD操作が正常に動作することを検証します
+---
+
+<Note> ⚠️ このドキュメントはAIによって自動翻訳されています。不正確な部分がある場合は、[英語版](/en/documentation/pages/nodes/test-add-operation)を参照してください。</Note>
+
+# 追加操作のテスト
+
+このテストは、3つのリネーム修正を実装した後、ADD操作が正しく動作することを検証します。
+
+## 目的
+
+新しいファイルを追加する際に以下を確認します：
+- ✅ cn/jp翻訳が作成される
+- ✅ すべての言語のdocs.jsonにエントリが追加される
+- ✅ エントリにファイル拡張子が含まれない
+- ✅ 物理ファイルが正しく作成される
+
+## 期待される結果
+
+自動同期後：
+- `cn/documentation/pages/nodes/test-add-operation.mdx` が作成される
+- `jp/documentation/pages/nodes/test-add-operation.mdx` が作成される
+- docs.jsonエントリ: `cn/.../test-add-operation` (拡張子なし)
+- docs.jsonエントリ: `jp/.../test-add-operation` (拡張子なし)
+
+🤖 Claude CodeによるADD操作テスト

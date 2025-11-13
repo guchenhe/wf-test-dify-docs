@@ -1,0 +1,29 @@
+---
+title: 重命名测试原始版
+description: 增量重命名测试 - 原始版本
+---
+
+<Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](/en/documentation/pages/nodes/test-rename-original)。</Note>
+
+# 重命名测试 - 原始版本
+
+此文件测试单个 PR 中跨多个提交的增量重命名检测。
+
+## 测试序列
+
+**提交 1：** 创建此文件 (test-rename-original.mdx)
+- 工作流翻译为 cn/jp
+- 为重命名检测设置基线
+
+**提交 2：** 重命名为 test-rename-updated.mdx
+- 工作流应检测 R100 重命名
+- 应重命名 cn/jp 物理文件
+- 应更新 docs.json 条目
+- 不应重新翻译
+
+**提交 3：** 多个操作
+- 重命名 test-rename-updated → test-rename-final
+- 添加 test-rename-addnew.mdx（全新翻译）
+- 修改 test-rename-final.mdx（增量更新）
+
+这验证了完整的重命名检测修复。

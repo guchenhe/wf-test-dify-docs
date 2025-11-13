@@ -1,0 +1,29 @@
+---
+title: リネームテスト オリジナル
+description: 増分リネームテスト - オリジナルバージョン
+---
+
+<Note> ⚠️ このドキュメントはAIによって自動翻訳されています。不正確な部分がある場合は、[英語版](/en/documentation/pages/nodes/test-rename-original)を参照してください。</Note>
+
+# リネームテスト - オリジナルバージョン
+
+このファイルは、単一のPR内の複数のコミットにわたる増分リネーム検出をテストします。
+
+## テストシーケンス
+
+**コミット1:** このファイルを作成 (test-rename-original.mdx)
+- ワークフローはcn/jpに翻訳されます
+- リネーム検出のベースラインを設定
+
+**コミット2:** test-rename-updated.mdxにリネーム
+- ワークフローはR100リネームを検出する必要があります
+- cn/jpの物理ファイルをリネームする必要があります
+- docs.jsonエントリを更新する必要があります
+- 再翻訳すべきではありません
+
+**コミット3:** 複数の操作
+- test-rename-updated → test-rename-finalにリネーム
+- test-rename-addnew.mdxを追加（新規翻訳）
+- test-rename-final.mdxを修正（増分更新）
+
+これにより、完全なリネーム検出修正が検証されます。

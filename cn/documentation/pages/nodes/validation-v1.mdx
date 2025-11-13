@@ -1,0 +1,42 @@
+---
+title: 验证 V1
+description: 重命名修复的最终综合验证
+---
+
+<Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](/en/documentation/pages/nodes/validation-v1)。</Note>
+
+# 验证 V1
+
+这是对完整重命名修复的最终综合测试。
+
+## 我们要验证的内容
+
+三个关键修复协同工作：
+
+1. **扩展名剥离（位置查找）** - 提交 8bf899c6
+   - 在 `file_locations` 中查找之前，从 `new_en_path` 中剥离 `.mdx`/`.md`
+   - 防止 `location = None` 导致跳过 docs.json 更新
+
+2. **条件重命名检测** - 提交 532e97cf
+   - 仅在 git 实际发现重命名时才跳过重命名检测
+   - 确保当 `files_to_sync=[]` 时，reconcile 处理 R100 重命名
+
+3. **扩展名剥离（新目标）** - 提交 b9489a0a
+   - 在添加到 docs.json 之前，从 `new_target` 中剥离扩展名
+   - 防止出现类似 `"cn/.../file.mdx"` 的条目（应该是 `"cn/.../file"`）
+
+## 测试序列
+
+- **V1**（本文件）→ 自动同步创建 cn/jp 翻译
+- **V1 → V2** → 验证完整的重命名行为
+- **V2 → V3** → 验证多次重命名的一致性
+
+## 预期结果
+
+每次重命名后：
+- ✅ 物理文件：`cn/validation-*.mdx`、`jp/validation-*.mdx` 已重命名
+- ✅ docs.json：`cn/.../validation-*`、`jp/.../validation-*` 已更新（无扩展名）
+- ✅ 没有删除 cn/jp 条目
+- ✅ 条目与物理文件原子性更新
+
+🤖 由 Claude Code 进行最终验证

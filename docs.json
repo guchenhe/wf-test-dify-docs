@@ -35,10 +35,7 @@
                           "pages": [
                             "en/documentation/pages/getting-started/introduction",
                             "en/documentation/pages/getting-started/quick-start",
-                            "en/documentation/pages/getting-started/key-concepts",
-                            "en/documentation/pages/getting-started/test-delete-target-1",
-                            "en/documentation/pages/getting-started/test-delete-target-2",
-                            "en/documentation/pages/getting-started/test-delete-target-3"
+                            "en/documentation/pages/getting-started/key-concepts"
                           ]
                         },
                         {

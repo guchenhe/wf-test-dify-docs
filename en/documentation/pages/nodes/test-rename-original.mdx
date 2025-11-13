@@ -1,0 +1,27 @@
+---
+title: Rename Test Original
+description: Incremental rename test - original version
+---
+
+# Rename Test - Original Version
+
+This file tests incremental rename detection across multiple commits in a single PR.
+
+## Test Sequence
+
+**Commit 1:** Create this file (test-rename-original.mdx)
+- Workflow translates to cn/jp
+- Sets baseline for rename detection
+
+**Commit 2:** Rename to test-rename-updated.mdx
+- Workflow should detect R100 rename
+- Should rename cn/jp physical files
+- Should update docs.json entries
+- Should NOT re-translate
+
+**Commit 3:** Multiple operations
+- Rename test-rename-updated → test-rename-final
+- Add test-rename-addnew.mdx (fresh translation)
+- Modify test-rename-final.mdx (incremental update)
+
+This validates the complete rename detection fix.

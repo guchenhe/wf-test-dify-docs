@@ -25,3 +25,15 @@ This file tests incremental rename detection across multiple commits in a single
 - Modify test-rename-final.mdx (incremental update)
 
 This validates the complete rename detection fix.
+
+## Step 3 Modification
+
+This content was added in commit 3 after the second rename.
+This tests that modified files are handled with incremental translation
+(using existing translation + diff) rather than fresh translation.
+
+The workflow should:
+1. Detect R100 for the second rename (updated → final)
+2. Rename cn/jp files accordingly
+3. Translate this new content incrementally
+4. Generate fresh translation for test-rename-addnew.mdx

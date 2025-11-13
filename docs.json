@@ -50,7 +50,6 @@
                             "en/documentation/pages/nodes/tools",
                             "en/documentation/pages/nodes/question-classifier",
                             "en/documentation/pages/nodes/ifelse",
-                            "en/documentation/pages/nodes/iteration",
                             "en/documentation/pages/nodes/loop",
                             "en/documentation/pages/nodes/code",
                             "en/documentation/pages/nodes/template",
@@ -65,6 +64,7 @@
                         {
                           "group": "Build",
                           "pages": [
+                            "en/documentation/pages/nodes/iteration",
                             "en/documentation/pages/build/shortcut-key",
                             "en/documentation/pages/build/goto-anything",
                             "en/documentation/pages/build/orchestrate-node",
@@ -384,7 +384,6 @@
                             "cn/documentation/pages/nodes/tools",
                             "cn/documentation/pages/nodes/question-classifier",
                             "cn/documentation/pages/nodes/ifelse",
-                            "cn/documentation/pages/nodes/iteration",
                             "cn/documentation/pages/nodes/loop",
                             "cn/documentation/pages/nodes/code",
                             "cn/documentation/pages/nodes/template",
@@ -399,6 +398,7 @@
                         {
                           "group": "构建",
                           "pages": [
+                            "cn/documentation/pages/nodes/iteration",
                             "cn/documentation/pages/build/shortcut-key",
                             "cn/documentation/pages/build/goto-anything",
                             "cn/documentation/pages/build/orchestrate-node",
@@ -767,7 +767,6 @@
                             "jp/documentation/pages/nodes/tools",
                             "jp/documentation/pages/nodes/question-classifier",
                             "jp/documentation/pages/nodes/ifelse",
-                            "jp/documentation/pages/nodes/iteration",
                             "jp/documentation/pages/nodes/loop",
                             "jp/documentation/pages/nodes/code",
                             "jp/documentation/pages/nodes/template",
@@ -782,6 +781,7 @@
                         {
                           "group": "ビルド",
                           "pages": [
+                            "jp/documentation/pages/nodes/iteration",
                             "jp/documentation/pages/build/shortcut-key",
                             "jp/documentation/pages/build/goto-anything",
                             "jp/documentation/pages/build/orchestrate-node",
@@ -5587,4 +5587,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

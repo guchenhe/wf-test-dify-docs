@@ -35,7 +35,12 @@
                           "pages": [
                             "en/documentation/pages/getting-started/introduction",
                             "en/documentation/pages/getting-started/quick-start",
-                            "en/documentation/pages/getting-started/key-concepts"
+                            "en/documentation/pages/getting-started/key-concepts",
+                            "en/documentation/pages/getting-started/complex-to-delete",
+                            "en/documentation/pages/getting-started/complex-to-edit-1",
+                            "en/documentation/pages/getting-started/complex-to-edit-2",
+                            "en/documentation/pages/getting-started/complex-to-rename",
+                            "en/documentation/pages/getting-started/complex-to-move"
                           ]
                         },
                         {

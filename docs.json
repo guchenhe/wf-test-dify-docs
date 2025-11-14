@@ -71,7 +71,8 @@
                             "en/documentation/pages/build/predefined-error-handling-logic",
                             "en/documentation/pages/build/mcp",
                             "en/documentation/pages/build/version-control",
-                            "en/documentation/pages/build/additional-features"
+                            "en/documentation/pages/build/additional-features",
+                            "en/documentation/pages/getting-started/test-move-file"
                           ]
                         },
                         {
@@ -405,7 +406,8 @@
                             "cn/documentation/pages/build/predefined-error-handling-logic",
                             "cn/documentation/pages/build/mcp",
                             "cn/documentation/pages/build/version-control",
-                            "cn/documentation/pages/build/additional-features"
+                            "cn/documentation/pages/build/additional-features",
+                            "cn/documentation/pages/getting-started/test-move-file"
                           ]
                         },
                         {
@@ -788,7 +790,8 @@
                             "jp/documentation/pages/build/predefined-error-handling-logic",
                             "jp/documentation/pages/build/mcp",
                             "jp/documentation/pages/build/version-control",
-                            "jp/documentation/pages/build/additional-features"
+                            "jp/documentation/pages/build/additional-features",
+                            "jp/documentation/pages/getting-started/test-move-file"
                           ]
                         },
                         {
@@ -5587,4 +5590,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

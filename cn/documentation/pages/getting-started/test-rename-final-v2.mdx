@@ -1,0 +1,78 @@
+---
+title: 重命名测试最终版 V2（再次重命名 + 编辑）
+description: 此文件已再次重命名并在第三次提交中进一步更新
+---
+
+<Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](/en/documentation/pages/getting-started/test-rename-final-v2)。</Note>
+
+# 重命名测试最终版 V2（再次重命名 + 编辑）
+
+此文件经历了多次重命名：
+1. **第一次重命名**：test-rename-original.mdx → test-rename-final.mdx（提交 2）
+2. **第二次重命名**：test-rename-final.mdx → test-rename-final-v2.mdx（提交 3，本次提交）
+
+内容已在第三次提交中**进一步更新**。
+
+## 测试重命名 + 编辑组合
+
+这将测试工作流的以下能力：
+- 检测文件重命名（在同一位置删除 + 添加）
+- 重命名 cn/jp 版本时保留文件扩展名（.mdx）
+- 同时处理内容更改和重命名
+- 应用结构（重命名）和内容（翻译）更新
+
+## 更新的内容
+
+### 新增章节
+
+此内容是全新的，应与重命名操作一起翻译为 cn/jp。
+
+### 代码示例
+
+```javascript
+function testRenameAndEdit() {
+  return {
+    operation: 'rename',
+    oldName: 'test-rename-original',
+    newName: 'test-rename-final',
+    contentModified: true
+  };
+}
+```
+
+### 重要说明
+
+<Note>
+外科手术式协调系统应该：
+1. 通过删除 + 添加模式检测重命名
+2. 重命名相应的 cn/jp 文件（保留 .mdx 扩展名）
+3. 更新所有语言的 docs.json 条目
+4. 根据上下文翻译更新的内容
+</Note>
+
+## 验证
+
+- [ ] 文件在 cn/jp 目录中重命名
+- [ ] 扩展名已保留（.mdx）
+- [ ] 内容已翻译并更新
+- [ ] docs.json 正确同步
+
+## 增量重命名（提交 3）
+
+第三次提交测试增量重命名操作：
+- **先前状态**：文件已在提交 2 中重命名并翻译
+- **当前操作**：再次重命名 + 编辑内容
+- **预期行为**：
+  - 外科手术式协调检测到第二次重命名
+  - cn/jp 文件从 test-rename-final 重命名为 test-rename-final-v2
+  - 内容更改以增量方式翻译
+  - 所有 docs.json 条目正确更新
+
+### 为什么测试多次重命名？
+
+实际文档通常会经历多次迭代：
+- 初始命名（可能不正确）
+- 第一次更正（仍不理想）
+- 最终改进（更清晰）
+
+工作流必须独立且正确地处理每次重命名。

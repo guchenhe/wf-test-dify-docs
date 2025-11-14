@@ -31,3 +31,21 @@ const operations = {
 | MOVE | 1 | ✅ |
 
 Total: **7 file operations** in one commit!
+
+## Incremental Update (Commit 3)
+
+### Updated Operations Summary
+
+Commit 3 adds even more operations to the test:
+
+| Type | Commit 2 | Commit 3 | Total |
+|------|----------|----------|-------|
+| ADD | 2 | 1 | 3 |
+| DELETE | 1 | 1 | 2 |
+| EDIT | 2 | 2 (incremental) | 2 |
+| RENAME | 1 | 1 (incremental) | 1 |
+| MOVE | 1 | 1 (incremental) | 1 |
+
+**Incremental operations in commit 3**: 6 operations (1 add, 1 delete, 2 edits, 1 rename, 1 move)
+
+This demonstrates the workflow's ability to handle complex incremental updates with all operation types mixed together.

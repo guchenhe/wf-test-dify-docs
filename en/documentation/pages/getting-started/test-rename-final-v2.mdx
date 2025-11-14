@@ -1,0 +1,76 @@
+---
+title: Rename Test Final V2 (Renamed Again + Edited)
+description: This file has been renamed again and further updated in a third commit
+---
+
+# Rename Test Final V2 (Renamed Again + Edited)
+
+This file has gone through multiple renames:
+1. **First rename**: test-rename-original.mdx → test-rename-final.mdx (commit 2)
+2. **Second rename**: test-rename-final.mdx → test-rename-final-v2.mdx (commit 3, this commit)
+
+The content has been **further updated** in this third commit.
+
+## Testing Rename + Edit Combo
+
+This tests the workflow's ability to:
+- Detect file renames (deleted + added in same location)
+- Preserve file extensions (.mdx) when renaming cn/jp versions
+- Handle content changes simultaneously with rename
+- Apply both structural (rename) and content (translation) updates
+
+## Updated Content
+
+### New Sections
+
+This content is entirely new and should be translated to cn/jp along with the rename operation.
+
+### Code Example
+
+```javascript
+function testRenameAndEdit() {
+  return {
+    operation: 'rename',
+    oldName: 'test-rename-original',
+    newName: 'test-rename-final',
+    contentModified: true
+  };
+}
+```
+
+### Important Notes
+
+<Note>
+The surgical reconciliation system should:
+1. Detect the rename via deletion + addition pattern
+2. Rename the corresponding cn/jp files (preserving .mdx extension)
+3. Update docs.json entries for all languages
+4. Translate the updated content contextually
+</Note>
+
+## Validation
+
+- [ ] File renamed in cn/jp directories
+- [ ] Extension preserved (.mdx)
+- [ ] Content translated with updates
+- [ ] docs.json synced correctly
+
+## Incremental Rename (Commit 3)
+
+This third commit tests incremental rename operations:
+- **Previous state**: File already renamed and translated in commit 2
+- **Current operation**: Rename again + edit content
+- **Expected behavior**:
+  - Surgical reconciliation detects second rename
+  - cn/jp files renamed from test-rename-final to test-rename-final-v2
+  - Content changes translated incrementally
+  - All docs.json entries updated correctly
+
+### Why Test Multiple Renames?
+
+Real documentation often goes through multiple iterations:
+- Initial naming (might be wrong)
+- First correction (still not ideal)
+- Final refinement (better clarity)
+
+The workflow must handle each rename independently and correctly.

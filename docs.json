@@ -36,7 +36,7 @@
                             "en/documentation/pages/getting-started/introduction",
                             "en/documentation/pages/getting-started/quick-start",
                             "en/documentation/pages/getting-started/key-concepts",
-                            "en/documentation/pages/getting-started/test-rename-final"
+                            "en/documentation/pages/getting-started/test-rename-final-v2"
                           ]
                         },
                         {
@@ -371,7 +371,7 @@
                             "cn/documentation/pages/getting-started/introduction",
                             "cn/documentation/pages/getting-started/quick-start",
                             "cn/documentation/pages/getting-started/key-concepts",
-                            "cn/documentation/pages/getting-started/test-rename-final"
+                            "cn/documentation/pages/getting-started/test-rename-final-v2"
                           ]
                         },
                         {
@@ -755,7 +755,7 @@
                             "jp/documentation/pages/getting-started/introduction",
                             "jp/documentation/pages/getting-started/quick-start",
                             "jp/documentation/pages/getting-started/key-concepts",
-                            "jp/documentation/pages/getting-started/test-rename-final"
+                            "jp/documentation/pages/getting-started/test-rename-final-v2"
                           ]
                         },
                         {

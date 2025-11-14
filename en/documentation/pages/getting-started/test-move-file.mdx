@@ -1,11 +1,15 @@
 ---
-title: Move Test File (Moved + Edited)
-description: File that has been moved to Nodes group with updated content
+title: Move Test File (Moved Again + Edited)
+description: File that has been moved again to Build group with further updates
 ---
 
-# Move Test File (Moved + Edited)
+# Move Test File (Moved Again + Edited)
 
-This file has been **moved from Getting Started to Nodes** and its content has been **updated simultaneously**.
+This file has been moved multiple times:
+1. **First move**: Getting Started → Nodes (commit 2)
+2. **Second move**: Nodes → Build (commit 3, this commit)
+
+Content has been **further updated** in this incremental commit.
 
 ## Testing Move + Edit Combo
 
@@ -17,9 +21,10 @@ This tests the workflow's ability to:
 
 ## Current Location
 
-- **Previous Group**: Getting Started
-- **Current Group**: Nodes ✅
-- **Content Status**: Updated with new sections
+- **Initial Group**: Getting Started (commit 1)
+- **First Move**: Nodes (commit 2)
+- **Second Move**: Build ✅ (commit 3, current)
+- **Content Status**: Updated again with incremental changes
 
 ## Updated Content
 
@@ -57,3 +62,23 @@ def move_and_translate():
 - [ ] Physical files remain in same directory (only docs.json changes)
 - [ ] Updated content translated to cn/jp
 - [ ] Index-based navigation worked correctly
+
+## Incremental Move Testing (Commit 3)
+
+This third commit validates incremental move operations:
+- **Previous state**: File already moved to Nodes and translated
+- **Current operation**: Move again (Nodes → Build) + edit content
+- **Expected behavior**:
+  - Surgical reconciliation detects second move
+  - cn/jp entries moved from Nodes to Build group in docs.json
+  - Content changes translated incrementally
+  - Index-based navigation finds correct cn/jp locations in Build group
+
+### Why Test Multiple Moves?
+
+Documentation structure often evolves:
+- Initial placement (might not fit well)
+- First reorganization (better, but not perfect)
+- Final optimization (clearest structure)
+
+The workflow must handle each move correctly, regardless of prior history.

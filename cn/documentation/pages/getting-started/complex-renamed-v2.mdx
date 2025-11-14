@@ -1,0 +1,33 @@
+---
+title: 复杂测试 - 重命名文件 V2（再次更新）
+description: 在增量提交中再次被重命名的文件
+---
+
+<Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](/en/documentation/pages/getting-started/complex-renamed-v2)。</Note>
+
+# 重命名文件 V2（再次更新）
+
+此文件已被重命名两次：
+1. **首次重命名**：complex-to-rename → complex-renamed（提交 2）
+2. **第二次重命名**：complex-renamed → complex-renamed-v2（提交 3，本次提交）
+
+## 复杂上下文中的重命名
+
+此重命名操作与以下操作同时发生：
+- 2 次添加
+- 1 次删除
+- 2 次编辑
+- 1 次移动
+
+工作流必须正确识别这是一次重命名（而不是删除+添加）并保留 .mdx 扩展名。
+
+## 增量重命名（提交 3）
+
+此增量提交包含多个操作：
+- **添加**：complex-new-add-3.mdx
+- **删除**：complex-new-add-1.mdx
+- **重命名**：此文件（complex-renamed → complex-renamed-v2）
+- **移动**：complex-to-move.mdx 移至 Debug 组
+- **编辑**：complex-to-edit-1.mdx 和 complex-to-edit-2.mdx
+
+一次增量提交中包含全部 6 个操作！

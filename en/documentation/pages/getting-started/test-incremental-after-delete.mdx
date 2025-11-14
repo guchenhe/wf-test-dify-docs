@@ -1,0 +1,24 @@
+---
+title: Test Incremental Add After Delete
+description: File added after initial deletions to test incremental workflow
+---
+
+# Test Incremental Add After Delete
+
+This file was added in a third commit after the initial delete operations.
+
+## Purpose
+
+This validates that the translation workflow can:
+- Handle additions after deletions in the same PR
+- Translate new files correctly even after delete operations
+- Update docs.json incrementally for all languages
+- Maintain proper navigation structure
+
+## Scenario
+
+This tests a realistic workflow where:
+1. Initial commit: Delete obsolete files
+2. Subsequent commit: Add new replacement files
+
+This is a common pattern when restructuring documentation.

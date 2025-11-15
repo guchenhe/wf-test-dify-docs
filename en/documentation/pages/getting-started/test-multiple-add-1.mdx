@@ -1,0 +1,28 @@
+---
+title: Test Multiple Add File 1
+description: First test file for validating multiple file additions in a single commit
+---
+
+# Test Multiple Add File 1
+
+This is the first test file created to validate the translation workflow's ability to handle multiple file additions simultaneously.
+
+## Purpose
+
+This test verifies that the workflow can:
+- Detect multiple new files in a single commit
+- Translate all files concurrently
+- Update docs.json for all languages correctly
+- Insert files at the correct index positions
+
+## Content
+
+This file contains sample content that should be translated to Chinese (cn) and Japanese (jp) when pushed to the test branch.
+
+## Incremental Update
+
+This section was added in a second commit to test incremental translation updates. The workflow should:
+- Detect this modification
+- Use context-aware translation (existing translation + git diff)
+- Update only the Chinese and Japanese versions of this file
+- Preserve the previously translated content

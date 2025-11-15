@@ -36,11 +36,8 @@
                             "en/documentation/pages/getting-started/introduction",
                             "en/documentation/pages/getting-started/quick-start",
                             "en/documentation/pages/getting-started/key-concepts",
-                            "en/documentation/pages/getting-started/complex-new-add-2",
                             "en/documentation/pages/getting-started/complex-new-add-3",
-                            "en/documentation/pages/getting-started/complex-to-edit-1",
-                            "en/documentation/pages/getting-started/complex-to-edit-2",
-                            "en/documentation/pages/getting-started/complex-renamed-v2"
+                            "en/documentation/pages/getting-started/complex-to-edit-2"
                           ]
                         },
                         {
@@ -377,9 +374,6 @@
                             "cn/documentation/pages/getting-started/quick-start",
                             "cn/documentation/pages/getting-started/key-concepts",
                             "cn/documentation/pages/getting-started/complex-new-add-3",
-                            "cn/documentation/pages/getting-started/complex-new-add-2",
-                            "cn/documentation/pages/getting-started/complex-to-edit-1",
-                            "cn/documentation/pages/getting-started/complex-renamed-v2",
                             "cn/documentation/pages/getting-started/complex-to-edit-2"
                           ]
                         },
@@ -766,9 +760,6 @@
                             "jp/documentation/pages/getting-started/quick-start",
                             "jp/documentation/pages/getting-started/key-concepts",
                             "jp/documentation/pages/getting-started/complex-new-add-3",
-                            "jp/documentation/pages/getting-started/complex-new-add-2",
-                            "jp/documentation/pages/getting-started/complex-to-edit-1",
-                            "jp/documentation/pages/getting-started/complex-renamed-v2",
                             "jp/documentation/pages/getting-started/complex-to-edit-2"
                           ]
                         },

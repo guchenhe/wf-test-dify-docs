@@ -35,7 +35,9 @@
                           "pages": [
                             "en/documentation/pages/getting-started/introduction",
                             "en/documentation/pages/getting-started/quick-start",
-                            "en/documentation/pages/getting-started/key-concepts"
+                            "en/documentation/pages/getting-started/key-concepts",
+                            "en/documentation/pages/getting-started/complex-new-add-3",
+                            "en/documentation/pages/getting-started/complex-to-edit-2"
                           ]
                         },
                         {
@@ -80,7 +82,8 @@
                             "en/documentation/pages/debug/step-run",
                             "en/documentation/pages/debug/variable-inspect",
                             "en/documentation/pages/debug/history-and-logs",
-                            "en/documentation/pages/debug/error-type"
+                            "en/documentation/pages/debug/error-type",
+                            "en/documentation/pages/getting-started/complex-to-move"
                           ]
                         },
                         {
@@ -369,7 +372,9 @@
                           "pages": [
                             "cn/documentation/pages/getting-started/introduction",
                             "cn/documentation/pages/getting-started/quick-start",
-                            "cn/documentation/pages/getting-started/key-concepts"
+                            "cn/documentation/pages/getting-started/key-concepts",
+                            "cn/documentation/pages/getting-started/complex-new-add-3",
+                            "cn/documentation/pages/getting-started/complex-to-edit-2"
                           ]
                         },
                         {
@@ -414,7 +419,8 @@
                             "cn/documentation/pages/debug/step-run",
                             "cn/documentation/pages/debug/variable-inspect",
                             "cn/documentation/pages/debug/history-and-logs",
-                            "cn/documentation/pages/debug/error-type"
+                            "cn/documentation/pages/debug/error-type",
+                            "cn/documentation/pages/getting-started/complex-to-move"
                           ]
                         },
                         {
@@ -752,7 +758,9 @@
                           "pages": [
                             "jp/documentation/pages/getting-started/introduction",
                             "jp/documentation/pages/getting-started/quick-start",
-                            "jp/documentation/pages/getting-started/key-concepts"
+                            "jp/documentation/pages/getting-started/key-concepts",
+                            "jp/documentation/pages/getting-started/complex-new-add-3",
+                            "jp/documentation/pages/getting-started/complex-to-edit-2"
                           ]
                         },
                         {
@@ -797,7 +805,8 @@
                             "jp/documentation/pages/debug/step-run",
                             "jp/documentation/pages/debug/variable-inspect",
                             "jp/documentation/pages/debug/history-and-logs",
-                            "jp/documentation/pages/debug/error-type"
+                            "jp/documentation/pages/debug/error-type",
+                            "jp/documentation/pages/getting-started/complex-to-move"
                           ]
                         },
                         {
@@ -5587,4 +5596,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

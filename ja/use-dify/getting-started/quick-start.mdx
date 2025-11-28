@@ -36,7 +36,7 @@ icon: "forward"
   ノードと変数に明確で説明的な名前を付けて、ワークフロー内で識別と参照が簡単になるようにします。
 </Tip>
 
-### 1. ユーザー入力ノード：エンドユーザーの入力を収集
+### 1. ユーザー入力ノード：ユーザー入力を収集
 
 <Info>
   まず、ドラフトテキスト、ターゲットプラットフォーム、希望のトーン、参考資料など、ユーザーから収集する情報を定義する必要があります。
@@ -123,28 +123,28 @@ icon: "forward"
 3. 抽出パラメータを追加します：
    1. 名前：`platform`
    2. タイプ：`Array[String]`
-   3. 説明：`ユーザーがカスタマイズされたコンテンツを作成したいプラットフォームを識別して抽出します。`
+   3. 説明：`Identify and extract the platform(s) for which the user wants to create tailored content.`
    4. 必須：`はい`
 4. 指示フィールドに、LLMのパラメータ抽出をガイドする以下を貼り付けます：
 
-   ```markdown 指示
-   # タスク説明
-   入力からプラットフォーム名を解析し、JSON配列として出力します。
-
-   ## 処理ルール
-   - 複数の区切り文字をサポート：カンマ、セミコロン、スペース、改行、"and"、"&"、"|"など。
-   - 一般的なプラットフォーム名のバリアントを標準化（twitter/X→Twitter、insta→Instagramなど）。
-   - 重複と無効なエントリを削除
-   - 未知だが合理的なプラットフォーム名を保持
-
-   ## 出力要件
-   - 成功：["Platform1", "Platform2"]
-   - プラットフォームが見つからない：[プラットフォームが識別されませんでした。有効なプラットフォーム名を入力してください。]
-
-   ## 例
-   - 入力："twitter, linkedin" → ["Twitter", "LinkedIn"]
-   - 入力："x and insta" → ["Twitter", "Instagram"]
-   - 入力："invalid content" → [プラットフォームが識別されませんでした。有効なプラットフォーム名を入力してください。]
+   ```markdown INSTRUCTION
+   # TASK DESCRIPTION
+   Parse platform names from input and output as a JSON array.
+   
+   ## PROCESSING RULES
+   - Support multiple delimiters: commas, semicolons, spaces, line breaks, "and", "&", "|", etc.
+   - Standardize common platform name variants (twitter/X→Twitter, insta→Instagram, etc.)
+   - Remove duplicates and invalid entries
+   - Preserve unknown but reasonable platform names
+   
+   ## OUTPUT REQUIREMENTS
+   - Success: ["Platform1", "Platform2"] 
+   - No platforms found: [No platforms identified. Please enter a valid platform name.]
+   
+   ## EXAMPLES
+   - Input: "twitter, linkedin" → ["Twitter", "LinkedIn"]
+   - Input: "x and insta" → ["Twitter", "Instagram"]
+   - Input: "invalid content" → [No platforms identified. Please enter a valid platform name.]
    ```
 
    <Check>
@@ -156,7 +156,7 @@ icon: "forward"
 <Info>
   ユーザーが`ohhhhhh`や`BookFace`のような無効なプラットフォーム名を入力した場合はどうなるでしょうか？無駄なコンテンツを生成するために時間とトークンを無駄にしたくありません。
 
-  そのような場合、IF/ELSEノードを使用してワークフローを早期に停止する分岐を作成できます。パラメータ抽出器ノードからのエラーメッセージをチェックする条件を設定し、そのメッセージが検出された場合、ワークフローは直接出力ノードにルーティングされます。
+  そのような場合、IF/ELSEノードを使用してワークフローを早期に停止する分岐を作成できます。パラメータ抽出器ノードからのエラーメッセージをチェックする条件を設定し、そのメッセージが検出された場合、ワークフローは直接出力ノードにルーティングされて終了します。
 </Info>
 
 <img
@@ -170,7 +170,7 @@ icon: "forward"
 1. パラメータ抽出器ノードの後に、IF/ELSEノードを追加します。
 2. IF/ELSEノードのパネルで、IF条件を定義します：
 
-   **IF** `Parameter Extractor/platform` `含む` `プラットフォームが識別されませんでした。有効なプラットフォーム名を入力してください。`
+   **IF** `Parameter Extractor/platform` `contains` `No platforms identified. Please enter a valid platform name.`
 3. IF/ELSEノードの後、IFブランチに出力ノードを追加します。
 4. 出力ノードのパネルで、`Parameter Extractor/platform`を出力変数として設定します。
 
@@ -191,13 +191,13 @@ icon: "forward"
 />
 
 1. IF/ELSEノードの後、ELSEブランチに2つのリスト演算子ノードを追加します。
-2. 1つのノードを`画像`、もう1つを`ドキュメント`に名前を変更します。
+2. 1つのノードを`Image`、もう1つを`Document`に名前を変更します。
 3. 画像ノードを設定します：
    1. `User Input/user_file`を入力変数として設定します。
-   2. フィルタ条件を有効にします：`{x}type` `に` `Image`
+   2. フィルタ条件を有効にします：`{x}type` `in` `Image`
 4. ドキュメントノードを設定します：
    1. `User Input/user_file`を入力変数として設定します。
-   2. フィルタ条件を有効にします：`{x}type` `に` `Doc`。
+   2. フィルタ条件を有効にします：`{x}type` `in` `Doc`。
 
 ### 5. ドキュメント抽出器ノード：ドキュメントからテキストを抽出
 
@@ -229,13 +229,13 @@ icon: "forward"
 1. ドキュメント抽出器ノードの後に、LLMノードを追加します。
 2. 画像ノードもこのLLMノードに接続します。
 3. LLMノードをクリックして設定します：
-   1. `情報統合`に名前を変更します。
+   1. `Integrate Info`に名前を変更します。
    2. ビジョンをサポートするモデル（目のアイコンで示される）を選択します。
-   3. **ビジョン**を有効にし、`Image/result`をビジョン変数として設定します。
+   3. **VISION**を有効にし、`Image/result`をビジョン変数として設定します。
    4. システムプロンプトフィールドに、以下を貼り付けます：
 
       <Warning>
-        プロンプトで、_提供された材料_の`Doc Extractor/text`と`User Input/draft`変数を参照するには、`{`または`/`を入力してリストから選択します。
+        プロンプトで、_PROVIDED MATERIALS_の`Doc Extractor/text`と`User Input/draft`変数を参照するには、`{`または`/`を入力してリストから選択します。
 
         <img
           src="/images/deeper_dive_reference_variable.png"
@@ -245,56 +245,56 @@ icon: "forward"
           style={{ width:"58%" }}
         />
       </Warning>
-      ```markdown システム {2,3}
-      # 提供された材料
+      ```markdown SYSTEM {2,3}
+      # PROVIDED MATERIALS
       Doc Extractor/text
       User Input/draft
-
-      # 役割とタスク
-      あなたはコンテンツストラテジストです。提供された資料を分析し、マルチプラットフォームソーシャルメディア最適化のための包括的なコンテンツ基盤を作成します。
-
-      # 分析原則
-      - 提供された情報のみで作業—外部の仮定なし
-      - 抽出、統合、戦略的解釈に焦点を当てる
-      - 説得力のある実用的な要素を特定
-      - 異なるプラットフォーム間で適応可能な洞察を準備
-
-      # 必要な分析
-      構造化された分析を提供：
-
-      ## 1. コアメッセージ
-      - 中心テーマ、目的、目標
-      - 伝えられる主要な価値または利益
-
-      ## 2. 必須コンテンツ要素
-      - 主要トピック、事実、統計、データポイント
-      - 注目すべき引用、証言、キーステートメント
-      - 言及された機能、利点、特徴
-      - 日付、場所、文脈の詳細
-
-      ## 3. 戦略的洞察
-      - コンテンツを説得力のある/ユニークにするもの
-      - 存在する感情的/理性的アピール
-      - 信頼性要因、証明ポイント
-      - 強調された競争優位性
-
-      ## 4. エンゲージメントの機会
-      - 出現する議論ポイント、質問
-      - 提案されたコール・トゥ・アクション、次のステップ
-      - インタラクティブ/参加の機会
-      - 触れられたトレンディングテーマ
-
-      ## 5. プラットフォーム最適化の基盤
-      - 高インパクト：クイックで共有可能な形式
-      - プロフェッショナル：ビジネス中心のディスカッション
-      - コミュニティ：インタラクションと共有
-      - ビジュアル：強力なビジュアルで強化
-
-      ## 6. サポート詳細
-      - メトリクス、数値、定量化可能な結果
-      - 直接引用、証言
-      - 技術的詳細、仕様
-      - 利用可能な背景コンテキスト
+      
+      # ROLE & TASK
+      You are a content strategist. Analyze the provided materials and create a comprehensive content foundation for multi-platform social media optimization.
+      
+      # ANALYSIS PRINCIPLES
+      - Work exclusively with provided information—no external assumptions
+      - Focus on extraction, synthesis, and strategic interpretation
+      - Identify compelling and actionable elements
+      - Prepare insights adaptable across different platforms
+      
+      # REQUIRED ANALYSIS
+      Deliver structured analysis with:
+      
+      ## 1. CORE MESSAGE
+      - Central theme, purpose, objective
+      - Key value or benefit being communicated
+      
+      ## 2. ESSENTIAL CONTENT ELEMENTS
+      - Primary topics, facts, statistics, data points
+      - Notable quotes, testimonials, key statements
+      - Features, benefits, characteristics mentioned
+      - Dates, locations, contextual details
+      
+      ## 3. STRATEGIC INSIGHTS
+      - What makes content compelling/unique
+      - Emotional/rational appeals present
+      - Credibility factors, proof points
+      - Competitive advantages highlighted
+      
+      ## 4. ENGAGEMENT OPPORTUNITIES
+      - Discussion points, questions emerging
+      - Calls-to-action, next steps suggested
+      - Interactive/participation opportunities
+      - Trending themes touched upon
+      
+      ## 5. PLATFORM OPTIMIZATION FOUNDATION
+      - High-impact: Quick, shareable formats
+      - Professional: Business-focused discussions
+      - Community: Interaction and sharing
+      - Visual: Enhanced with strong visuals
+      
+      ## 6. SUPPORTING DETAILS
+      - Metrics, numbers, quantifiable results
+      - Direct quotes, testimonials
+      - Technical details, specifications
+      - Background context available
       ```
 
 ### 7. イテレーションノード：各プラットフォーム向けにカスタマイズされたコンテンツを作成
@@ -313,120 +313,120 @@ icon: "forward"
   title="イテレーションノード"
 />
 
-1. 情報統合ノードの後に、イテレーションノードを追加します。
+1. Integrate Infoノードの後に、イテレーションノードを追加します。
 2. イテレーションノード内に、LLMノードを追加して設定します：
-   1. `スタイル識別`に名前を変更します。
+   1. `Identify Style`に名前を変更します。
    2. モデルを選択します。
    3. システムプロンプトフィールドに、以下を貼り付けます：
 
       <Warning>
-        プロンプトで、_役割とタスク_と_出力形式の例_で`Current Iteration/item`変数を参照するには、`{`または`/`を入力してリストから選択します。
+        プロンプトで、_ROLE & TASK_と_OUTPUT FORMAT EXAMPLES_で`Current Iteration/item`変数を参照するには、`{`または`/`を入力してリストから選択します。
       </Warning>
-      ````markdown システム {2,40}
-      # 役割とタスク
-      あなたはソーシャルメディアの専門家です。プラットフォーム「Current Iteration/item」を分析し、コンテンツ作成ガイドラインを提供します。
-
-      # 必要な分析
-      与えられたプラットフォームについて、以下を提供：
-
-      ## 1. プラットフォームプロフィール
-      - プラットフォームタイプとカテゴリ
-      - ターゲットオーディエンスの特性
-
-      ## 2. コンテンツガイドライン
-      - 最適なコンテンツ長（文字/単語）
-      - 推奨トーン（プロフェッショナル/カジュアル/会話調）
-      - フォーマットのベストプラクティス（改行、絵文字など）
-
-      ## 3. エンゲージメント戦略
-      - ハッシュタグの推奨事項（数量とスタイル）
-      - コール・トゥ・アクションのベストプラクティス
-      - アルゴリズム最適化のヒント
-
-      ## 4. 技術仕様
-      - 文字/単語制限
-      - ビジュアルコンテンツ要件
-      - 特別なフォーマットニーズ
-
-      ## 5. プラットフォーム固有の注意事項
-      - ユニークな機能または最近の変更
-      - 業界固有の考慮事項
-      - コミュニティエンゲージメントアプローチ
-
-      # 出力要件
-      - 認識されたプラットフォーム：特定のガイドラインを提供
-      - 未知のプラットフォーム：類似プラットフォームに基づく推奨事項
-      - 実用的で実践的なアドバイスに焦点を当てる
-      - 簡潔だが包括的
-
-      # 出力形式の例
-      ```json
-      {
-        "platform_name": "Current Iteration/item",
-        "platform_type": "ソーシャルメディア／プロフェッショナルネットワーク／ビジュアルプラットフォーム／マイクロブログ",
-        "content_guidelines": {
-          "max_length": "文字/単語制限",
-          "optimal_length": "推奨範囲",
-          "tone": "プロフェッショナル/カジュアル/会話調/権威的",
-          "hashtag_strategy": "数量と配置のガイドライン",
-          "formatting": "改行、絵文字、メンションのガイドライン",
-          "engagement_focus": "コメント/シェア/いいね/リツイート",
-          "call_to_action": "適切なCTAスタイル"
-        },
-        "special_considerations": "ユニークなプラットフォーム要件または最近の変更",
-        "confidence_level": "プラットフォーム認識に基づく高/中/低"
+      ````markdown SYSTEM {2,40}
+      # ROLE & TASK
+      You are a social media expert. Analyze the platform "Current Iteration/item" and provide content creation guidelines.
+      
+      # ANALYSIS REQUIRED
+      For the given platform, provide:
+      
+      ## 1. PLATFORM PROFILE
+      - Platform type and category
+      - Target audience characteristics
+      
+      ## 2. CONTENT GUIDELINES
+      - Optimal content length (characters/words)
+      - Recommended tone (professional/casual/conversational)
+      - Formatting best practices (line breaks, emojis, etc.)
+      
+      ## 3. ENGAGEMENT STRATEGY
+      - Hashtag recommendations (quantity and style)
+      - Call-to-action best practices
+      - Algorithm optimization tips
+      
+      ## 4. TECHNICAL SPECS
+      - Character/word limits
+      - Visual content requirements
+      - Special formatting needs
+      
+      ## 5. PLATFORM-SPECIFIC NOTES
+      - Unique features or recent changes
+      - Industry-specific considerations
+      - Community engagement approaches
+      
+      # OUTPUT REQUIREMENTS
+      - For recognized platforms: Provide specific guidelines
+      - For unknown platforms: Base recommendations on similar platforms
+      - Focus on actionable, practical advice
+      - Be concise but comprehensive
+      
+      # OUTPUT FORMAT EXAMPLES
+      ```json  
+      {  
+        "platform_name": "Current Iteration/item",  
+        "platform_type": "social_media/professional_network/visual_platform/microblogging",  
+        "content_guidelines": {  
+          "max_length": "character/word limit",  
+          "optimal_length": "recommended range",  
+          "tone": "professional/casual/conversational/authoritative",  
+          "hashtag_strategy": "quantity and placement guidelines",  
+          "formatting": "line breaks, emojis, mentions guidelines",  
+          "engagement_focus": "comments/shares/likes/retweets",  
+          "call_to_action": "appropriate CTA style"  
+        },  
+        "special_considerations": "Any unique platform requirements or recent changes",  
+        "confidence_level": "high/medium/low based on platform recognition"  
       }
       ````
-3. スタイル識別ノードの後に、別のLLMノードを追加して設定します：
-   1. `コンテンツ作成`に名前を変更します。
+3. Identify Styleノードの後に、別のLLMノードを追加して設定します：
+   1. `Create Content`に名前を変更します。
    2. モデルを選択します。
    3. システムプロンプトフィールドに、以下を貼り付けます：
 
       <Warning>
         プロンプトで、以下の変数を参照するには、`{`または`/`を入力してリストから選択します。
-        - _プラットフォームガイドライン_の`Identify Style/text`
-        - _ソース情報_の`Integrate Info/text`
-        - _ボイス＆トーン（オプション）_の`User Input/voice_and_tone`
-        - _言語要件_の`User Input/language`
+        - _PLATFORM GUIDELINES_の`Identify Style/text`
+        - _SOURCE INFORMATION_の`Integrate Info/text`
+        - _VOICE & TONE (OPTIONAL)_の`User Input/voice_and_tone`
+        - _LANGUAGE REQUIREMENT_の`User Input/language`
       </Warning>
-      ```markdown システム {6,9,12,15}
-      # 役割とタスク
-      あなたは専門的なソーシャルメディアコンテンツクリエーターです。プラットフォームガイドラインに一致し、ソース情報を組み込み、指定されたボイス/トーンと言語要件に従う公開準備完了のコンテンツを生成します。
-
-      # 入力材料
-      ## 1. プラットフォームガイドライン
+      ```markdown SYSTEM {6,9,12,15}
+      # ROLE & TASK
+      You are an expert social media content creator. Generate publication-ready content that matches platform guidelines, incorporates source information, and follows specified voice/tone and language requirements.
+      
+      # INPUT MATERIALS
+      ## 1. PLATFORM GUIDELINES
       Identify Style/text
-
-      ## 2. ソース情報
+      
+      ## 2. SOURCE INFORMATION
       Integrate Info/text
-
-      ## 3. ボイス＆トーン（オプション）
-      Start/voice_and_tone
-
-      ## 4. 言語要件
-      - 専用に次の言語ですべてのコンテンツを生成：User Input/language
-      - 言語を混在させない
-      - プラットフォーム用語を指定言語に適応
-
-      # コンテンツ要件
-      - プラットフォームガイドラインに正確に従う（形式、長さ、トーン、ハッシュタグ）
-      - ソース情報を効果的に統合（キーメッセージ、データ、価値提案）
-      - ボイス＆トーンを一貫して適用（提供された場合）
-      - プラットフォーム固有のエンゲージメントに最適化
-      - 指定言語の文化的適切性を確保
-
-      # 出力形式
-      - 最終的なソーシャルメディア投稿コンテンツのみを生成。説明やメタコメントなし。コンテンツはすぐにコピー＆ペースト可能でなければなりません。
-      - 最大見出しレベル：##（H2）- #（H1）は決して使用しない
-      - 水平区切りなし：---を避ける
-
-      # 品質チェックリスト
-      ✅ プラットフォームガイドラインに従った
-      ✅ ソース情報を統合した
-      ✅ ボイス/トーンが一貫している（提供時）
-      ✅ 言語の一貫性を維持
-      ✅ エンゲージメントを最適化
-      ✅ 公開準備完了
+      
+      ## 3. VOICE & TONE (OPTIONAL)
+      User Input/voice_and_tone
+      
+      ## 4. LANGUAGE REQUIREMENT
+      - Generate ALL content exclusively in: User Input/language
+      - No mixing of languages whatsoever
+      - Adapt platform terminology to the specified language
+      
+      # CONTENT REQUIREMENTS
+      - Follow platform guidelines exactly (format, length, tone, hashtags)
+      - Integrate source information effectively (key messages, data, value props)
+      - Apply voice & tone consistently (if provided)
+      - Optimize for platform-specific engagement
+      - Ensure cultural appropriateness for the specified language
+      
+      # OUTPUT FORMAT
+      - Generate ONLY the final social media post content. No explanations or meta-commentary. Content must be immediately copy-paste ready.
+      - Maximum heading level: ## (H2) - never use # (H1)
+      - No horizontal dividers: avoid ---
+      
+      # QUALITY CHECKLIST
+      ✅ Platform guidelines followed
+      ✅ Source information integrated  
+      ✅ Voice/tone consistent (when provided)
+      ✅ Language consistency maintained
+      ✅ Engagement optimized
+      ✅ Publication ready
       ```
    4. 構造化出力を有効にします。
 
@@ -437,20 +437,20 @@ icon: "forward"
         className="mx-auto"
         style={{ width:"64%" }}
       />
-      1. **出力変数**の横で、**構造化**をオンに切り替えます。structured_output変数が下に表示されます。
-      2. **structured_output**の横で、**設定**をクリックします。
-      3. ポップアップスキーマエディタで、右上隅の**JSONからインポート**をクリックし、以下を貼り付けます：
+      1. **OUTPUT VARIABLES**の横で、**STRUCTURED**をオンに切り替えます。structured_output変数が下に表示されます。
+      2. **structured_output**の横で、**Configure**をクリックします。
+      3. ポップアップスキーマエディタで、右上隅の**Import From JSON**をクリックし、以下を貼り付けます：
 
          ```json
-         {
+         {   
            "platform_name": "string",
-           "post_content": "string"
+           "post_content": "string"   
          }
          ```
 4. イテレーションノードをクリックして設定します：
    1. `Parameter Extractor/platform`を入力変数として設定します。
    2. `Create Content/structured_output`を出力変数として設定します。
-   3. **並列モード**を有効にし、最大並列性を`10`に設定します。
+   3. **PARALLEL MODE**を有効にし、最大並列性を`10`に設定します。
 
       <Check>
         これが、ユーザー入力ノードのターゲットプラットフォームフィールドのラベル名に`(≤10)`を含めた理由です。
@@ -477,11 +477,11 @@ icon: "forward"
 3. 以下のJinja2コードを貼り付けます（**コメントを削除することを忘れずに**）。
 
    ```
-   {% for item in output %}        # 入力配列の各プラットフォーム-コンテンツペアをループ
-   # 📱 {{ item.platform_name }}   # 電話絵文字付きのH1見出しとしてプラットフォーム名を表示
-   {{ item.post_content }}        # このプラットフォーム用に生成されたコンテンツを表示
-                                  # 読みやすさのためプラットフォーム間に空行を追加
-   {% endfor %}                   # ループを終了
+   {% for item in output %}        # Loop through each platform-content pair in the input array
+   # 📱 {{ item.platform_name }}   # Display the platform name as an H1 heading with a phone emoji
+   {{ item.post_content }}        # Display the generated content for this platform
+                                  # Add a blank line between platforms for better readability
+   {% endfor %}                   # End the loop
    ```
 
    <Tip>
@@ -509,18 +509,18 @@ icon: "forward"
      title="チェックリストを確認"
    />
 2. 最初に提供された参照図と照らし合わせてワークフローを確認し、すべてのノードと接続が一致していることを確認します。
-3. 右上隅の**実行**をクリックし、入力フィールドを入力して、**実行開始**をクリックします。
+3. 右上隅の**Test Run**をクリックし、入力フィールドを入力して、**Start Run**をクリックします。
 
-   キャッシュされた入力で単一のノードを実行するには、その設定パネルの上部にある**このステップを実行**アイコンをクリックします。
+   キャッシュされた入力で単一のノードを実行するには、その設定パネルの上部にある**Run this step**アイコンをクリックします。
 
    <Tip>
-     前のノードからの異なる入力に対するノードの反応をテストするには、ワークフロー全体を再実行する必要はありません。キャンバスの下部にある**キャッシュされた変数を表示**をクリックし、リストから変更したい変数を見つけて、その値を編集するだけです。
+     前のノードからの異なる入力に対するノードの反応をテストするには、ワークフロー全体を再実行する必要はありません。キャンバスの下部にある**View cached variables**をクリックし、リストから変更したい変数を見つけて、その値を編集するだけです。
    </Tip>
-   エラーが発生した場合は、対応するノードの**最後の実行**ログをチェックして、問題の正確な原因を特定します。
+   エラーが発生した場合は、対応するノードの**LAST RUN**ログをチェックして、問題の正確な原因を特定します。
 
 ## ステップ4：公開と共有
 
-ワークフローが期待通りに実行され、結果に満足したら、**公開** \> **更新を公開**をクリックして、ライブで共有可能にします。
+ワークフローが期待通りに実行され、結果に満足したら、**Publish** \> **Publish Update**をクリックして、ライブで共有可能にします。
 
 <Warning>
   後で変更を加えた場合は、更新が有効になるように必ず再度公開することを忘れないでください。
@@ -529,3 +529,9 @@ icon: "forward"
 <Tip>
   公開後、ライブ環境でクイックなエンドツーエンドテストを実行して、すべてが**スタジオ**と同じように動作することを確認できます。
 </Tip>
+
+---
+
+## 翻訳ワークフローに関する注記
+
+このドキュメントは、リファクタリングされた翻訳システムをテストするために修正されました。システムは現在、`zh`/`ja`言語コード（`cn`/`jp`の代わりに）を使用し、全体を通じて設定駆動の言語参照を使用しています。この修正により、git diff分析を使用したコンテキスト認識翻訳がトリガーされるはずです。

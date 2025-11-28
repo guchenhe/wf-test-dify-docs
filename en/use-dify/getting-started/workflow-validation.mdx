@@ -1,0 +1,56 @@
+---
+title: Workflow Validation Test
+description: Testing the refactored translation system with zh/ja language codes
+---
+
+# Workflow Validation Test
+
+This document validates the complete translation workflow after refactoring from `cn`/`jp` to `zh`/`ja`.
+
+## Refactoring Summary
+
+The translation system has been updated to be fully config-driven:
+
+### Language Code Changes
+- **Before**: Hardcoded `cn` and `jp`
+- **After**: Config-driven `zh` and `ja` from `tools/translate/config.json`
+
+### Variable Name Changes
+- **Before**: `english`, `en_file`, `en_section`
+- **After**: `source`, `source_file`, `source_section`
+
+### PR Type Changes
+- **Before**: PR analyzer returns `pr_type = 'english'`
+- **After**: PR analyzer returns `pr_type = 'source'`
+
+## Validation Points
+
+This PR tests:
+
+✅ **ADD Operation**: New file creation and translation
+✅ **UPDATE Operation**: Modification with context-aware translation
+✅ **MOVE Operation**: File relocation using index-based navigation
+✅ **Config-Driven**: All language references from `config.json`
+✅ **Workflow Integration**: Correct pr_type matching in workflow files
+
+## Expected Behavior
+
+1. **PR Analyzer** categorizes as `source` type
+2. **Sync Plan Generator** detects all operations
+3. **Translation Workflow** executes successfully
+4. **Target Languages** (zh, ja) updated automatically
+
+## Technical Details
+
+The system now:
+- Loads language codes dynamically from configuration
+- Uses language-agnostic variable names throughout
+- Supports any source/target language pair via config
+- Validates file paths using config-derived allowlists
+
+## Update: Second Commit
+
+**This section was added in a second commit** to test incremental updates. The Update Translation PR workflow should:
+- Detect this modification via git diff
+- Perform context-aware translation
+- Update the existing translation PR #252

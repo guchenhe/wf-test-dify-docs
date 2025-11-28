@@ -36,7 +36,7 @@
                           "pages": [
                             "en/use-dify/getting-started/introduction",
                             "en/use-dify/getting-started/quick-start",
-                            "en/use-dify/getting-started/key-concepts"
+                            "en/use-dify/getting-started/test-new-feature"
                           ]
                         },
                         {
@@ -84,7 +84,8 @@
                             "en/use-dify/build/predefined-error-handling-logic",
                             "en/use-dify/build/mcp",
                             "en/use-dify/build/version-control",
-                            "en/use-dify/build/additional-features"
+                            "en/use-dify/build/additional-features",
+                            "en/use-dify/getting-started/key-concepts"
                           ]
                         },
                         {

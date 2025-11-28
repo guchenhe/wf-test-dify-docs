@@ -36,7 +36,8 @@
                           "pages": [
                             "en/use-dify/getting-started/introduction",
                             "en/use-dify/getting-started/quick-start",
-                            "en/use-dify/getting-started/key-concepts"
+                            "en/use-dify/getting-started/workflow-validation",
+                            "en/use-dify/getting-started/incremental-update-test"
                           ]
                         },
                         {
@@ -84,7 +85,8 @@
                             "en/use-dify/build/predefined-error-handling-logic",
                             "en/use-dify/build/mcp",
                             "en/use-dify/build/version-control",
-                            "en/use-dify/build/additional-features"
+                            "en/use-dify/build/additional-features",
+                            "en/use-dify/getting-started/key-concepts"
                           ]
                         },
                         {
@@ -397,7 +399,8 @@
                           "pages": [
                             "zh/use-dify/getting-started/introduction",
                             "zh/use-dify/getting-started/quick-start",
-                            "zh/use-dify/getting-started/key-concepts"
+                            "zh/use-dify/getting-started/workflow-validation",
+                            "zh/use-dify/getting-started/incremental-update-test"
                           ]
                         },
                         {
@@ -445,7 +448,8 @@
                             "zh/use-dify/build/predefined-error-handling-logic",
                             "zh/use-dify/build/mcp",
                             "zh/use-dify/build/version-control",
-                            "zh/use-dify/build/additional-features"
+                            "zh/use-dify/build/additional-features",
+                            "zh/use-dify/getting-started/key-concepts"
                           ]
                         },
                         {
@@ -802,7 +806,8 @@
                           "pages": [
                             "ja/use-dify/getting-started/introduction",
                             "ja/use-dify/getting-started/quick-start",
-                            "ja/use-dify/getting-started/key-concepts"
+                            "ja/use-dify/getting-started/workflow-validation",
+                            "ja/use-dify/getting-started/incremental-update-test"
                           ]
                         },
                         {
@@ -850,7 +855,8 @@
                             "ja/use-dify/build/predefined-error-handling-logic",
                             "ja/use-dify/build/mcp",
                             "ja/use-dify/build/version-control",
-                            "ja/use-dify/build/additional-features"
+                            "ja/use-dify/build/additional-features",
+                            "ja/use-dify/getting-started/key-concepts"
                           ]
                         },
                         {
@@ -4706,4 +4712,4 @@
         "linkedin": "https://www.linkedin.com/company/langgenius"
       }
     }
-  }
+}

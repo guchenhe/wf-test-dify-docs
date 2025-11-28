@@ -1,0 +1,42 @@
+---
+title: 增量更新测试
+description: 使用上下文感知的 git diff 测试增量翻译更新
+---
+
+<Note> ⚠️ 本文档由 AI 自动翻译。如有任何不准确之处，请参考[英文原版](/en/use-dify/getting-started/incremental-update-test)。</Note>
+
+# 增量更新测试
+
+此文件作为**第二次提交**添加，用于测试增量更新工作流。
+
+## 目的
+
+此测试验证当您向已有翻译 PR 的 PR 推送额外提交时：
+
+1. **Update Translation PR** 工作流触发（而非 Execute）
+2. 系统从翻译分支检测**上次处理的提交**
+3. 计算增量范围：`last_processed..new_head`
+4. 仅翻译自上次同步以来**更改/添加的文件**
+5. 使用新提交更新翻译 PR
+
+## 工作流行为
+
+### 第一次提交（已处理）
+- 添加：`workflow-validation.mdx`
+- 修改：`quick-start.mdx`
+- 移动：`key-concepts`
+- 结果：创建翻译 PR #252
+
+### 第二次提交（此文件）
+- 添加：`incremental-update-test.mdx`
+- 应触发：**Update Translation PR** 工作流
+- 应更新：PR #252 添加新翻译
+
+## 验证点
+
+✅ 增量更新工作流触发
+✅ 正确检测上次处理的提交
+✅ 仅翻译新增/更改的文件
+✅ 更新现有翻译 PR（不创建新的）
+✅ 向翻译分支添加提交
+✅ 在两个 PR 上评论更新信息

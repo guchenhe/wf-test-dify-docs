@@ -36,7 +36,8 @@
                           "pages": [
                             "en/use-dify/getting-started/introduction",
                             "en/use-dify/getting-started/quick-start",
-                            "en/use-dify/getting-started/workflow-validation"
+                            "en/use-dify/getting-started/workflow-validation",
+                            "en/use-dify/getting-started/incremental-update-test"
                           ]
                         },
                         {
@@ -398,7 +399,8 @@
                           "pages": [
                             "zh/use-dify/getting-started/introduction",
                             "zh/use-dify/getting-started/quick-start",
-                            "zh/use-dify/getting-started/workflow-validation"
+                            "zh/use-dify/getting-started/workflow-validation",
+                            "zh/use-dify/getting-started/incremental-update-test"
                           ]
                         },
                         {
@@ -804,7 +806,8 @@
                           "pages": [
                             "ja/use-dify/getting-started/introduction",
                             "ja/use-dify/getting-started/quick-start",
-                            "ja/use-dify/getting-started/workflow-validation"
+                            "ja/use-dify/getting-started/workflow-validation",
+                            "ja/use-dify/getting-started/incremental-update-test"
                           ]
                         },
                         {

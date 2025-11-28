@@ -1,0 +1,40 @@
+---
+title: Incremental Update Test
+description: Testing incremental translation updates with context-aware git diff
+---
+
+# Incremental Update Test
+
+This file was added as a **second commit** to test the incremental update workflow.
+
+## Purpose
+
+This tests that when you push additional commits to a PR that already has a translation PR:
+
+1. **Update Translation PR** workflow triggers (not Execute)
+2. System detects **last processed commit** from translation branch
+3. Calculates incremental range: `last_processed..new_head`
+4. Translates only **changed/added files** since last sync
+5. Updates translation PR with new commit
+
+## Workflow Behavior
+
+### First Commit (Already Processed)
+- Added: `workflow-validation.mdx`
+- Modified: `quick-start.mdx`
+- Moved: `key-concepts`
+- Result: Translation PR #252 created
+
+### Second Commit (This File)
+- Added: `incremental-update-test.mdx`
+- Should trigger: **Update Translation PR** workflow
+- Should update: PR #252 with new translations
+
+## Validation Points
+
+✅ Incremental update workflow triggers
+✅ Detects last processed commit correctly
+✅ Translates only new/changed files
+✅ Updates existing translation PR (doesn't create new one)
+✅ Adds commit to translation branch
+✅ Comments on both PRs about update
